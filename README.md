@@ -39,22 +39,23 @@ Il faut utiliser la dépendance Maven javax servlet 3.1 ou supérieur :
 
 	<dependency>
 		<groupId>javax.servlet</groupId>
- 		<artifactId>javax.servlet-api</artifactId>
-  	  	<version>3.1.0</version>
-	    	<scope>provided</scope>
+		<artifactId>javax.servlet-api</artifactId>
+		<version>3.1.0</version>
+	    <scope>provided</scope>
 	</dependency>
 
 
-Complement (configuration eclypse) : 
-source : https://crunchify.com/how-to-fix-cannot-change-version-of-project-facet-dynamic-web-module-to-3-0-error-in-eclipse/  
-source : https://stackoverflow.com/questions/19661135/dynamic-web-module-3-0-3-1
+Complement (configuration eclypse) :  
+https://crunchify.com/how-to-fix-cannot-change-version-of-project-facet-dynamic-web-module-to-3-0-error-in-eclipse/  
 
-+Step 5 : Vérifier que la version java du projet est la bonne MonProjet / Préférence / Project Facets > Java.
+https://stackoverflow.com/questions/19661135/dynamic-web-module-3-0-3-1  
+
++ Step 5 : Vérifier que la version java du projet est la bonne MonProjet / Préférence / Project Facets > Java.
 
 _Ne pas définir la version du Dynamic Web Module dans Project Facets_
 
 
-Step 6 : Changer la version du Maven Compiler dans le pom.xml
++ Step 6 : Changer la version du Maven Compiler dans le pom.xml
 
 <build>
     <plugins>
