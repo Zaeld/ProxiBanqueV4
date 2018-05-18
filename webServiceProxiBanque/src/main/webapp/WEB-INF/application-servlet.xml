@@ -58,4 +58,124 @@
 	<!-- Activation du scan du package repository pour analyser les interfaces 
 		et générer leurs implémentations CRUD++ -->
 	<jpa:repositories base-package="fr.gtm.pbsi.dao" />
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Activation du scan du package controller pour analyse des classes annotées -->
+
+	<context:component-scan
+		base-package="fr.gtm.pbsi.controller" />
+
+	<tx:annotation-driven proxy-target-class="true" />
+
+	<!-- Cette configuration permet de mettre en place automatiquement plusieurs 
+		bean Spring importants (plus d'infos : https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config-enable) -->
+	<mvc:annotation-driven />
+
+	<!-- Bean métier basique -->
+	<bean id="currentAccount" class="fr.gtm.pbsi.domain.CurrentAccount"></bean>
+	<bean id="savingAccount" class="fr.gtm.pbsi.domain.SavingAccount"></bean>
+	<bean id="customer" class="fr.gtm.pbsi.domain.Customer"></bean>
+	<bean id="employe" class="fr.gtm.pbsi.domain.Employe"></bean>
+
+	<!-- Bean de configuration Spring : Objet permettant de résoudre les noms 
+		de vues (ModelAndView) en page JSP -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+
+	<!-- Configuration JPA -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="proxibanquesidb" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+	<!-- Activation du scan du package repository pour analyser les interfaces 
+		et générer leurs implémentations CRUD++ -->
+	<jpa:repositories base-package="fr.gtm.pbsi.dao" />
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/jpa
+        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- Activation du scan du package controller pour analyse des classes annotées -->
+
+	<context:component-scan
+		base-package="fr.gtm.pbsi.controller" />
+
+	<tx:annotation-driven proxy-target-class="true" />
+
+	<!-- Cette configuration permet de mettre en place automatiquement plusieurs 
+		bean Spring importants (plus d'infos : https://docs.spring.io/spring/docs/current/spring-framework-reference/web.html#mvc-config-enable) -->
+	<mvc:annotation-driven />
+
+	<!-- Bean métier basique -->
+	<bean id="currentAccount" class="fr.gtm.pbsi.domain.CurrentAccount"></bean>
+	<bean id="savingAccount" class="fr.gtm.pbsi.domain.SavingAccount"></bean>
+	<bean id="customer" class="fr.gtm.pbsi.domain.Customer"></bean>
+	<bean id="employe" class="fr.gtm.pbsi.domain.Employe"></bean>
+
+	<!-- Bean de configuration Spring : Objet permettant de résoudre les noms 
+		de vues (ModelAndView) en page JSP -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+	</bean>
+
+	<!-- Configuration JPA -->
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="proxibanquesidb" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory"
+			ref="entityManagerFactory" />
+	</bean>
+
+	<!-- Activation du scan du package repository pour analyser les interfaces 
+		et générer leurs implémentations CRUD++ -->
+	<jpa:repositories base-package="fr.gtm.pbsi.dao" />
 </beans>

@@ -4,4 +4,10 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	<display-name>Client de ProxiBanqueSI V4</display-name>
+	
+		<!--Parametre Template PrimeFaces -->
+	<context-param>
+		<param-name>primefaces.THEME</param-name>
+		<param-value>start</param-value>
+	</context-param>
 </web-app>
