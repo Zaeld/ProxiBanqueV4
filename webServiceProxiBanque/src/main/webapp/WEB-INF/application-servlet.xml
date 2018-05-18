@@ -19,6 +19,7 @@
 	<!-- Activation du scan du package controller pour analyse des classes annotées -->
 
 	<context:component-scan base-package="fr.gtm.pbsi.controller" />
+	<context:component-scan base-package="fr.gtm.pbsi.service" />
 
 	<tx:annotation-driven proxy-target-class="true" />
 
