@@ -11,6 +11,6 @@ import fr.gtm.pbsi.domain.Customer;
  * l'interface JpaRepository de Spring pour demander au Framework de fabriquer
  * un DAO évolué qui manipule une entité JPA/Hibernate.
  */
-public interface IcustomerDao extends JpaRepository<Customer,Integer> {
+public interface ICustomerDao extends JpaRepository<Customer,Integer> {
 
 }
