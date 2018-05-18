@@ -28,6 +28,7 @@ import fr.gtm.pbsi.domain.Employe;
 @RestController
 @RequestMapping("/employe")
 public class EmployeService {
+	// TODO ajouter une methode pour recuperer tous les conseillers sans le gerants
 
 	@Autowired
 	private IEmployeDao daoEmploye;

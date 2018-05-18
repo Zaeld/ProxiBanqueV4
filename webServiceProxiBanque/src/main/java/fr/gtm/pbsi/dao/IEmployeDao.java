@@ -13,5 +13,5 @@ import fr.gtm.pbsi.domain.Employe;
 public interface IEmployeDao extends JpaRepository<Employe, Integer> {
 
 	Employe findByLoginAndPassword(String login, String password);
-
+	// TODO ajouter une methode pour recuperer tous les conseillers sans le gerants
 }
