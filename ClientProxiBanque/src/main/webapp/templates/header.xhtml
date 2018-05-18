@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+
+<ui:composition>
+	<div class="header">
+		<h:outputText value="ProxiBanque"></h:outputText>
+	</div>
+	<h:form>
+		<p:menubar class="navBar">
+			<p:menuitem strule="border " value="Liste CLient" icon="ui-icon-home" />
+			<f:facet name="options">
+				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+			</f:facet>
+
+		</p:menubar>
+
+	</h:form>
+</ui:composition>
+</html>
