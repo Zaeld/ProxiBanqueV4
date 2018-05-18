@@ -10,11 +10,11 @@
 </h:head>
 <h:body>
       <f:view>
-      <ui:composition template="templates/commonLogin.xhtml">
+      <ui:composition template="templates/common.xhtml">
 			<ui:define name="content">
             <h:form>
                 <h1><p:outputLabel value="Liste des Clients de #{employebean.employe.name} #{employebean.employe.firstname}" ></p:outputLabel></h1>
-                <p:dataTable value="#{employebean.customers()}" var="item">
+                <p:dataTable value="#{employebean.employe.listCustomer}" var="item">
 
                     <p:column filterBy="#{item.name}">
                         <f:facet name="header">      

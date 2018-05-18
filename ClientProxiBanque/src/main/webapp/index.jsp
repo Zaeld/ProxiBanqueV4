@@ -7,7 +7,7 @@
 </head>
 <body>
 
- <jsp:forward page="/faces/customerCreation.xhtml"></jsp:forward> 
+ <jsp:forward page="/faces/homeLogin.xhtml"></jsp:forward> 
 
 </body>
 </html>

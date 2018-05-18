@@ -25,17 +25,20 @@
 								<h:outputText value="Login : " />
 								<p:inputText id="login" value="#{employebean.employe.login}" />
 
-							
+
 
 								<h:outputText value="Password : " />
-								<p:inputText id="password" value="#{employebean.employe.password}" />
+								<p:inputText id="password"
+									value="#{employebean.employe.password}" />
 
-						
+
 							</h:panelGrid>
 
 							<p:commandButton value="Se connecter"
-								action="#{employebean.loginVerification()}"
-								icon="ui-icon-check" />
+								action="#{employebean.loginVerification()}" icon="ui-icon-check" />
+							<div
+								style="background-color: red; font-size: large; color: white; margin-top: 30px; border: 2px solid black; border-radius: 20px;">--
+								login ou password incorrecte --</div>
 						</p:panel>
 					</h:form>
 				</div>
