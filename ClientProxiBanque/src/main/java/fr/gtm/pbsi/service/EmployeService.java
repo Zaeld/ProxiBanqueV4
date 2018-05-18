@@ -47,12 +47,6 @@ private ObjectMapper mapper = new ObjectMapper();
 			e.printStackTrace();
 		}
 		return newEmploye;
-		
-	 
-		
-		
-		
-		
 //		String res = "{login:\"test\",paswword:\"123\"}";
 //		Client client = ClientBuilder.newBuilder().build();
 //		WebTarget webTarget = client.target("http://localhost:8080/webServiceProxiBanque/employe/authentification");
@@ -66,4 +60,27 @@ private ObjectMapper mapper = new ObjectMapper();
 //		return newEmploye;
 
 	}
-}
+	public Employe updateEmploye(Employe employe) {
+		String input=null;
+		String output=null;
+		Employe newEmploye=null;
+			try {
+				input = mapper.writeValueAsString(employe);
+				WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/employe/"+employe.getId());
+				ClientResponse response = webResource.type("application/json").put(ClientResponse.class, input);
+				output = response.getEntity(String.class);
+				newEmploye = mapper.readValue(output, Employe.class);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return newEmploye;
+		}
+
+	}
+		
+		
+		
+		
+	
+

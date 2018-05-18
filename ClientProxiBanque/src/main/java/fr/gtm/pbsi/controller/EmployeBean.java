@@ -29,14 +29,14 @@ public class EmployeBean {
 
 	public String loginVerification() {
 		String forward = null;
-		//this.employe = serviceEmploye.loginVerification(this.employe);
+		this.employe = serviceEmploye.loginVerification(this.employe);
 		//=======================================================
-		this.employe.setTypeFunction(1);
-		this.employe.setId(1);
-		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
-		maList.add(new Customer("toto", "totoFamilly"));
-		maList.add(new Customer("tata", "tataFamilly"));
-		this.employe.setListCustomer(maList);
+//		this.employe.setTypeFunction(1);
+//		this.employe.setId(1);
+//		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
+//		maList.add(new Customer("toto", "totoFamilly"));
+//		maList.add(new Customer("tata", "tataFamilly"));
+//		this.employe.setListCustomer(maList);
 		//=======================================================
 
 		// On test si l'employe a été trouvé en base de donnée
@@ -50,9 +50,11 @@ public class EmployeBean {
 			}
 			return forward;
 		}
-		
 			return "homeLoginBad";
+	}
+	public String goCustomerListe () {
+		this.employe=serviceEmploye.updateEmploye(this.employe);
+		return "customerList";
 		
-	
 	}
 }
