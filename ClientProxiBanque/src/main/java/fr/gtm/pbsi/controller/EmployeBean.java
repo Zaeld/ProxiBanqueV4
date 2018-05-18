@@ -29,11 +29,10 @@ public class EmployeBean {
 
 	public String loginVerification() {
 		String forward = null;
-		System.out.println("début de méthode");
 		//this.employe = serviceEmploye.loginVerification(this.employe);
 		//=======================================================
 		this.employe.setTypeFunction(1);
-		this.employe.setId(0);
+		this.employe.setId(1);
 		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
 		maList.add(new Customer("toto", "totoFamilly"));
 		maList.add(new Customer("tata", "tataFamilly"));
@@ -50,9 +49,13 @@ public class EmployeBean {
 			} else {
 				forward = "customerList";
 			}
-			
 			return forward;
 		}
 		return "homeLoginBad";
+	}
+		
+			return "homeLoginBad";
+		
+	
 	}
 }
