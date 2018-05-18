@@ -87,9 +87,9 @@ public class CustomerService {
 
 	/**
 	 * Methode put permettant de modifier un client en BDD grace a son ID et au
-	 * nouvel etat de l'employe. Si l'ID donne n'existe pas en BDD, la methode
-	 * renvoie un client possedant un ID = 0. Sinon elle modifie le client et
-	 * renvoie le client modifie.
+	 * nouvel etat du client. Si l'ID donne n'existe pas en BDD, la methode renvoie
+	 * un client possedant un ID = 0. Sinon elle modifie le client et renvoie le
+	 * client modifie.
 	 * 
 	 * @param customerId
 	 * @param customer
