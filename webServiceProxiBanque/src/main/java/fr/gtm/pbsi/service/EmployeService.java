@@ -1,5 +1,6 @@
 package fr.gtm.pbsi.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.gtm.pbsi.dao.IEmployeDao;
 import fr.gtm.pbsi.domain.Employe;
 
 /**
@@ -28,7 +30,7 @@ import fr.gtm.pbsi.domain.Employe;
 public class EmployeService {
 
 	@Autowired
-	private EmployeDao daoEmploye;
+	private IEmployeDao daoEmploye;
 
 	/**
 	 * Methode post permettant l'insertion en BDD de l'employe.
@@ -51,7 +53,7 @@ public class EmployeService {
 	 */
 	@PostMapping("/authentification")
 	Employe authentification(@RequestBody Employe employe) {
-		final Employe retour = this.daoEmploye.authentification(employe.getLogin(), employe.getPassword());
+		Employe retour = (Employe) this.daoEmploye.findAllByLoginAndPassword(employe.getLogin(), employe.getPassword());
 		if (retour.equals(null)) {
 			final Employe employeVide = new Employe();
 			employeVide.setId(0);
