@@ -63,6 +63,8 @@
 			<artifactId>jersey-client</artifactId>
 			<version>2.27</version>
 		</dependency>
+		
+		
 	</dependencies>
 
 	<build>

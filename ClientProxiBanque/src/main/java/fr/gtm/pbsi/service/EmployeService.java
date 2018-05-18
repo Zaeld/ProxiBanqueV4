@@ -1,5 +1,7 @@
 package fr.gtm.pbsi.service;
 
+
+
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
@@ -14,12 +16,13 @@ public class EmployeService {
 
 	public Employe loginVerification(Employe employe) {
 
-		Client client = ClientBuilder.newClient();
-		WebTarget webTarget = client.target("http://localhost:8080/");
+		Client client = ClientBuilder.newBuilder().build();
+		WebTarget webTarget = client.target("http://localhost:8080/webServiceProxiBanque/employe/authentification");
 
 		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
 		Response response = invocationBuilder.post(Entity.entity(employe, MediaType.APPLICATION_JSON));
 		Employe newEmploye = response.readEntity(Employe.class);
+
 		return newEmploye;
 
 	}

@@ -22,12 +22,11 @@ public class EmployeBean {
 
 	public String loginVerification() {
 		String forward = null;
-
-		// service.loginVerification(Employe employe);
+System.out.println("début de méthode");
+		this.employe=service.loginVerification(this.employe);
 		
 		// On test si l'employe a été trouvé en base de donnée
 		if(employe.getId()>0) {
-		employe.setTypeFunction(0);
 		
 		// 0 => gerant; 1 => conseiller
 		if (employe.getTypeFunction() == 0) {
