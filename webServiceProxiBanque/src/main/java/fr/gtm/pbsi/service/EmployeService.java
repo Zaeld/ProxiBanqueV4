@@ -53,8 +53,9 @@ public class EmployeService {
 	 */
 	@PostMapping("/authentification")
 	Employe authentification(@RequestBody Employe employe) {
-		Employe retour = (Employe) this.daoEmploye.findAllByLoginAndPassword(employe.getLogin(), employe.getPassword());
-		if (retour.equals(null)) {
+		Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
+		System.out.println(retour);
+		if (retour == null) {
 			final Employe employeVide = new Employe();
 			employeVide.setId(0);
 			retour = employeVide;
