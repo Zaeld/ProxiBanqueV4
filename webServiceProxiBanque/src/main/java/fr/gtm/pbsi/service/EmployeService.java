@@ -28,7 +28,6 @@ import fr.gtm.pbsi.domain.Employe;
 @RestController
 @RequestMapping("/employe")
 public class EmployeService {
-	// TODO ajouter une methode pour recuperer tous les conseillers sans le gerants
 
 	@Autowired
 	private IEmployeDao daoEmploye;
@@ -108,7 +107,7 @@ public class EmployeService {
 	}
 
 	/**
-	 * Classe get permettant de recuperer un employe en BDD via son ID.
+	 * Methode get permettant de recuperer un employe en BDD via son ID.
 	 * 
 	 * @param employeId
 	 * @return
@@ -123,6 +122,16 @@ public class EmployeService {
 			response.setId(0);
 			return response;
 		}
+	}
+
+	/**
+	 * Methode permettant de recuperer tous les conseillers present en BDD.
+	 * 
+	 * @return
+	 */
+	@GetMapping("/adviser")
+	List<Employe> readAdviser() {
+		return this.daoEmploye.findAllByTypeFunction(1);
 	}
 
 	/**

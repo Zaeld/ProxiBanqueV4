@@ -38,7 +38,7 @@ public class CustomerService {
 	 * @return
 	 */
 	@PostMapping({ "", "/" })
-	// TODO creation des comptes
+	// TODO creation des comptes avant la creation du client
 	Customer create(@RequestBody Customer customer) {
 		return this.daocustomer.save(customer);
 	}
@@ -68,7 +68,7 @@ public class CustomerService {
 	}
 
 	/**
-	 * Classe get permettant de recuperer un employe en BDD via son ID.
+	 * Methode get permettant de recuperer un employe en BDD via son ID.
 	 * 
 	 * @param employeId
 	 * @return
