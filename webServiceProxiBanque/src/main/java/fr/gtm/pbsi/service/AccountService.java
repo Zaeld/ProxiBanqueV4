@@ -84,9 +84,9 @@ public class AccountService {
 
 	/**
 	 * Methode put permettant de modifier un compte en BDD grace a son ID et au
-	 * nouvel etat de l'employe. Si l'ID donne n'existe pas en BDD, la methode
-	 * renvoie un compte possedant un ID = 0. Sinon elle modifie le compte et
-	 * renvoie le compte modifie.
+	 * nouvel etat du compte. Si l'ID donne n'existe pas en BDD, la methode renvoie
+	 * un compte possedant un ID = 0. Sinon elle modifie le compte et renvoie le
+	 * compte modifie.
 	 * 
 	 * @param customerId
 	 * @param customer
