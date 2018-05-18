@@ -29,8 +29,6 @@ public class EmployeBean {
 
 	public String loginVerification() {
 		String forward = null;
-<<<<<<< HEAD
-		System.out.println("début de méthode");
 		//this.employe = serviceEmploye.loginVerification(this.employe);
 		//=======================================================
 		this.employe.setTypeFunction(1);
@@ -40,12 +38,8 @@ public class EmployeBean {
 		maList.add(new Customer("tata", "tataFamilly"));
 		this.employe.setListCustomer(maList);
 		//=======================================================
-=======
-		this.employe=serviceEmploye.loginVerification(this.employe);
->>>>>>> refs/heads/Alex
-		
+
 		// On test si l'employe a été trouvé en base de donnée
-		System.out.println(this.employe);
 		if (employe.getId() > 0) {
 			
 			// 0 => gerant; 1 => conseiller
@@ -57,32 +51,8 @@ public class EmployeBean {
 			return forward;
 		}
 		
-<<<<<<< HEAD
+			return "homeLoginBad";
 		
-		return "homeLoginBad";
-		
-=======
-		// 0 => gerant; 1 => conseiller
-		if (employe.getTypeFunction() == 0) {
-			forward = "employeList";
-
-		} else {
-			forward = "customerList";
-		}
-		}
-
-		return forward;
-
->>>>>>> refs/heads/Alex
-	}
-<<<<<<< HEAD
-
-=======
 	
-	public List<Customer> showCustomers() {
-//		List<Customer> customerList = service.findAllCustomers(this.employe);
-//		return customerList;
-		return null;
 	}
->>>>>>> refs/heads/Alex
 }
