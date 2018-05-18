@@ -9,51 +9,64 @@
 	<title>Home</title>
 </h:head>
 <h:body>
-
-
-	<f:view>
-		<ui:composition template="templates/commonLogin.xhtml">
+      <f:view>
+      <ui:composition template="templates/commonLogin.xhtml">
 			<ui:define name="content">
-				<div class="container">
+            <h:form>
+                <h1><p:outputLabel value="Liste des Clients de #{employebean.employe.name} #{employebean.employe.firstname}" ></p:outputLabel></h1>
+                <p:dataTable value="#{employebean.customers()}" var="item">
 
+                    <p:column filterBy="#{item.name}">
+                        <f:facet name="header">      
+                            <h:outputText value="Nom"/>
+                        </f:facet>
+                       
+                        <h:outputText value="#{item.name}"/>
+                    </p:column>
+                    <p:column filterBy="#{item.firstname}">
+                        <f:facet name="header">
+                        
+                            <h:outputText value="Prénom"/>
+                        </f:facet>
+                       
+                        <h:outputText value="#{item.Firstname}"/>
+                    </p:column>
+                   
+                   
+                     <p:column filterBy="#{item.email}">
+                        <f:facet name="header">
+                            <h:outputText value="email"/>
+                        </f:facet>
+                        
+                        <h:outputText value="#{item.email}"/>
+                    </p:column>
+                    
 
-					<h:form class="placementFormulaire">
-						<p:panel id="panel" header="Veuillez vous connecter">
-							<p:messages id="msgs" />
-							<h:panelGrid columns="3" cellpadding="5">
-								<p:outputLabel for="login" value="Login :" />
-								<p:inputText id="login" value="#{employebean.employe.login}"
-									required="true" label="login">
-									<f:validateLength minimum="2" />
-								</p:inputText>
-								<p:message for="login" display="icon" />
-
-								<p:spacer />
-								<p:spacer />
-								<p:spacer />
-								
-								<p:outputLabel for="password" value="PassWord :" />
-								<p:inputText id="password"
-									value="#{employebean.employe.password}" label="password"
-									required="true">
-									<f:validateLength minimum="2" />
-									<p:ajax update="msgLastname" event="keyup" />
-								</p:inputText>
-								<p:message for="password" id="msgLastname" display="icon" />
-								<p:spacer />
-								<p:spacer />
-								<p:spacer />
-							</h:panelGrid>
-
-							<p:commandButton value="Se connecter" update="panel"
-								actionListener="#{employebean.loginVerification()}"
-								icon="ui-icon-check" />
-						</p:panel>
-					</h:form>
-				</div>
-			</ui:define>
-		</ui:composition>
-	</f:view>
-
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Edition"/>
+                        </f:facet>
+                         <h:commandLink action="#{clientBean.update(item)}" value="Mettre à jour"/>     
+                    </p:column>
+                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText  value=" Compte"/>
+                        </f:facet>
+                         <h:commandLink  action="#{clientBean.listeCompte()}" value="Liste des Comptes"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText  value="Transaction"/>
+                        </f:facet>
+                         <h:commandLink  action="virement" value="virement compte à compte"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        
+       
+</ui:define>
+</ui:composition>
+</f:view>
 </h:body>
+
 </html>

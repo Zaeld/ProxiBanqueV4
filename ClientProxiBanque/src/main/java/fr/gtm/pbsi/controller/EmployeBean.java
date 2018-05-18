@@ -1,8 +1,11 @@
 package fr.gtm.pbsi.controller;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.domain.Employe;
 import fr.gtm.pbsi.service.EmployeService;
 
@@ -38,5 +41,10 @@ System.out.println("début de méthode");
 
 		return forward;
 
+	}
+	
+	public List<Customer> showCustomers() {
+		List<Customer> customerList = service.findAllCustomers(this.employe);
+		return customerList;
 	}
 }
