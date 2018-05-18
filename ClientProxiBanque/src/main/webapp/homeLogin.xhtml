@@ -20,32 +20,20 @@
 					<h:form class="placementFormulaire">
 						<p:panel id="panel" header="Veuillez vous connecter">
 							<p:messages id="msgs" />
-							<h:panelGrid columns="3" cellpadding="5">
-								<p:outputLabel for="login" value="Login :" />
-								<p:inputText id="login" value="#{employebean.employe.login}"
-									required="true" label="login">
-									<f:validateLength minimum="2" />
-								</p:inputText>
-								<p:message for="login" display="icon" />
+							<h:panelGrid columns="2" cellpadding="5">
 
-								<p:spacer />
-								<p:spacer />
-								<p:spacer />
-								
-								<p:outputLabel for="password" value="PassWord :" />
-								<p:inputText id="password"
-									value="#{employebean.employe.password}" label="password"
-									required="true">
-									<f:validateLength minimum="2" />
-									<p:ajax update="msgLastname" event="keyup" />
-								</p:inputText>
-								<p:message for="password" id="msgLastname" display="icon" />
-								<p:spacer />
-								<p:spacer />
-								<p:spacer />
+								<h:outputText value="Login : " />
+								<p:inputText id="login" value="#{employebean.employe.login}" />
+
+							
+
+								<h:outputText value="Password : " />
+								<p:inputText id="password" value="#{employebean.employe.password}" />
+
+						
 							</h:panelGrid>
 
-							<p:commandButton value="Se connecter" update="panel"
+							<p:commandButton value="Se connecter"
 								actionListener="#{employebean.loginVerification()}"
 								icon="ui-icon-check" />
 						</p:panel>
