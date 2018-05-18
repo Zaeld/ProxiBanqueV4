@@ -21,9 +21,12 @@ public class EmployeBean {
 	}
 
 	public String loginVerification() {
-		
-		// service.loginVerification(Employe employe);
 		String forward = null;
+
+		// service.loginVerification(Employe employe);
+		
+		// On test si l'employe a été trouvé en base de donnée
+		if(employe.getId()>0) {
 		employe.setTypeFunction(0);
 		
 		// 0 => gerant; 1 => conseiller
@@ -31,6 +34,7 @@ public class EmployeBean {
 			forward = "employeList";
 		} else {
 			forward = "customerList";
+		}
 		}
 
 		return forward;
