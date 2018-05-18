@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.gtm.pbsi.dao.ICustomerDao;
@@ -29,53 +27,55 @@ import fr.gtm.pbsi.domain.Customer;
 public class CustomerService {
 
 	@Autowired
-	private ICustomerDao daocustomer;
+	private ICustomerDao daoCustomer;
 
 	/**
 	 * Methode post permettant l'insertion en BDD d'un client.
 	 * 
-	 * @param employe
-	 * @return
+	 * @param customer
+	 * @return le client cree
 	 */
 	@PostMapping({ "", "/" })
 	// TODO creation des comptes avant la creation du client
 	Customer create(@RequestBody Customer customer) {
-		return this.daocustomer.save(customer);
+		return this.daoCustomer.save(customer);
 	}
 
 	/**
 	 * Methode delete permettant la suppression d'un client en BDD via son ID.
 	 * 
-	 * @param employeId
+	 * @param customerId
+	 * @return 1 pour signifier que le client est bien supprimer en BDD.
 	 */
 	// TODO Suppression des comptes avant la suppression du client ou deja pris en
 	// compte par la cascade ?
 	@DeleteMapping("/{customerId}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	Integer delete(@PathVariable Integer customerId) {
-		this.daocustomer.deleteById(customerId);
+		this.daoCustomer.deleteById(customerId);
 		return 1;
 	}
 
 	/**
-	 * Methode getAll permettant la liste de tous les clients presents en BDD.
+	 * Methode getAll permettant de recuperer la liste de tous les clients presents
+	 * en BDD
 	 * 
-	 * @return
+	 * @return la liste de tous les clients
 	 */
 	@GetMapping({ "", "/" })
 	List<Customer> readAll() {
-		return this.daocustomer.findAll();
+		return this.daoCustomer.findAll();
 	}
+	// TODO ajouter une méthode pour récupérer les clients d'un conseiller
 
 	/**
-	 * Methode get permettant de recuperer un employe en BDD via son ID.
+	 * Methode get permettant de recuperer un client en BDD via son ID.
 	 * 
-	 * @param employeId
-	 * @return
+	 * @param customerId
+	 * @return le client demande
 	 */
 	@GetMapping("/{customerId}")
 	Customer read(@PathVariable Integer customerId) {
-		final Optional<Customer> retour = this.daocustomer.findById(customerId);
+		final Optional<Customer> retour = this.daoCustomer.findById(customerId);
 		if (retour.isPresent()) {
 			return retour.get();
 		} else {
@@ -88,17 +88,17 @@ public class CustomerService {
 	/**
 	 * Methode put permettant de modifier un client en BDD grace a son ID et au
 	 * nouvel etat de l'employe. Si l'ID donne n'existe pas en BDD, la methode
-	 * renvoie un customer possedant un ID = 0. Sinon elle modifie le customer et
-	 * renvoie le customer modifie.
+	 * renvoie un client possedant un ID = 0. Sinon elle modifie le client et
+	 * renvoie le client modifie.
 	 * 
-	 * @param employeId
-	 * @param employe
-	 * @return
+	 * @param customerId
+	 * @param customer
+	 * @return le client modifie
 	 */
 	@PutMapping("/{customerId}")
 	Customer update(@PathVariable Integer customerId, @RequestBody Customer customer) {
-		if (this.daocustomer.existsById(customerId)) {
-			return this.daocustomer.save(customer);
+		if (this.daoCustomer.existsById(customerId)) {
+			return this.daoCustomer.save(customer);
 		} else {
 			final Customer response = new Customer();
 			response.setId(0);

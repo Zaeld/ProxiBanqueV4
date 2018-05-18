@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.gtm.pbsi.dao.IEmployeDao;
@@ -38,7 +36,7 @@ public class EmployeService {
 	 * retourne un employe vide d'ID 0.
 	 * 
 	 * @param employe
-	 * @return
+	 * @return l'employe cree
 	 */
 	@PostMapping({ "", "/" })
 	Employe create(@RequestBody Employe employe) {
@@ -54,10 +52,10 @@ public class EmployeService {
 	/**
 	 * Methode post permettant de verifier le login et le password de l'employe
 	 * essayant de se connecter a l'application. Si le login et/ou le password sont
-	 * mauvais, l'employe retourne possede
+	 * mauvais, l'employe retourne possede un ID = 0.
 	 * 
 	 * @param employe
-	 * @return
+	 * @return l'employe qui se connecte
 	 */
 	@PostMapping("/authentification")
 	Employe authentification(@RequestBody Employe employe) {
@@ -78,9 +76,10 @@ public class EmployeService {
 	 * et renvoie 1.
 	 * 
 	 * @param employeId
+	 * @return 0 si l'employe n'existe pas ou possede encore des clients, 1 si la
+	 *         suppression s'est bien effectuee
 	 */
 	@DeleteMapping("/{employeId}")
-	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	Integer delete(@PathVariable Integer employeId) {
 		if (this.daoEmploye.existsById(employeId)) {
 			final Optional<Employe> retour = this.daoEmploye.findById(employeId);
@@ -97,9 +96,10 @@ public class EmployeService {
 	}
 
 	/**
-	 * Methode getAll permettant la liste de tous les employes presents en BDD.
+	 * Methode getAll permettant de recuperer la liste de tous les employes presents
+	 * en BDD.
 	 * 
-	 * @return
+	 * @return la liste des employes
 	 */
 	@GetMapping({ "", "/" })
 	List<Employe> readAll() {
@@ -110,7 +110,7 @@ public class EmployeService {
 	 * Methode get permettant de recuperer un employe en BDD via son ID.
 	 * 
 	 * @param employeId
-	 * @return
+	 * @return l'employe demande
 	 */
 	@GetMapping("/{employeId}")
 	Employe read(@PathVariable Integer employeId) {
@@ -127,7 +127,7 @@ public class EmployeService {
 	/**
 	 * Methode permettant de recuperer tous les conseillers present en BDD.
 	 * 
-	 * @return
+	 * @return la liste des conseillers
 	 */
 	@GetMapping("/adviser")
 	List<Employe> readAdviser() {
@@ -142,7 +142,7 @@ public class EmployeService {
 	 * 
 	 * @param employeId
 	 * @param employe
-	 * @return
+	 * @return l'employe modifie
 	 */
 	@PutMapping("/{employeId}")
 	Employe update(@PathVariable Integer employeId, @RequestBody Employe employe) {
