@@ -118,7 +118,9 @@ public class EmployeService {
 		if (retour.isPresent()) {
 			return retour.get();
 		} else {
-			return null;
+			final Employe response = new Employe();
+			response.setId(0);
+			return response;
 		}
 	}
 
@@ -137,9 +139,9 @@ public class EmployeService {
 		if (this.daoEmploye.existsById(employeId)) {
 			return this.daoEmploye.save(employe);
 		} else {
-			final Employe retour = new Employe();
-			retour.setId(0);
-			return retour;
+			final Employe response = new Employe();
+			response.setId(0);
+			return response;
 		}
 	}
 
