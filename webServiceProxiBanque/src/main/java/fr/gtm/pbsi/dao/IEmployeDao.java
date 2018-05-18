@@ -1,5 +1,7 @@
 package fr.gtm.pbsi.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.gtm.pbsi.domain.Employe;
@@ -12,6 +14,11 @@ import fr.gtm.pbsi.domain.Employe;
  */
 public interface IEmployeDao extends JpaRepository<Employe, Integer> {
 
+	// Methode permettant de recuperer l'employe possedant le login et le password
+	// donne
 	Employe findByLoginAndPassword(String login, String password);
-	// TODO ajouter une methode pour recuperer tous les conseillers sans le gerants
+
+	// Methode pour recuperer tous les conseillers sans le gerants
+	List<Employe> findAllByTypeFunction(Integer typeFunction);
+
 }

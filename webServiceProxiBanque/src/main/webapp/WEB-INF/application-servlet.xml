@@ -32,6 +32,7 @@
 	<bean id="savingAccount" class="fr.gtm.pbsi.domain.SavingAccount"></bean>
 	<bean id="customer" class="fr.gtm.pbsi.domain.Customer"></bean>
 	<bean id="employe" class="fr.gtm.pbsi.domain.Employe"></bean>
+	<bean id="transaction" class="fr.gtm.pbsi.domain.Transaction"></bean>
 
 	<!-- Bean de configuration Spring : Objet permettant de résoudre les noms de vues (ModelAndView) en 
 		page JSP -->
