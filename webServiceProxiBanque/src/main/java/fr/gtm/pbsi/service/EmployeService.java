@@ -28,20 +28,28 @@ import fr.gtm.pbsi.domain.Employe;
 @RestController
 @RequestMapping("/employe")
 public class EmployeService {
-	// TODO ajouter les sécuritées pour la modification, créations, et suppression.
+	// TODO ajouter une methode pour recuperer tous les conseillers sans le gerants
 
 	@Autowired
 	private IEmployeDao daoEmploye;
 
 	/**
-	 * Methode post permettant l'insertion en BDD de l'employe.
+	 * Methode post permettant l'insertion en BDD de l'employe. La methode verifie
+	 * qu'aucun autre employe ne possede le même mot de passe et/ou login. Si oui
+	 * retourne un employe vide d'ID 0.
 	 * 
 	 * @param employe
 	 * @return
 	 */
 	@PostMapping({ "", "/" })
 	Employe create(@RequestBody Employe employe) {
-		return this.daoEmploye.save(employe);
+		final Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
+		if (retour == null) {
+			return this.daoEmploye.save(employe);
+		} else {
+			retour.setId(0);
+			return retour;
+		}
 	}
 
 	/**
@@ -55,7 +63,6 @@ public class EmployeService {
 	@PostMapping("/authentification")
 	Employe authentification(@RequestBody Employe employe) {
 		Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
-		System.out.println(retour);
 		if (retour == null) {
 			final Employe employeVide = new Employe();
 			employeVide.setId(0);
@@ -65,14 +72,29 @@ public class EmployeService {
 	}
 
 	/**
-	 * Methode delete permettant la suppression d'un employe en BDD via son ID.
+	 * Methode delete permettant la suppression d'un employe en BDD via son ID. Si
+	 * l'ID donne n'existe pas la methode renvoie 0. De même, si l'employe
+	 * correspondant existe mais possede encore des clients, la methode renvoie 0.
+	 * Si l'employe existe et ne possede plus de client alors la methode le supprime
+	 * et renvoie 1.
 	 * 
 	 * @param employeId
 	 */
 	@DeleteMapping("/{employeId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void delete(@PathVariable Integer employeId) {
-		this.daoEmploye.deleteById(employeId);
+	Integer delete(@PathVariable Integer employeId) {
+		if (this.daoEmploye.existsById(employeId)) {
+			final Optional<Employe> retour = this.daoEmploye.findById(employeId);
+			final Employe employe = retour.get();
+			if (employe.getListCustomer() == null) {
+				this.daoEmploye.deleteById(employeId);
+				return 1;
+			} else {
+				return 0;
+			}
+		} else {
+			return 0;
+		}
 	}
 
 	/**
@@ -97,13 +119,17 @@ public class EmployeService {
 		if (retour.isPresent()) {
 			return retour.get();
 		} else {
-			return null;
+			final Employe response = new Employe();
+			response.setId(0);
+			return response;
 		}
 	}
 
 	/**
 	 * Methode put permettant de modifier un employe en BDD grace a son ID et au
-	 * nouvel etat de l'employe.
+	 * nouvel etat de l'employe. Si l'ID donne n'existe pas en BDD, la methode
+	 * renvoie un employe possedant un ID = 0. Sinon elle modifie l'employe et
+	 * renvoie l'employe modifie.
 	 * 
 	 * @param employeId
 	 * @param employe
@@ -114,7 +140,9 @@ public class EmployeService {
 		if (this.daoEmploye.existsById(employeId)) {
 			return this.daoEmploye.save(employe);
 		} else {
-			return null;
+			final Employe response = new Employe();
+			response.setId(0);
+			return response;
 		}
 	}
 

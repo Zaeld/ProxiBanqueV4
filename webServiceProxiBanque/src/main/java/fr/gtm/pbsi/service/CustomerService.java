@@ -27,7 +27,6 @@ import fr.gtm.pbsi.domain.Customer;
 @RestController
 @RequestMapping("/customer")
 public class CustomerService {
-	// TODO ajouter les sécuritées pour la modification, créations, et suppression.
 
 	@Autowired
 	private ICustomerDao daocustomer;
@@ -39,6 +38,7 @@ public class CustomerService {
 	 * @return
 	 */
 	@PostMapping({ "", "/" })
+	// TODO creation des comptes
 	Customer create(@RequestBody Customer customer) {
 		return this.daocustomer.save(customer);
 	}
@@ -48,10 +48,13 @@ public class CustomerService {
 	 * 
 	 * @param employeId
 	 */
+	// TODO Suppression des comptes avant la suppression du client ou deja pris en
+	// compte par la cascade ?
 	@DeleteMapping("/{customerId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	void delete(@PathVariable Integer customerId) {
+	Integer delete(@PathVariable Integer customerId) {
 		this.daocustomer.deleteById(customerId);
+		return 1;
 	}
 
 	/**
@@ -76,13 +79,17 @@ public class CustomerService {
 		if (retour.isPresent()) {
 			return retour.get();
 		} else {
-			return null;
+			final Customer response = new Customer();
+			response.setId(0);
+			return response;
 		}
 	}
 
 	/**
 	 * Methode put permettant de modifier un client en BDD grace a son ID et au
-	 * nouvel etat de l'employe.
+	 * nouvel etat de l'employe. Si l'ID donne n'existe pas en BDD, la methode
+	 * renvoie un customer possedant un ID = 0. Sinon elle modifie le customer et
+	 * renvoie le customer modifie.
 	 * 
 	 * @param employeId
 	 * @param employe
@@ -93,7 +100,9 @@ public class CustomerService {
 		if (this.daocustomer.existsById(customerId)) {
 			return this.daocustomer.save(customer);
 		} else {
-			return null;
+			final Customer response = new Customer();
+			response.setId(0);
+			return response;
 		}
 	}
 }
