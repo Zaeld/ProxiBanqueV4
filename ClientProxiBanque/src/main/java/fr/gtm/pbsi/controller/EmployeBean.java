@@ -10,7 +10,7 @@ import fr.gtm.pbsi.service.EmployeService;
 @SessionScoped
 public class EmployeBean {
 	private Employe employe = new Employe();
-	private EmployeService service = new EmployeService();
+	private EmployeService serviceEmploye = new EmployeService();
 
 	public Employe getEmploye() {
 		return employe;
@@ -23,7 +23,7 @@ public class EmployeBean {
 	public String loginVerification() {
 		String forward = null;
 System.out.println("début de méthode");
-		this.employe=service.loginVerification(this.employe);
+		this.employe=serviceEmploye.loginVerification(this.employe);
 		
 		// On test si l'employe a été trouvé en base de donnée
 		if(employe.getId()>0) {
