@@ -2,7 +2,8 @@ package fr.gtm.pbsi.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import fr.gtm.pbsi.domain.CurrentAccount;
+import fr.gtm.pbsi.domain.Customer;
+
 
 /**
  * @author Bovin Blondel Demolis Colbert Sersoub
@@ -10,6 +11,6 @@ import fr.gtm.pbsi.domain.CurrentAccount;
  * l'interface JpaRepository de Spring pour demander au Framework de fabriquer
  * un DAO évolué qui manipule une entité JPA/Hibernate.
  */
-public interface ICurrentAccountDao  extends JpaRepository<CurrentAccount,Integer> {
+public interface ICustomerDao extends JpaRepository<Customer,Integer> {
 
 }

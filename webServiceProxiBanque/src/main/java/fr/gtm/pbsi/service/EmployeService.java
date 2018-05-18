@@ -28,6 +28,7 @@ import fr.gtm.pbsi.domain.Employe;
 @RestController
 @RequestMapping("/employe")
 public class EmployeService {
+	// TODO ajouter les sécuritées pour la modification, créations, et suppression.
 
 	@Autowired
 	private IEmployeDao daoEmploye;
@@ -64,11 +65,11 @@ public class EmployeService {
 	}
 
 	/**
-	 * Methode delete permettant le suppression d'un employe en BDD via son ID.
+	 * Methode delete permettant la suppression d'un employe en BDD via son ID.
 	 * 
 	 * @param employeId
 	 */
-	@DeleteMapping("/{conseillerId}")
+	@DeleteMapping("/{employeId}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	void delete(@PathVariable Integer employeId) {
 		this.daoEmploye.deleteById(employeId);
@@ -90,7 +91,7 @@ public class EmployeService {
 	 * @param employeId
 	 * @return
 	 */
-	@GetMapping("/{conseillerId}")
+	@GetMapping("/{employeId}")
 	Employe read(@PathVariable Integer employeId) {
 		final Optional<Employe> retour = this.daoEmploye.findById(employeId);
 		if (retour.isPresent()) {
@@ -108,7 +109,7 @@ public class EmployeService {
 	 * @param employe
 	 * @return
 	 */
-	@PutMapping("/{conseillerId}")
+	@PutMapping("/{employeId}")
 	Employe update(@PathVariable Integer employeId, @RequestBody Employe employe) {
 		if (this.daoEmploye.existsById(employeId)) {
 			return this.daoEmploye.save(employe);
