@@ -33,7 +33,7 @@ public class EmployeBean {
 		//this.employe = serviceEmploye.loginVerification(this.employe);
 		//=======================================================
 		this.employe.setTypeFunction(1);
-		this.employe.setId(1);
+		this.employe.setId(0);
 		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
 		maList.add(new Customer("toto", "totoFamilly"));
 		maList.add(new Customer("tata", "tataFamilly"));
@@ -52,10 +52,6 @@ public class EmployeBean {
 			}
 			return forward;
 		}
-		
-		
 		return "homeLoginBad";
-		
 	}
-
 }
