@@ -16,8 +16,11 @@ public class Employe extends People{
 			this.password="Entrez votre password";
 		}
 		
-		public Employe(String name, String firstName) {
+		public Employe(String name, String firstName, String login, String password, Integer typeFunction) {
 			super(name, firstName);
+			this.typeFunction=typeFunction;
+			this.login=login;
+			this.password=password;
 		}
 
 		public Integer getId() {

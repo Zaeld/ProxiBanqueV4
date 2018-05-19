@@ -76,8 +76,31 @@ private ObjectMapper mapper = new ObjectMapper();
 			}
 			return newEmploye;
 		}
-
+	
+	public Employe createEmploye(Employe employe) {
+		String input=null;
+		String output=null;
+		Employe newEmploye=null;
+			try {
+				input = mapper.writeValueAsString(employe);
+				WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/employe");
+				ClientResponse response = webResource.type("application/json").post(ClientResponse.class, input);
+				output = response.getEntity(String.class);
+				newEmploye = mapper.readValue(output, Employe.class);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return newEmploye;
+		}
+	
+	public void deleteEmploye(Employe employe) {
+		WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/employe/delete/"+employe.getId());
+		ClientResponse response = webResource.accept("application/json").delete(ClientResponse.class);
+	
 	}
+	}
+	
 		
 		
 		
