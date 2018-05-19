@@ -76,6 +76,10 @@ public class EmployeBean {
 			return "homeLoginBad";
 	}
 	
+	public String logout () {
+		this.employe = new Employe();
+		return "homeLogin";
+	}
 	
 	public String goCustomerListe () {
 		this.employe=serviceEmploye.updateEmploye(this.employe);
