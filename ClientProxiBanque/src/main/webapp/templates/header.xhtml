@@ -16,14 +16,17 @@
 		<h:outputText value="ProxiBanque"></h:outputText>
 	</div>
 	<h:form>
-		<p:menubar class="navBar">
-			<p:menuitem strule="border " value="Liste CLient" icon="ui-icon-home" action="#{EmployeBean.showCustomers()}" />
-			<f:facet name="options">
-				<p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
+		<p:toolbar class="navBar">
+			<f:facet name="left">
+				<p:commandButton value="Liste Client" icon="ui-icon-home"
+					action="#{employebean.goCustomerListe()}" />
 			</f:facet>
 
-		</p:menubar>
-
+			<f:facet name="right">
+				<p:commandButton value="Logout" icon="ui-icon-extlink"
+					action="#" />
+			</f:facet>
+		</p:toolbar>
 	</h:form>
 </ui:composition>
 </html>

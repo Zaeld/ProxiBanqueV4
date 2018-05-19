@@ -210,3 +210,8 @@ html, body {
 	color: white;
 	font-size: large;
 }
+
+.styleGreen {
+	background-image:none;
+	background-color: #009900;
+}

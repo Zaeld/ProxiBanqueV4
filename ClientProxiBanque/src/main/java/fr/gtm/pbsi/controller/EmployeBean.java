@@ -19,7 +19,7 @@ public class EmployeBean {
 	private Employe employe = new Employe();
 	private EmployeService serviceEmploye = new EmployeService();
 	private Float savingAccountLimit = 0.0f; 
-	private String massage = null;
+	private String message = null;
 	
 	//=====================Assesseurs ======================
 	public Employe getEmploye() {
