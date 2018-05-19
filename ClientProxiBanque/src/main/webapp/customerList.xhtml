@@ -47,19 +47,19 @@
                         <f:facet name="header">
                             <h:outputText value="Edition"/>
                         </f:facet>
-                         <h:commandLink action="#{customerBean.update(item)}" value="Mettre à jour"/>     
+                         <h:commandLink action="#{customerbean.goUpdateCustomer(item)}" value="Mettre à jour"/>     
                     </p:column>
                      <p:column>
                         <f:facet name="header">
                             <h:outputText  value=" Compte"/>
                         </f:facet>
-                         <h:commandLink  action="#{customerBean.AccountList ()}" value="Liste des Comptes"/>
+                         <h:commandLink  action="#{customerbean.goAccountsList(item)}" value="Liste des Comptes"/>
                     </p:column>
                     <p:column>
                         <f:facet name="header">
                             <h:outputText  value="Transaction"/>
                         </f:facet>
-                         <h:commandLink  action="virement" value="virement compte à compte"/>
+                         <h:commandLink  action="#{customerbean.goTransfert(item)}" value="virement compte à compte"/>
                     </p:column>
                 </p:dataTable>
             </h:form>

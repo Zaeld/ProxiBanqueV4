@@ -20,34 +20,29 @@
 						<h:panelGrid columns="2" cellpadding="5">
 
 							<h:outputText value="Nom : " />
-							<p:inputText id="Nom" placeholder="#{customerbean.customer.name}" />
+							<p:inputText id="Nom" value="#{customerbean.customer.name}" />
 
 							<h:outputText value="Prénom : " />
 							<p:inputText id="Prénom"
-								placeholder="#{customerbean.customer.firstName}" />
+								value="#{customerbean.customer.firstName}" />
 
 							<h:outputText value="Email : " />
-							<p:inputText id="Email"
-								placeholder="#{customerbean.customer.email}" />
+							<p:inputText id="Email" value="#{customerbean.customer.email}" />
 
 							<h:outputText value="Adresse : " />
-							<p:inputText id="Adresse"
-								placeholder="#{customerbean.customer.adress}" />
+							<p:inputText id="Adresse" value="#{customerbean.customer.adress}" />
 
 							<h:outputText value="Code Postal : " />
 							<p:inputText id="CodePostal"
-								placeholder="#{customerbean.customer.zipCode}" />
+								value="#{customerbean.customer.zipCode}" />
 
 							<h:outputText value="Ville : " />
-							<p:inputText id="Ville"
-								placeholder="#{customerbean.customer.city}" />
+							<p:inputText id="Ville" value="#{customerbean.customer.city}" />
 
 						</h:panelGrid>
-						<p:button outcome="customerList"
-							value="Annuler" />
-
-						<p:commandButton value="Créer le client"
-							action="#{customerbean.createCustomer()}"
+						<p:button outcome="customerList" value="Annuler" />
+						<p:commandButton value="Valider les modifications"
+							action="#{customerbean.updateCustomer(customer)}"
 							icon="ui-icon-check" />
 					</h:form>
 				</div>

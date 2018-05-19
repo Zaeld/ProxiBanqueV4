@@ -14,7 +14,6 @@ public class CustomerBean {
 	private CustomerService serviceCustomer = new CustomerService();
 	private EmployeService serviceEmploye = new EmployeService();
 
-
 	public CustomerBean() {
 		super();
 	}
@@ -31,16 +30,43 @@ public class CustomerBean {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-public String createCustomer() {
-	String forward = null;
-this.customer=serviceCustomer.createCustomer(this.customer);
-	if(customer.getId()>0) {
-		forward="success";
-	
-	}
-		else forward="fail";
+
+	public String createCustomer() {
+		String forward = null;
+		this.customer = serviceCustomer.createCustomer(this.customer);
+		if (customer.getId() > 0) {
+			forward = "success";
+
+		} else
+			forward = "fail";
 		return forward;
 	}
 
-}
+	public String updateCustomer(Customer customer) {
+		String forward = null;
+		Customer oldCustomer = customer;
+		this.customer = serviceCustomer.updateCustomer(this.customer);
+		if (customer == oldCustomer) {
+			forward = "fail";
 
+		} else
+			forward = "success";
+		return forward;
+	}
+
+	
+	public String goUpdateCustomer(Customer customer) {
+		this.customer=customer;
+		return "customerModification";
+	}
+	public String goTransfert(Customer customer) {
+		this.customer=customer;
+		return "transfert";
+	}
+
+	public String goAccountsList(Customer customer) {
+		this.customer=customer;
+		return "accountsList";
+	}
+
+}
