@@ -82,13 +82,7 @@ html, body {
 }
 
 /* ListeClients page */
-.bouttoncreate {
-	margin-top: 20px;
-	float: middle;
-	background-color: rgba(105, 105, 105);
-	color: white;
-	font-size: large;
-}
+
 
 .placementListeCLient {
 	max-width: 150%;
@@ -99,21 +93,33 @@ html, body {
 	font-size: medium;
 }
 
-.bouttonget {
+.ui-button.bouttoncreate {
+	background: none;
+	margin-right: 20px;
+	margin-top: 10px;
+	float: right;
+	background-color: rgba(253, 173, 231);
+	color: black;
+}
+
+.ui-button.bouttonGet {
+	background: none;
 	float: middle;
-	background-color: #0080ff;
+	background-color: rgba(244, 112, 150);
 	color: white;
 }
 
-.bouttonupdate {
+.ui-button.bouttonUpdate {
+	background: none;
 	float: middle;
-	background-color: green;
+	background-color: rgba(255, 150, 144);
 	color: white;
 }
 
-.bouttondelete {
+.ui-button.bouttonVirement {
+	background: none;
 	float: middle;
-	background-color: red;
+	background-color: rgba(115, 29, 62);
 	color: white;
 }
 
@@ -212,6 +218,6 @@ html, body {
 }
 
 .styleGreen {
-	background-image:none;
+	background-image: none;
 	background-color: #009900;
 }

@@ -18,13 +18,20 @@
 						<p:outputLabel style="	font-size: 60px; line-height: 100px;"
 							value="Bienvenue : #{employebean.employe.name} #{employebean.employe.firstName}"></p:outputLabel>
 						<Br />
-						<p:outputLabel style="	font-size: 40px; line-height: 60px;"
-							value="Voici la liste de vos clients"></p:outputLabel>
+						<div></div>
 						<Br />
 
 						<p:dataTable value="#{employebean.employe.listCustomer}"
-							var="item">
+							var="item" tableStyle="table-layout: auto;">
+							<f:facet name="header">
+								<p:outputLabel style="	font-size: 40px; line-height: 60px;"
+									value="Voici la liste de vos clients"></p:outputLabel>
 
+								<p:commandButton type="button" styleClass="bouttoncreate"
+									value="Créer un nouveau client" action="#"
+									icon="ui-icon-pencil" />
+
+							</f:facet>
 							<p:column>
 								<h:graphicImage value="resources/img/danger.png"
 									rendered="#{(item.mySavingAccount.balance lt employebean.savingAccountLimit) || (item.myCurrentAccount.balance lt item.myCurrentAccount.overdraft)}" />
@@ -58,8 +65,8 @@
 								<f:facet name="header">
 									<h:outputText value="Modifier infos client" />
 								</f:facet>
-								<p:commandButton type="button" value="Editer"
-									action="#{customerbean.goUpdateCustomer(item)}"
+								<p:commandButton type="button" styleClass="bouttonUpdate"
+									value="Editer" action="#{customerbean.goUpdateCustomer(item)}"
 									icon="ui-icon-arrowrefresh-1-w" />
 							</p:column>
 
@@ -68,17 +75,17 @@
 									<h:outputText value=" Détail comptes" />
 								</f:facet>
 								<p:commandButton type="button" value="Comptes"
-									style="background-color: rgba(25, 25, 25);"
-									action="#"
-									icon="ui-icon-arrowrefresh-1-w" />
-							</p:column>						
-									
+									styleClass="bouttonGet" action="#"
+									icon="ui-icon-document" />
+							</p:column>
+
 							<p:column>
 								<f:facet name="header">
 									<h:outputText value="Transaction" />
 								</f:facet>
-								<p:commandButton action="#{customerbean.goTransfert(item)}"
-									value="Virement compte à compte" />
+								<p:commandButton styleClass="bouttonVirement"
+									action="#{customerbean.goTransfert(item)}"
+									value="Virement compte à compte" icon="ui-icon-gear" />
 							</p:column>
 
 						</p:dataTable>
