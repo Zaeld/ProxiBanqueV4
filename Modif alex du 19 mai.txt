@@ -1,0 +1,13 @@
+Modification des méthodes appelées par la customerList
+Création de la page fonctionnelle customerModification
+création des pages vide "transfert" pour le virement et "accountsList" pour les infos du client
+création des méthodes dans le customerbean permettant d'envoyer un client vers les pages cité au dessus, ajout de la méthode updateCustomer dans le bean et le webservice.
+Test de l'authentification du conseiller avec la bdd, ça marche ! Les clients s'affichent et sont modifiables
+
+Remarque :
+Envoyer un objet employe lors de la connexion fait qu'elle prend énormément de temps !
+Je ne sais pas encore comment checker que l'update du client à bien été réalisé, qu'est ce qu'on test ? Tester oldcustmer == newcustomer ne fonctionne pas
+
+Demande de correction :
+Ajouter le bouton redirigeant vers la page "customerCreation"
+Un "idConseiller" est généré dans la table customer de la base de donnée
