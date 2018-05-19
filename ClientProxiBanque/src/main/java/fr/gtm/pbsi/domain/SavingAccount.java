@@ -5,6 +5,7 @@ public class SavingAccount extends Account{
 
 	public SavingAccount() {
 		super();
+		this.rate = 0.0f;
 	}
 
 	public SavingAccount(Integer id, String numberCompte, Boolean isActive, String dateCreation, Float balance) {
@@ -17,6 +18,12 @@ public class SavingAccount extends Account{
 
 	public void setRate(Float rate) {
 		this.rate = rate;
+	}
+
+	@Override
+	public String toString() {
+		return "SavingAccount [rate=" + rate + ", getNumberCompte()=" + getNumberCompte() + ", getIsActive()="
+				+ getIsActive() + ", getBalance()=" + getBalance() + "]";
 	}
 	
 	

@@ -10,32 +10,43 @@
 </h:head>
 <h:body>
 
-
 	<f:view>
 		<ui:composition template="templates/commonLogin.xhtml">
 			<ui:define name="content">
 				<div class="container">
-
-
 					<h:form class="placementFormulaire">
 						<p:panel id="panel" header="Veuillez vous connecter">
 							<p:messages id="msgs" />
-							<h:panelGrid columns="2" cellpadding="5">
 
-								<h:outputText value="Login : " />
-								<p:inputText id="login" value="#{employebean.employe.login}" />
+							<h:panelGrid columns="3" cellpadding="5">
+								<p:spacer />
+								<p:spacer />
+								<p:spacer />
+								<p:outputLabel for="login" value="Login : " />
+								<p:inputText id="login" value="#{employebean.employe.login}"
+									required="true" label="Login">
+									<f:validateLength minimum="2" />
+									<p:ajax update="forLogin" event="keyup" />
+								</p:inputText>
+								<p:message for="login" id="forLogin" display="icon" />
 
-
-
-								<h:outputText value="Password : " />
-								<p:inputText id="password"
-									value="#{employebean.employe.password}" />
-
-
+								<p:spacer />
+								<p:spacer />
+								<p:spacer />
+								<p:outputLabel for="password" value="password : " />
+								<p:password id="password"
+									value="#{employebean.employe.password}" label="password"
+									required="true">
+									<f:validateLength minimum="2" />
+									<p:ajax update="forPassword" event="keyup" />
+								</p:password>
+								<p:message for="password" id="forPassword" display="icon" />
+								<Br />
 							</h:panelGrid>
 
 							<p:commandButton value="Se connecter"
 								action="#{employebean.loginVerification()}" icon="ui-icon-check" />
+							<Br/>
 							<div
 								style="background-color: red; font-size: large; color: white; margin-top: 30px; border: 2px solid black; border-radius: 20px;">--
 								login ou password incorrecte --</div>

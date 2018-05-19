@@ -10,6 +10,10 @@ public abstract class Account {
 	
 	public Account() {
 		super();
+		this.id=0;
+		this.numberCompte="Inconnu";
+		this.isActive = false;
+		this.balance = 0.0f;
 	}
 	public Account(Integer id, String numberCompte, Boolean isActive, String dateCreation, Float balance) {
 		super();

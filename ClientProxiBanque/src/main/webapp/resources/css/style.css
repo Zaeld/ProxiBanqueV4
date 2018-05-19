@@ -1,5 +1,5 @@
 html, body {
-	background-image: url(/ClientProxiBanque/resources/img/bg3.jpg);
+	background-image: url(/ClientProxiBanque/resources/img/bg2.jpg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -9,18 +9,22 @@ html, body {
 }
 
 .header {
-	background-color: rgba(53, 53, 53);
+	background-color: rgba(25, 25, 25);
 	text-align: center;
 	position: relative;
 	left: 20%;
 	max-width: 60%;
-	min-height: 8%;
+	min-height: 13%;
 	color: white;
-	font-size: xx-large;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 80px;
+	font-style: oblique;
+	line-height: 120px;
+	margin: 0;
 }
 
 .footer {
-	background-color: rgba(53, 53, 53);
+	background-color: rgba(25, 25, 25);
 	text-align: center;
 	position: relative;
 	left: 20%;
@@ -39,7 +43,7 @@ html, body {
 	max-width: 60%;
 	margin-right: 20%;
 	margin-left: 20%;
-	min-height: 92vh;
+	min-height: 90vh;
 }
 
 /* NavBar */
@@ -180,12 +184,12 @@ html, body {
 	background-color: green;
 	color: white;
 }
+
 .bouttonCreate2 {
-	text-align:center;
+	text-align: center;
 	background-color: deepskyblue;
 	color: black;
 }
-
 
 /* debitCompte page */
 .formulaireDebit {
