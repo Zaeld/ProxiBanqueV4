@@ -66,7 +66,6 @@ public class CustomerBean {
 	}
 	public String goTransfert(Customer customer) {
 		System.out.println("-- goTransfert Méthode --");
-
 		this.customer=customer;
 		return "transfert";
 	}
