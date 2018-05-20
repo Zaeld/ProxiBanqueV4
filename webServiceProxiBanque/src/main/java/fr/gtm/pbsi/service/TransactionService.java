@@ -3,6 +3,8 @@ package fr.gtm.pbsi.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,8 @@ public class TransactionService {
 	@Autowired
 	private ITransactionDao daoTransaction;
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionService.class);
+
 	/**
 	 * Methode post permettant l'insertion en BDD d'une transaction.
 	 * 
@@ -37,7 +41,9 @@ public class TransactionService {
 	 */
 	@PostMapping({ "", "/" })
 	Transaction create(@RequestBody Transaction transaction) {
-		return this.daoTransaction.save(transaction);
+		final Transaction retour = this.daoTransaction.save(transaction);
+		TransactionService.LOGGER.info("Création de " + retour + " en BDD.");
+		return retour;
 	}
 
 	/**
