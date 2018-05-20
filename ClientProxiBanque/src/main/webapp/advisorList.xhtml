@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Home</title>
+</h:head>
+<h:body>
+	<f:view>
+		<ui:composition template="templates/commonManager.xhtml">
+			<ui:define name="content">
+				<div class="container">
+					<h:form>
+
+						<p:outputLabel style="	font-size: 60px; line-height: 100px;"
+							value="Bienvenue : #  #"></p:outputLabel>
+						<Br />
+						<div></div>
+						<Br />
+
+						<div Style="margin:15px">
+							<p:dataTable value="#{employebean.employe.listCustomer}"
+								var="item" tableStyle="table-layout: auto;" >
+								<f:facet name="header">
+									<p:outputLabel style="	font-size: 30px; line-height: 60px;"
+										value="Voici la liste des conseillés de la banque"></p:outputLabel>
+
+									<p:commandButton type="button" styleClass="bouttoncreate"
+										value="Créer un nouveau Conseiller" action="#"
+										icon="ui-icon-pencil" />
+
+								</f:facet>
+								<p:column>
+									<h:graphicImage value="resources/img/danger.png" />
+								</p:column>
+
+								<p:column filterBy="#">
+									<f:facet name="header">
+										<h:outputText value="Nom" />
+									</f:facet>
+									<h:outputText value="#" />
+								</p:column>
+
+								<p:column filterBy="#">
+									<f:facet name="header">
+										<h:outputText value="Prénom" />
+									</f:facet>
+									<h:outputText value="#" />
+								</p:column>
+
+
+								<p:column filterBy="#">
+									<f:facet name="header">
+										<h:outputText value="Nombre de clients gérés" />
+									</f:facet>
+									<h:outputText value="#" />
+								</p:column>
+
+							</p:dataTable>
+						</div>
+					</h:form>
+				</div>
+
+			</ui:define>
+		</ui:composition>
+	</f:view>
+</h:body>
+
+</html>

@@ -93,6 +93,7 @@ html, body {
 	font-size: medium;
 }
 
+
 .ui-button.bouttoncreate {
 	background: none;
 	margin-right: 20px;
@@ -100,7 +101,10 @@ html, body {
 	float: right;
 	background-color: rgba(253, 173, 231);
 	color: black;
+    border: 2px solid red;
+    border-radius: 12px;
 }
+
 
 .ui-button.bouttonGet {
 	background: none;

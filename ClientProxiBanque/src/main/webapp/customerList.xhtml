@@ -20,79 +20,77 @@
 						<Br />
 						<div></div>
 						<Br />
-
-						<p:dataTable value="#{employebean.employe.listCustomer}"
-							var="item" tableStyle="table-layout: auto;">
-							<f:facet name="header">
-								<p:outputLabel style="	font-size: 40px; line-height: 60px;"
-									value="Voici la liste de vos clients"></p:outputLabel>
-
-								<p:commandButton type="button" styleClass="bouttoncreate"
-									value="Créer un nouveau client" action="#"
-									icon="ui-icon-pencil" />
-
-							</f:facet>
-							<p:column>
-								<h:graphicImage value="resources/img/danger.png"
-									rendered="#{(item.mySavingAccount.balance lt employebean.savingAccountLimit) || (item.myCurrentAccount.balance lt item.myCurrentAccount.overdraft)}" />
-							</p:column>
-
-							<p:column filterBy="#{item.name}">
+						<div Style="margin: 15px">
+							<p:dataTable value="#{employebean.employe.listCustomer}"
+								var="item" tableStyle="table-layout: auto;">
 								<f:facet name="header">
-									<h:outputText value="Nom" />
+									<p:outputLabel style="	font-size: 20px; line-height: 60px;"
+										value="Voici la liste de vos clients"></p:outputLabel>
+
+									<p:commandButton type="button" styleClass="bouttoncreate"
+										value="Créer un nouveau client" action="#"
+										icon="ui-icon-pencil" />
+
 								</f:facet>
-								<h:outputText value="#{item.name}" />
-							</p:column>
+								<p:column>
+									<h:graphicImage value="resources/img/danger.png"
+										rendered="#{(item.mySavingAccount.balance lt employebean.savingAccountLimit) || (item.myCurrentAccount.balance lt item.myCurrentAccount.overdraft)}" />
+								</p:column>
 
-							<p:column filterBy="#{item.firstName}">
-								<f:facet name="header">
+								<p:column filterBy="#{item.name}">
+									<f:facet name="header">
+										<h:outputText value="Nom" />
+									</f:facet>
+									<h:outputText value="#{item.name}" />
+								</p:column>
 
-									<h:outputText value="Prénom" />
-								</f:facet>
-								<h:outputText value="#{item.firstName}" />
-							</p:column>
+								<p:column filterBy="#{item.firstName}">
+									<f:facet name="header">
+
+										<h:outputText value="Prénom" />
+									</f:facet>
+									<h:outputText value="#{item.firstName}" />
+								</p:column>
 
 
-							<p:column filterBy="#{item.email}">
-								<f:facet name="header">
-									<h:outputText value="email" />
-								</f:facet>
-								<h:outputText value="#{item.email}" />
-							</p:column>
+								<p:column filterBy="#{item.email}">
+									<f:facet name="header">
+										<h:outputText value="email" />
+									</f:facet>
+									<h:outputText value="#{item.email}" />
+								</p:column>
 
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Modifier infos client" />
-								</f:facet>
-								<p:commandButton type="button" styleClass="bouttonUpdate"
-									value="Editer" action="#{customerbean.goUpdateCustomer(item)}"
-									icon="ui-icon-arrowrefresh-1-w" />
-							</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Modifier infos client" />
+									</f:facet>
+									<p:commandButton type="button" styleClass="bouttonUpdate"
+										value="Editer" action="#{customerbean.goUpdateCustomer(item)}"
+										icon="ui-icon-arrowrefresh-1-w" />
+								</p:column>
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value=" Détail comptes" />
-								</f:facet>
-								<p:commandButton type="button" value="Comptes"
-									styleClass="bouttonGet" action="#"
-									icon="ui-icon-document" />
-							</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value=" Détail comptes" />
+									</f:facet>
+									<p:commandButton type="button" value="Comptes"
+										styleClass="bouttonGet" action="#" icon="ui-icon-document" />
+								</p:column>
 
-							<p:column>
-								<f:facet name="header">
-									<h:outputText value="Transaction" />
-								</f:facet>
-								<p:commandButton styleClass="bouttonVirement"
-									action="#{customerbean.goTransfert(item)}"
-									value="Virement compte à compte" icon="ui-icon-gear" />
-							</p:column>
+								<p:column>
+									<f:facet name="header">
+										<h:outputText value="Transaction" />
+									</f:facet>
+									<p:commandButton styleClass="bouttonVirement"
+										action="#{customerbean.goTransfert(item)}"
+										value="Virement compte à compte" icon="ui-icon-gear" />
+								</p:column>
 
-						</p:dataTable>
+							</p:dataTable>
+						</div>
 					</h:form>
 				</div>
-
-
 			</ui:define>
 		</ui:composition>
 	</f:view>
