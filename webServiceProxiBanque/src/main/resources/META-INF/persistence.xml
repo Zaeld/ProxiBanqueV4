@@ -13,6 +13,7 @@
 		<class>fr.gtm.pbsi.domain.Customer</class>
 		<class>fr.gtm.pbsi.domain.CurrentAccount</class>
 		<class>fr.gtm.pbsi.domain.SavingAccount</class>
+		<class>fr.gtm.pbsi.domain.Transaction</class>
 		
 		
 		<properties>

@@ -3,6 +3,8 @@ package fr.gtm.pbsi.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.gtm.pbsi.controller.IndexController;
 import fr.gtm.pbsi.dao.IEmployeDao;
 import fr.gtm.pbsi.domain.Employe;
 
@@ -30,6 +33,8 @@ public class EmployeService {
 	@Autowired
 	private IEmployeDao daoEmploye;
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+
 	/**
 	 * Methode post permettant l'insertion en BDD de l'employe. La methode verifie
 	 * qu'aucun autre employe ne possede le même mot de passe et/ou login. Si oui
@@ -42,6 +47,7 @@ public class EmployeService {
 	Employe create(@RequestBody Employe employe) {
 		final Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
 		if (retour == null) {
+			EmployeService.LOGGER.info("Création de l'employe en BDD.");
 			return this.daoEmploye.save(employe);
 		} else {
 			retour.setId(0);
