@@ -13,16 +13,10 @@ public class CustomerBean {
 	private Customer customer = new Customer();
 	private CustomerService serviceCustomer = new CustomerService();
 	private EmployeService serviceEmploye = new EmployeService();
-
-	public CustomerBean() {
-		super();
-	}
-
-	public CustomerBean(Customer customer) {
-		super();
-		this.customer = customer;
-	}
-
+	private String message = "test message";
+	
+	
+	//============= assesseurs ============
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -30,7 +24,18 @@ public class CustomerBean {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	
+	public String getMessage() {
+		return message;
+	}
 
+	public void setMessage(String message) {
+		this.message = message;
+	}//==================================================
+	
+	
+//===================== Methode ======================
+	
 	public String createCustomer() {
 		String forward = null;
 		this.customer = serviceCustomer.createCustomer(this.customer);
@@ -53,21 +58,27 @@ public class CustomerBean {
 		return forward;
 	}
 
+	
 	public String goUpdateCustomer(Customer customer) {
+		System.out.println("-- goUpdateCustomer Méthode --");
 		this.customer=customer;
 		return "customerModification";
 	}
 	public String goTransfert(Customer customer) {
+		System.out.println("-- goTransfert Méthode --");
+
 		this.customer=customer;
 		return "transfert";
 	}
 
 	public String goAccountsList(Customer customer) {
+		System.out.println("-- goAccountsList Méthode --");
+
 		this.customer=customer;
 		return "accountsList";
 	}
 	
-	public String showCreateCustomerPage () {
+	public String goCreateCustomerPage () {
 		System.out.println("-- showCreateCustomerPage Méthode --");
 		return "customerCreation";
 	}

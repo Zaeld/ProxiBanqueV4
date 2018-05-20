@@ -37,7 +37,16 @@ public class EmployeBean {
 
 	public void setSavingAccountLimit(Float savingAccountLimit) {
 		this.savingAccountLimit = savingAccountLimit;
+	}	
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}	//===========================================
+
 
 
 	public String loginVerification() {

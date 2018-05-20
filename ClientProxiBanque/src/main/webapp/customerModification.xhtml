@@ -12,39 +12,101 @@
 
 
 	<f:view>
-		<ui:composition template="templates/commonLogin.xhtml">
+		<ui:composition template="templates/common.xhtml">
 			<ui:define name="content">
 				<div class="container">
 
-					<h:form class="placementFormulaire">
-						<h:panelGrid columns="2" cellpadding="5">
+					<h:form >
+						<p:panelGrid class="placementListeCLient" style="font-size: 30px" >
 
-							<h:outputText value="Nom : " />
-							<p:inputText id="Nom" value="#{customerbean.customer.name}" />
+							<p:row>
+								<p:column colspan="4"><p style="font-size: 40px" >Veuillez entrer les nouvelles
+							informations du client -- #{customerbean.customer.firstName}, #{customerbean.customer.name} -- </p></p:column>
+							</p:row>
 
-							<h:outputText value="Prénom : " />
-							<p:inputText id="Prénom"
-								value="#{customerbean.customer.firstName}" />
+							<p:row>
+								<p:column colspan="4" styleClass="ui-widget-header">
+									Identité du nouveau client
+								</p:column>
+							</p:row>
 
-							<h:outputText value="Email : " />
-							<p:inputText id="Email" value="#{customerbean.customer.email}" />
+							<p:row>
+								<p:column> nom : </p:column>
+								<p:column>
+									<p:inputText id="nom"
+										placeholder="#{customerbean.customer.name}" required="true" />
+								</p:column>
 
-							<h:outputText value="Adresse : " />
-							<p:inputText id="Adresse" value="#{customerbean.customer.adress}" />
+								<p:column> Prenom : </p:column>
+								<p:column>
+									<p:inputText id="prenom"
+										placeholder="#{customerbean.customer.firstName}"
+										required="true" />
+								</p:column>
+							</p:row>
 
-							<h:outputText value="Code Postal : " />
-							<p:inputText id="CodePostal"
-								value="#{customerbean.customer.zipCode}" />
+							<p:row>
+								<p:column colspan="4" styleClass="ui-widget-header">
+									Coordonnées du nouveau client
+								</p:column>
+							</p:row>
 
-							<h:outputText value="Ville : " />
-							<p:inputText id="Ville" value="#{customerbean.customer.city}" />
+							<p:row>
+								<p:column> Adresse : </p:column>
+								<p:column>
+									<p:inputText id="adresse"
+										placeholder="#{customerbean.customer.adress}" required="true" />
+								</p:column>
 
-						</h:panelGrid>
-						<p:button outcome="customerList" value="Annuler" />
-						<p:commandButton value="Valider les modifications"
-							action="#{customerbean.updateCustomer(customer)}"
-							icon="ui-icon-check" />
+								<p:column> code Postal : </p:column>
+								<p:column>
+									<p:inputText placeholder="#{customerbean.customer.zipCode}"
+										id="codePostal" required="true" />
+								</p:column>
+							</p:row>
+
+							<p:row>
+								<p:column>Ville : </p:column>
+								<p:column>
+									<p:inputText placeholder="#{customerbean.customer.city}"
+										id="ville" required="true" />
+								</p:column>
+
+								<p:column>email : </p:column>
+								<p:column>
+									<p:inputText value="#{customerbean.customer.email}" id="email" required="true" />
+								</p:column>
+							</p:row>
+
+							<f:facet name="footer">
+								<p:row>
+									<p:column colspan="4" style="text-align: center">
+
+
+										<p:commandButton value="Confirmer">
+											<p:confirm header="Confirmation"
+												message="Valider la modification du client ?"
+												icon="ui-icon-alert" />
+										</p:commandButton>
+
+										<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
+										<p:confirmDialog global="true" showEffect="fade"
+											hideEffect="fade">
+											<p:commandButton value="Oui" type="button"
+												styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+												action="#{customerbean.updateCustomer(customer)}" />
+											<p:commandButton value="Non" type="button"
+												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+										</p:confirmDialog>
+
+										<p:button outcome="customerList" value="Annuler" />
+
+									</p:column>
+								</p:row>
+							</f:facet>
+						</p:panelGrid>
 					</h:form>
+					
 				</div>
 			</ui:define>
 		</ui:composition>

@@ -20,7 +20,7 @@
 						<Br />
 						<div></div>
 						<Br />
-						<div Style="margin: 15px">
+						<div Style="margin: 30px">
 							<p:dataTable value="#{employebean.employe.listCustomer}"
 								var="item" tableStyle="table-layout: auto;" style="font-size: 25px">
 								
@@ -28,8 +28,8 @@
 									<p:outputLabel style="	font-size: 40px; line-height: 65px;"
 										value="Voici la liste de vos clients"></p:outputLabel>
 
-									<p:commandButton type="button" styleClass="bouttoncreate"
-										value="Créer un nouveau client" action="#{customerbean.showCreateCustomerPage()}"
+									<p:commandButton styleClass="bouttoncreate"
+										value="Créer un nouveau client" action="#{customerbean.goCreateCustomerPage}"
 										icon="ui-icon-pencil" />
 								</f:facet>
 								
@@ -53,7 +53,6 @@
 									<h:outputText value="#{item.firstName}" />
 								</p:column>
 
-
 								<p:column filterBy="#{item.email}">
 									<f:facet name="header">
 										<h:outputText value="email" />
@@ -66,7 +65,7 @@
 									<f:facet name="header">
 										<h:outputText value="Modifier infos client" />
 									</f:facet>
-									<p:commandButton type="button" styleClass="bouttonUpdate"
+									<p:commandButton styleClass="bouttonUpdate"
 										value="Editer" action="#{customerbean.goUpdateCustomer(item)}"
 										icon="ui-icon-arrowrefresh-1-w" />
 								</p:column>
@@ -75,7 +74,7 @@
 									<f:facet name="header">
 										<h:outputText value=" Détail comptes" />
 									</f:facet>
-									<p:commandButton type="button" value="Comptes"
+									<p:commandButton value="Comptes"
 										styleClass="bouttonGet" action="#" icon="ui-icon-document" />
 								</p:column>
 
@@ -87,7 +86,6 @@
 										action="#{customerbean.goTransfert(item)}"
 										value="Virement" icon="ui-icon-gear" />
 								</p:column>
-
 							</p:dataTable>
 						</div>
 					</h:form>

@@ -15,7 +15,7 @@
 			<ui:define name="content">
 				<div class="container">
 					<h:form class="placementFormulaire">
-						<p:panel id="panel" header="Veuillez vous connecter">
+						<p:panel id="panel" header="Veuillez vous re-connecter" style="font-size: 30px">
 							<p:messages id="msgs" />
 
 							<h:panelGrid columns="3" cellpadding="5">
@@ -23,7 +23,7 @@
 								<p:spacer />
 								<p:spacer />
 								<p:outputLabel for="login" value="Login : " />
-								<p:inputText id="login" value="#{employebean.employe.login}"
+								<p:inputText id="login" placeholder="#{employebean.employe.login}"
 									required="true" label="Login">
 									<f:validateLength minimum="2" />
 									<p:ajax update="forLogin" event="keyup" />
@@ -35,7 +35,7 @@
 								<p:spacer />
 								<p:outputLabel for="password" value="password : " />
 								<p:password id="password"
-									value="#{employebean.employe.password}" label="password"
+									placeholder="#{employebean.employe.password}" label="password"
 									required="true">
 									<f:validateLength minimum="2" />
 									<p:ajax update="forPassword" event="keyup" />

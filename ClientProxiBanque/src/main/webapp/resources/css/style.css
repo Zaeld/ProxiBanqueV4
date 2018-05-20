@@ -15,7 +15,7 @@ html, body {
 	left: 20%;
 	max-width: 60%;
 	min-height: 13%;
-	color: white;
+	color: rgba(253, 213, 79);
 	font-family: "Times New Roman", Times, serif;
 	font-size: 80px;
 	font-style: oblique;
@@ -103,30 +103,29 @@ html, body {
     border-radius: 12px;
 }
 
+.ui-button.bouttonUpdate {
+	background: none;
+	float: middle;
+	background-color: rgba(124, 137, 94);
+	color: white;
+}
 
 .ui-button.bouttonGet {
 	background: none;
 	float: middle;
-	background-color: rgba(244, 112, 150);
-	color: white;
-}
-
-.ui-button.bouttonUpdate {
-	background: none;
-	float: middle;
-	background-color: rgba(255, 150, 144);
+	background-color: rgba(82, 99, 63);
 	color: white;
 }
 
 .ui-button.bouttonVirement {
 	background: none;
 	float: middle;
-	background-color: rgba(115, 29, 62);
+	background-color: rgba(53, 71, 47);
 	color: white;
 }
 
 .rowSeparate {
-	background-color: rgba(200, 200, 200);
+	background-color: rgba(53, 71, 47);
 }
 
 /* creation client page */
