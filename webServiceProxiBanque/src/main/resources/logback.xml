@@ -11,7 +11,7 @@
 	</appender>
 
 	<appender name="APPLOG" class="ch.qos.logback.core.FileAppender">
-		<file>C:\Users\benoit\Desktop\Logs\ProxiBanqueSI.log</file>
+		<file>\Logs\ProxiBanqueSI.log</file>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>${myPattern}</Pattern>
 		</encoder>
