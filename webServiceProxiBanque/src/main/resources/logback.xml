@@ -12,14 +12,29 @@
 
 	<appender name="APPLOG" class="ch.qos.logback.core.FileAppender">
 		<file>\Logs\ProxiBanqueSI.log</file>
+		<append>true</append>
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>${myPattern}</Pattern>
 		</encoder>
 	</appender>
 
-	<logger name="fr.benoit.pbsi" level="info" additivity="false">
+	<appender name="TRANSACTIONLOG" class="ch.qos.logback.core.FileAppender">
+		<file>\Logs\Transactions.log</file>
+		<append>true</append>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>${myPattern}</Pattern>
+		</encoder>
+	</appender>
+
+	<logger name="fr.gtm.pbsi" level="info" additivity="false">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="APPLOG" />
+	</logger>
+
+	<logger name="transactions" level="info" additivity="false">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="APPLOG" />
+		<appender-ref ref="TRANSACTIONLOG" />
 	</logger>
 
 	<logger name="org.springframework" level="info" additivity="false">
@@ -37,6 +52,7 @@
 	<root level="info">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="APPLOG" />
+		<appender-ref ref="TRANSACTIONLOG" />
 	</root>
 
 </configuration>
