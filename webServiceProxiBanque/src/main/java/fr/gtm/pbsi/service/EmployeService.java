@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.gtm.pbsi.controller.IndexController;
 import fr.gtm.pbsi.dao.IEmployeDao;
 import fr.gtm.pbsi.domain.Employe;
 
@@ -33,7 +32,7 @@ public class EmployeService {
 	@Autowired
 	private IEmployeDao daoEmploye;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(IndexController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeService.class);
 
 	/**
 	 * Methode post permettant l'insertion en BDD de l'employe. La methode verifie
@@ -45,11 +44,13 @@ public class EmployeService {
 	 */
 	@PostMapping({ "", "/" })
 	Employe create(@RequestBody Employe employe) {
-		final Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
+		Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
 		if (retour == null) {
-			EmployeService.LOGGER.info("Création de l'employe en BDD.");
-			return this.daoEmploye.save(employe);
+			retour = this.daoEmploye.save(employe);
+			EmployeService.LOGGER.info("Création de " + retour + " en BDD.");
+			return retour;
 		} else {
+			EmployeService.LOGGER.info("Impossible de créer l'employe en BDD car le login et mot de passe existe déjà pour un autre employe.");
 			retour.setId(0);
 			return retour;
 		}
@@ -65,13 +66,20 @@ public class EmployeService {
 	 */
 	@PostMapping("/authentification")
 	Employe authentification(@RequestBody Employe employe) {
-		Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
+		final Employe retour = this.daoEmploye.findByLoginAndPassword(employe.getLogin(), employe.getPassword());
 		if (retour == null) {
 			final Employe employeVide = new Employe();
 			employeVide.setId(0);
-			retour = employeVide;
+			EmployeService.LOGGER.info("Tentative de connection à l'application échouée due à un mauvais login ou password.");
+			return employeVide;
+		} else {
+			if (retour.getTypeFunction() == 0) {
+				EmployeService.LOGGER.info("Connection du gérant " + retour.getName() + " " + retour.getFirstName() + " à l'application.");
+			} else {
+				EmployeService.LOGGER.info("Connection du conseiller " + retour.getName() + " " + retour.getFirstName() + " à l'application.");
+			}
+			return retour;
 		}
-		return retour;
 	}
 
 	/**
@@ -92,8 +100,10 @@ public class EmployeService {
 			final Employe employe = retour.get();
 			if (employe.getListCustomer() == null) {
 				this.daoEmploye.deleteById(employeId);
+				EmployeService.LOGGER.info("Suppression de " + employe + " de la BDD.");
 				return 1;
 			} else {
+				EmployeService.LOGGER.error("Tentative de suppression d'un employe échouée car l'ID donné n'est pas trouvable dans la BDD.");
 				return 0;
 			}
 		} else {
@@ -109,6 +119,7 @@ public class EmployeService {
 	 */
 	@GetMapping({ "", "/" })
 	List<Employe> readAll() {
+		EmployeService.LOGGER.info("Récupération de la liste des employes de ProxiBanque.");
 		return this.daoEmploye.findAll();
 	}
 
@@ -122,8 +133,10 @@ public class EmployeService {
 	Employe read(@PathVariable Integer employeId) {
 		final Optional<Employe> retour = this.daoEmploye.findById(employeId);
 		if (retour.isPresent()) {
+			EmployeService.LOGGER.info("Récupération de " + retour + ".");
 			return retour.get();
 		} else {
+			EmployeService.LOGGER.error("Tentative de récupération d'un employe échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final Employe response = new Employe();
 			response.setId(0);
 			return response;
@@ -137,6 +150,7 @@ public class EmployeService {
 	 */
 	@GetMapping("/adviser")
 	List<Employe> readAdviser() {
+		EmployeService.LOGGER.info("Récupération de la liste des conseiller de ProxiBanque.");
 		return this.daoEmploye.findAllByTypeFunction(1);
 	}
 
@@ -153,12 +167,14 @@ public class EmployeService {
 	@PutMapping("/{employeId}")
 	Employe update(@PathVariable Integer employeId, @RequestBody Employe employe) {
 		if (this.daoEmploye.existsById(employeId)) {
-			return this.daoEmploye.save(employe);
+			final Employe retour = this.daoEmploye.save(employe);
+			EmployeService.LOGGER.info("Modification de " + employe + " en " + retour + " dans la BDD.");
+			return retour;
 		} else {
+			EmployeService.LOGGER.error("Tentative de modification de " + employe + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			final Employe response = new Employe();
 			response.setId(0);
 			return response;
 		}
 	}
-
 }

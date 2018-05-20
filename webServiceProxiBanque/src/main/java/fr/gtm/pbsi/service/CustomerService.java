@@ -3,6 +3,8 @@ package fr.gtm.pbsi.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +31,8 @@ public class CustomerService {
 	@Autowired
 	private ICustomerDao daoCustomer;
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
+
 	/**
 	 * Methode post permettant l'insertion en BDD d'un client.
 	 * 
@@ -38,7 +42,9 @@ public class CustomerService {
 	@PostMapping({ "", "/" })
 	// TODO creation des comptes avant la creation du client
 	Customer create(@RequestBody Customer customer) {
-		return this.daoCustomer.save(customer);
+		final Customer retour = this.daoCustomer.save(customer);
+		CustomerService.LOGGER.info("Création de " + retour + " en BDD.");
+		return retour;
 	}
 
 	/**
@@ -51,8 +57,16 @@ public class CustomerService {
 	// compte par la cascade ?
 	@DeleteMapping("/{customerId}")
 	Integer delete(@PathVariable Integer customerId) {
-		this.daoCustomer.deleteById(customerId);
-		return 1;
+		if (this.daoCustomer.existsById(customerId)) {
+			final Optional<Customer> retour = this.daoCustomer.findById(customerId);
+			CustomerService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
+			this.daoCustomer.deleteById(customerId);
+			return 1;
+		} else {
+			CustomerService.LOGGER.error("Tentative de suppression d'un customer échouée car l'ID donné n'est pas trouvable dans la BDD.");
+			return 0;
+		}
+
 	}
 
 	/**
@@ -63,6 +77,7 @@ public class CustomerService {
 	 */
 	@GetMapping({ "", "/" })
 	List<Customer> readAll() {
+		CustomerService.LOGGER.info("Récupération de la liste de tous les customers de ProxiBanque.");
 		return this.daoCustomer.findAll();
 	}
 	// TODO ajouter une méthode pour récupérer les clients d'un conseiller
@@ -77,8 +92,10 @@ public class CustomerService {
 	Customer read(@PathVariable Integer customerId) {
 		final Optional<Customer> retour = this.daoCustomer.findById(customerId);
 		if (retour.isPresent()) {
+			CustomerService.LOGGER.info("Récupération de " + retour + ".");
 			return retour.get();
 		} else {
+			CustomerService.LOGGER.error("Tentative de récupération d'un customer échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final Customer response = new Customer();
 			response.setId(0);
 			return response;
@@ -98,8 +115,11 @@ public class CustomerService {
 	@PutMapping("/{customerId}")
 	Customer update(@PathVariable Integer customerId, @RequestBody Customer customer) {
 		if (this.daoCustomer.existsById(customerId)) {
-			return this.daoCustomer.save(customer);
+			final Customer retour = this.daoCustomer.save(customer);
+			CustomerService.LOGGER.info("Modification de " + customer + " en " + retour + " dans la BDD.");
+			return retour;
 		} else {
+			CustomerService.LOGGER.error("Tentative de modification de " + customer + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			final Customer response = new Customer();
 			response.setId(0);
 			return response;

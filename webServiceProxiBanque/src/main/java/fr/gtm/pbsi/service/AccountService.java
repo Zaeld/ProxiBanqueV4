@@ -3,6 +3,8 @@ package fr.gtm.pbsi.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +32,8 @@ public class AccountService {
 	@Autowired
 	private IAccountDao daoAccount;
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(AccountService.class);
+
 	/**
 	 * Methode post permettant l'insertion en BDD d'un compte.
 	 * 
@@ -38,7 +42,9 @@ public class AccountService {
 	 */
 	@PostMapping({ "", "/" })
 	Account create(@RequestBody Account account) {
-		return this.daoAccount.save(account);
+		final Account retour = this.daoAccount.save(account);
+		AccountService.LOGGER.info("Création de " + retour + " en BDD.");
+		return retour;
 	}
 
 	/**
@@ -49,8 +55,16 @@ public class AccountService {
 	 */
 	@DeleteMapping("/{accountId}")
 	Integer delete(@PathVariable Integer accountId) {
-		this.daoAccount.deleteById(accountId);
-		return 1;
+		if (this.daoAccount.existsById(accountId)) {
+			final Optional<Account> retour = this.daoAccount.findById(accountId);
+			AccountService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
+			this.daoAccount.deleteById(accountId);
+			return 1;
+		} else {
+			AccountService.LOGGER.error("Tentative de suppression d'un account échouée car l'ID donné n'est pas trouvable dans la BDD.");
+			return 0;
+		}
+
 	}
 
 	/**
@@ -61,6 +75,7 @@ public class AccountService {
 	 */
 	@GetMapping({ "", "/" })
 	List<Account> readAll() {
+		AccountService.LOGGER.info("Récupération de la liste de tous les accounts de ProxiBanque.");
 		return this.daoAccount.findAll();
 	}
 
@@ -74,8 +89,10 @@ public class AccountService {
 	Account read(@PathVariable Integer accountId) {
 		final Optional<Account> retour = this.daoAccount.findById(accountId);
 		if (retour.isPresent()) {
+			AccountService.LOGGER.info("Récupération de " + retour + ".");
 			return retour.get();
 		} else {
+			AccountService.LOGGER.error("Tentative de récupération d'un account échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final CurrentAccount response = new CurrentAccount();
 			response.setId(0);
 			return response;
@@ -95,8 +112,11 @@ public class AccountService {
 	@PutMapping("/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody Account account) {
 		if (this.daoAccount.existsById(accountId)) {
-			return this.daoAccount.save(account);
+			final Account retour = this.daoAccount.save(account);
+			AccountService.LOGGER.info("Modification de " + account + " en " + retour + " dans la BDD.");
+			return retour;
 		} else {
+			AccountService.LOGGER.error("Tentative de modification de " + account + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			final CurrentAccount response = new CurrentAccount();
 			response.setId(0);
 			return response;
