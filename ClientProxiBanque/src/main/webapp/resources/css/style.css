@@ -82,8 +82,6 @@ html, body {
 }
 
 /* ListeClients page */
-
-
 .placementListeCLient {
 	max-width: 150%;
 	min-width: 90%;
@@ -93,14 +91,12 @@ html, body {
 	font-size: medium;
 }
 
-
 .ui-button.bouttoncreate {
-
 	margin-right: 20px;
 	margin-top: 5px;
 	float: right;
-    border: 2px solid red;
-    border-radius: 12px;
+	border: 2px solid red;
+	border-radius: 12px;
 }
 
 .ui-button.bouttonUpdate {
@@ -140,6 +136,24 @@ html, body {
 	text-align: left;
 	padding-top: 6%;
 	padding-bottom: 6%;
+}
+
+.placementInfosClient {
+	max-width: 150%;
+	min-width: 90%;
+	position: relative;
+	left: 3%;
+	top: 5vh;
+}
+
+.cellule {
+	font-weight: bold;
+	font-size: 35px;
+}
+
+.celluleSmall {
+	font-weight: bold;
+	height:35px;
 }
 
 .compteCourant {
@@ -187,9 +201,11 @@ html, body {
 }
 
 .bouttonUpdate2 {
+	background: none;
+	background-color: rgba(124, 137, 94);
 	float: right;
-	background-color: green;
 	color: white;
+	margin:10px;
 }
 
 .bouttonCreate2 {
@@ -216,9 +232,4 @@ html, body {
 	background-color: rgba(105, 105, 105);
 	color: white;
 	font-size: large;
-}
-
-.styleGreen {
-	background-image: none;
-	background-color: #009900;
 }

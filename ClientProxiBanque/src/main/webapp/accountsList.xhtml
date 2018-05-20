@@ -12,9 +12,97 @@
 
 
 	<f:view>
-		<ui:composition template="templates/commonLogin.xhtml">
+		<ui:composition template="templates/common.xhtml">
 			<ui:define name="content">
 				<div class="container">
+
+
+
+
+					<p:panelGrid class="placementInfosClient">
+						<f:facet name="header">
+							<p:row>
+								<p:column colspan="2">Détails du client</p:column>
+							</p:row>
+						</f:facet>
+
+						<p:row>
+							<p:column styleClass="ui-widget-header"
+								style="font-weight: bold;">
+								Informations personnelles
+							</p:column>
+							<p:column styleClass="ui-widget-header"
+								style="font-weight: bold;">
+								Compte Courant
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column rowspan="5" class="cellule" id="detailsClient">
+								<div class="infoClient">
+									<p>Nom : #{customerbean.customer.name}</p>
+									<p>Prenom : #{customerbean.customer.firstName}</p>
+									<p:spacer />
+									<p>Adresse : #{customerbean.customer.adress}</p>
+									<p>Ville : #{customerbean.customer.city}</p>
+									<p>Code postale : #{customerbean.customer.zipCode}</p>
+									<p:spacer />
+									<p>email : #{customerbean.customer.email}</p>
+									<p:spacer />
+									<h:graphicImage value="/resources/img/portrait.jpg" />
+									<p:spacer />
+									<Br />
+									<h:form>
+										<p:commandButton class="bouttonUpdate2"
+											value="Modifier infos client"
+											action="#{customerbean.goUpdateCustomer(customerbean.customer)}" />
+									</h:form>
+								</div>
+
+							</p:column>
+							<p:column class="cellule">détails compte</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column class="celluleSmall">
+								Boutton
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column styleClass="ui-widget-header" style="height:35px">
+								 Compte épagne
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column class="cellule">
+							kdetai lcompte épargne
+							
+							</p:column>
+						</p:row>
+
+						<p:row>
+							<p:column class="celluleSmall">Bouton</p:column>
+						</p:row>
+
+						<f:facet name="footer">
+							<p:row>
+								<p:column colspan="2">
+								</p:column>
+							</p:row>
+						</f:facet>
+
+					</p:panelGrid>
+
+
+
+
+
+
+
+
+
 
 
 				</div>
