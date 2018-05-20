@@ -15,23 +15,24 @@
 				<div class="container">
 					<h:form>
 
-						<p:outputLabel style="	font-size: 60px; line-height: 100px;"
+						<p:outputLabel style="	font-size: 60px; line-height: 90px;"
 							value="Bienvenue : #{employebean.employe.name} #{employebean.employe.firstName}"></p:outputLabel>
 						<Br />
 						<div></div>
 						<Br />
 						<div Style="margin: 15px">
 							<p:dataTable value="#{employebean.employe.listCustomer}"
-								var="item" tableStyle="table-layout: auto;">
+								var="item" tableStyle="table-layout: auto;" style="font-size: 25px">
+								
 								<f:facet name="header">
-									<p:outputLabel style="	font-size: 20px; line-height: 60px;"
+									<p:outputLabel style="	font-size: 40px; line-height: 65px;"
 										value="Voici la liste de vos clients"></p:outputLabel>
 
 									<p:commandButton type="button" styleClass="bouttoncreate"
-										value="Créer un nouveau client" action="#"
+										value="Créer un nouveau client" action="#{customerbean.showCreateCustomerPage()}"
 										icon="ui-icon-pencil" />
-
 								</f:facet>
+								
 								<p:column>
 									<h:graphicImage value="resources/img/danger.png"
 										rendered="#{(item.mySavingAccount.balance lt employebean.savingAccountLimit) || (item.myCurrentAccount.balance lt item.myCurrentAccount.overdraft)}" />
@@ -84,7 +85,7 @@
 									</f:facet>
 									<p:commandButton styleClass="bouttonVirement"
 										action="#{customerbean.goTransfert(item)}"
-										value="Virement compte à compte" icon="ui-icon-gear" />
+										value="Virement" icon="ui-icon-gear" />
 								</p:column>
 
 							</p:dataTable>

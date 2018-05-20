@@ -36,7 +36,6 @@ public class CustomerBean {
 		this.customer = serviceCustomer.createCustomer(this.customer);
 		if (customer.getId() > 0) {
 			forward = "success";
-
 		} else
 			forward = "fail";
 		return forward;
@@ -54,7 +53,6 @@ public class CustomerBean {
 		return forward;
 	}
 
-	
 	public String goUpdateCustomer(Customer customer) {
 		this.customer=customer;
 		return "customerModification";
@@ -67,6 +65,11 @@ public class CustomerBean {
 	public String goAccountsList(Customer customer) {
 		this.customer=customer;
 		return "accountsList";
+	}
+	
+	public String showCreateCustomerPage () {
+		System.out.println("-- showCreateCustomerPage Méthode --");
+		return "customerCreation";
 	}
 
 }
