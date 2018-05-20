@@ -1,5 +1,5 @@
 html, body {
-	background-image: url(/ClientProxiBanque/resources/img/bg2.jpg);
+	background-image: url(/ClientProxiBanque/resources/img/bg4.jpg);
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -95,12 +95,10 @@ html, body {
 
 
 .ui-button.bouttoncreate {
-	background: none;
+
 	margin-right: 20px;
-	margin-top: 10px;
+	margin-top: 5px;
 	float: right;
-	background-color: rgba(253, 173, 231);
-	color: black;
     border: 2px solid red;
     border-radius: 12px;
 }

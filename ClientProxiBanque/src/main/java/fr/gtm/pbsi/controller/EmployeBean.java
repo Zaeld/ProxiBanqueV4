@@ -82,7 +82,9 @@ public class EmployeBean {
 	}
 	
 	public String goCustomerListe () {
+		System.out.println("-- goCustomerListe methode --");
 		this.employe=serviceEmploye.updateEmploye(this.employe);
 		return "customerList";
 	}
+	
 }
