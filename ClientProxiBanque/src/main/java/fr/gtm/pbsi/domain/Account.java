@@ -12,6 +12,7 @@ public abstract class Account {
 		super();
 		this.id=0;
 		this.numberCompte="Inconnu";
+		this.dateCreation = "Inconnu";
 		this.isActive = false;
 		this.balance = 0.0f;
 	}

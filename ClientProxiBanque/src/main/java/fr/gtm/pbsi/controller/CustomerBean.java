@@ -1,8 +1,12 @@
 package fr.gtm.pbsi.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
+import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.service.CustomerService;
 import fr.gtm.pbsi.service.EmployeService;
@@ -14,8 +18,12 @@ public class CustomerBean {
 	private CustomerService serviceCustomer = new CustomerService();
 	private EmployeService serviceEmploye = new EmployeService();
 	private String message = "test message";
+	private List<Account> debitAccount = new ArrayList<Account>();
+	private List<Account> creditAccount = new ArrayList<Account>();
 	private Float amount = 0.0f;
 
+	
+	
 	// ============= assesseurs ============
 	public Customer getCustomer() {
 		return customer;
@@ -39,9 +47,26 @@ public class CustomerBean {
 
 	public void setAmount(Float amount) {
 		this.amount = amount;
+	}
+
+	public List<Account> getDebitAccount() {
+		return debitAccount;
+	}
+
+	public void setDebitAccount(List<Account> debitAccount) {
+		this.debitAccount = debitAccount;
+	}
+
+	public List<Account> getCreditAccount() {
+		return creditAccount;
+	}
+
+	public void setCreditAccounts(List<Account> creditAccount) {
+		this.creditAccount = creditAccount;
 	}	// ==================================================
 
 	// ===================== Methode ======================
+
 
 	public String createCustomer() {
 		String forward = null;

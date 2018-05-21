@@ -1,5 +1,7 @@
 package fr.gtm.pbsi.domain;
 
+import fr.gtm.pbsi.service.numberGenerator;
+
 public class CurrentAccount extends Account{
 
 	private Float overdraft;
@@ -7,6 +9,7 @@ public class CurrentAccount extends Account{
 	public CurrentAccount() {
 		super();
 		this.overdraft=0.0f;
+		this.setNumberCompte("C" + numberGenerator.generate(15));
 	}
 
 	public CurrentAccount(Integer id, String numberCompte, Boolean isActive, String dateCreation, Float balance) {
@@ -26,4 +29,5 @@ public class CurrentAccount extends Account{
 		return "CurrentAccount [overdraft=" + overdraft + ", getId()=" + getId() + ", getIsActive()=" + getIsActive()
 				+ ", getBalance()=" + getBalance() + "]";
 	}
+
 }

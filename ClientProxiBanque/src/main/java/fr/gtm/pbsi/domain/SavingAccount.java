@@ -1,10 +1,13 @@
 package fr.gtm.pbsi.domain;
 
+import fr.gtm.pbsi.service.numberGenerator;
+
 public class SavingAccount extends Account{
 	private Float rate;
 
 	public SavingAccount() {
 		super();
+		this.setNumberCompte("S" + numberGenerator.generate(15));
 		this.rate = 0.0f;
 	}
 
@@ -20,6 +23,8 @@ public class SavingAccount extends Account{
 		this.rate = rate;
 	}
 
+
+	
 	@Override
 	public String toString() {
 		return "SavingAccount [rate=" + rate + ", getNumberCompte()=" + getNumberCompte() + ", getIsActive()="

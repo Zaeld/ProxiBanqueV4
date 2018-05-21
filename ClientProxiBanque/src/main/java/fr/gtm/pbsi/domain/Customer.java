@@ -23,6 +23,12 @@ public class Customer extends People {
 
 	public Customer(String name, String firstName) {
 		super(name, firstName);
+		this.id = 0;
+		this.email = "Inconnu";
+		this.adress = "Inconnu";
+		this.city = "Inconnu";
+		this.zipCode = "Inconnu";
+		this.idConseiller = 0;
 	}
 
 	public Integer getId() {

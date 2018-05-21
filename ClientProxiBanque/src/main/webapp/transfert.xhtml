@@ -12,10 +12,102 @@
 
 
 	<f:view>
-		<ui:composition template="templates/commonLogin.xhtml">
+		<ui:composition template="templates/common.xhtml">
 			<ui:define name="content">
 				<div class="container">
 
+					<h:form>
+						<p:panelGrid class="placementTransaction">
+							<f:facet name="header">
+								<p:row>
+									<p:column colspan="2" class="celluleTitre">Virement compte à compte</p:column>
+								</p:row>
+							</f:facet>
+
+							<p:row>
+								<p:column>
+									<p:outputLabel for="compteDebit" value="Compte débiteur :   " />
+									<p:selectOneMenu id="compteDebit" value="#" style="width:125px">
+										<p:ajax event="change" update="debitCompte"/>
+										<f:selectItem itemLabel="Select One" itemValue="" />
+										<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
+										<f:selectItem itemLabel="PS4" itemValue="PS4" />
+										<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+									</p:selectOneMenu>
+								</p:column>
+								<p:column class="">
+									<p:outputLabel for="compteCredit" value="Compte créditeur :   " />
+									<p:selectOneMenu id="compteCredit" value="#"
+										style="width:125px">
+
+										<f:selectItem itemLabel="Select One" itemValue="" />
+										<f:selectItem itemLabel="Xbox One" itemValue="" />
+										<f:selectItem itemLabel="PS4" itemValue="" />
+										<f:selectItem itemLabel="Wii U" itemValue="" />
+									</p:selectOneMenu>
+
+								</p:column>
+							</p:row>
+
+							<p:row>
+								<p:column>
+									<!-- ================= Détail du comptye débiteur ================= -->
+									<p:outputLabel id="debitAccount"
+										rendered="#">Compte épargne</p:outputLabel>
+										
+								</p:column>
+								<p:column>
+									<!-- ================= Détails du compte créditeur  ================= -->
+							Détails compte débiteur :
+							</p:column>
+							</p:row>
+
+							<p:row>
+								<p:column colspan="2">
+									<!-- input montant -->
+									<h:outputText value="solde initiale du compte : " />
+									<span class="ui-inputgroup-addon">€</span>
+									<p:inputText id="solde" value="#{customerbean.amount}"
+										required="true" label="solde">
+									</p:inputText>
+									<p:message for="solde" id="forSolde" display="icon" />
+								</p:column>
+							</p:row>
+
+							<p:row>
+								<p:column colspan="2">
+									<!-- Bouttons valider / annuler -->
+
+									<p:commandButton value="Confirmer">
+										<p:confirm header="Confirmation"
+											message="Valider la transaction  ?" icon="ui-icon-alert" />
+									</p:commandButton>
+
+									<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
+									<p:confirmDialog global="true" showEffect="fade"
+										hideEffect="fade">
+										<p:commandButton value="Oui" type="button"
+											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+											action="#" />
+										<p:commandButton value="Non" type="button"
+											styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+									</p:confirmDialog>
+									<p:spacer width="1"></p:spacer>
+									<p:button outcome="accountsList" value="Annuler" />
+								</p:column>
+							</p:row>
+
+							<f:facet name="footer">
+								<p:row>
+									<p:column colspan="2">
+										<p:spacer height="0"></p:spacer>
+									</p:column>
+								</p:row>
+							</f:facet>
+
+						</p:panelGrid>
+
+					</h:form>
 
 				</div>
 			</ui:define>

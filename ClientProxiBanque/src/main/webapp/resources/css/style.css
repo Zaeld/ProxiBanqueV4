@@ -4,7 +4,7 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-	min-height: 100vh;
+/* 	min-height: 100vh; */
 	margin: 0px;
 }
 
@@ -44,6 +44,7 @@ html, body {
 	margin-right: 20%;
 	margin-left: 20%;
 	min-height: 90vh;
+	max-height: 150vh;
 }
 
 /* NavBar */
@@ -55,11 +56,12 @@ html, body {
 	position: relative;
 	top: 20%;
 	height: 5%;
+	font-size: 25px;
 }
 
 .bouttonNavBar {
 	color: white;
-	font-size: large;
+	font-size: 25px;
 }
 
 /* login page */
@@ -146,18 +148,23 @@ html, body {
 	color: black;
 }
 
-/* accountList page */
+/* ==================== accountList page ============================ */
 .infoClient {
 	text-align: left;
 	padding-top: 6%;
 	padding-bottom: 6%;
 }
 
+.my-dialogs{
+	 margin-top: 65px;
+	 position:absolute
+}
+
 .placementInfosClient {
 	max-width: 150%;
-	min-width: 90%;
+	min-width: 70%;
 	position: relative;
-	left: 3%;
+	left: 13%;
 	top: 5vh;
 }
 
@@ -177,7 +184,7 @@ html, body {
 	margin-top: 10px;
 	margin-bottom: 10px;
 	font-weight: bold;
-	font-size: 35px;
+	font-size: 30px;
 	font-weight: bold;
 	font-size: 35px;
 	max-height: 5%;
@@ -257,9 +264,9 @@ html, body {
 }
 
 .ui-button.bouttonActiver {
-/* 	background: none; */
+	/* 	background: none; */
 	float: middle;
-/* 	background-color: rgba(82, 99, 63); */
+	/* 	background-color: rgba(82, 99, 63); */
 	color: black;
 }
 
@@ -269,7 +276,6 @@ html, body {
 	background-color: rgba(82, 99, 63);
 	color: white;
 }
-
 
 .ui-button.bouttonUpdate2 {
 	background: none;
@@ -303,4 +309,14 @@ html, body {
 	background-color: rgba(105, 105, 105);
 	color: white;
 	font-size: large;
+}
+
+/* Page Virement compte à compte */
+.placementTransaction {
+	max-width: 150%;
+	min-width: 70%;
+	position: relative;
+	left: 13%;
+	top: 5vh;
+	font-size: medium;
 }

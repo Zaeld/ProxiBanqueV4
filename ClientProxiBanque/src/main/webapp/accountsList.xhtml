@@ -15,11 +15,11 @@
 		<ui:composition template="templates/common.xhtml">
 			<ui:define name="content">
 				<div class="container">
-				
+
 					<p:panelGrid class="placementInfosClient">
 						<f:facet name="header">
 							<p:row>
-								<p:column colspan="2" class="celluleTitre" >Détails du client : #{customerbean.customer.firstName} #{customerbean.customer.name}</p:column>
+								<p:column colspan="2" class="celluleTitre">Détails du client : #{customerbean.customer.firstName} #{customerbean.customer.name}</p:column>
 							</p:row>
 						</f:facet>
 
@@ -61,9 +61,9 @@
 							<p:column
 								styleClass="#{customerbean.customer.myCurrentAccount.isActive ? 'cellule' : 'celluleInactive'}">
 								<p:outputLabel
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}">Compte Courant : Ouvert</p:outputLabel>
+									rendered="#{customerbean.customer.myCurrentAccount.isActive}">Compte courant : Ouvert</p:outputLabel>
 								<p:outputLabel
-									rendered="#{not customerbean.customer.myCurrentAccount.isActive}">Compte Courant : Fermé</p:outputLabel>
+									rendered="#{not customerbean.customer.myCurrentAccount.isActive}">Compte courant : Fermé</p:outputLabel>
 								<p:spacer />
 								<Br />
 								<Br />
@@ -71,6 +71,13 @@
 								<p:outputLabel
 									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
 									Numéro compte : #{customerbean.customer.myCurrentAccount.numberCompte}		
+								</p:outputLabel>
+								<Br />
+								<Br />
+
+								<p:outputLabel
+									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
+									Date de création  : #{customerbean.customer.myCurrentAccount.dateCreation}		
 								</p:outputLabel>
 								<Br />
 								<Br />
@@ -101,8 +108,8 @@
 								styleClass="#{customerbean.customer.myCurrentAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
 								<h:form
 									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
-									<p:menuButton value="Transation bancaire" class="bouttonTransaction2"
-										icon=" ui-icon-transferthick-e-w">
+									<p:menuButton value="Transation bancaire"
+										class="bouttonTransaction2" icon=" ui-icon-transferthick-e-w">
 										<p:menuitem value="Créditer ce compte" action="#"
 											icon="ui-icon-arrowreturnthick-1-s" />
 										<p:menuitem value="Débiter ce compte" action="#"
@@ -123,6 +130,7 @@
 										position="static" widgetVar="dlg2">
 
 										<h:outputText value="solde initiale du compte : " />
+										<span class="ui-inputgroup-addon">$</span>
 										<p:inputText id="solde" value="#{customerbean.amount}"
 											required="true" label="solde">
 										</p:inputText>
@@ -145,8 +153,9 @@
 
 						<p:row>
 							<!-- ============ détails compte epargne ============ -->
-							<p:column styleClass="#{customerbean.customer.mySavingAccount.isActive ? 'cellule' : 'celluleInactive'}">
-							<p:outputLabel
+							<p:column
+								styleClass="#{customerbean.customer.mySavingAccount.isActive ? 'cellule' : 'celluleInactive'}">
+								<p:outputLabel
 									rendered="#{customerbean.customer.mySavingAccount.isActive}">Compte épargne : Ouvert</p:outputLabel>
 								<p:outputLabel
 									rendered="#{not customerbean.customer.mySavingAccount.isActive}">Compte épargne : Fermé</p:outputLabel>
@@ -157,6 +166,13 @@
 								<p:outputLabel
 									rendered="#{customerbean.customer.mySavingAccount.isActive}">
 									Numéro compte : #{customerbean.customer.mySavingAccount.numberCompte}		
+								</p:outputLabel>
+								<Br />
+								<Br />
+
+								<p:outputLabel
+									rendered="#{customerbean.customer.mySavingAccount.isActive}">
+									Date de création : #{customerbean.customer.myCurrentAccount.dateCreation}		
 								</p:outputLabel>
 								<Br />
 								<Br />
@@ -175,9 +191,9 @@
 								</p:outputLabel>
 								<Br />
 								<Br />
-								<p:outputLabel 
+								<p:outputLabel
 									rendered="#{customerbean.customer.mySavingAccount.isActive}"> taux d'interet : #{customerbean.customer.mySavingAccount.rate} %  </p:outputLabel>
-							<!--  ============================================================ -->
+								<!--  ============================================================ -->
 							</p:column>
 						</p:row>
 
@@ -187,8 +203,8 @@
 								styleClass="#{customerbean.customer.mySavingAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
 								<h:form
 									rendered="#{customerbean.customer.mySavingAccount.isActive}">
-									<p:menuButton value="Transation bancaire" class="bouttonTransaction2"
-										icon=" ui-icon-transferthick-e-w">
+									<p:menuButton value="Transation bancaire"
+										class="bouttonTransaction2" icon=" ui-icon-transferthick-e-w">
 										<p:menuitem value="Créditer ce compte" action="#"
 											icon="ui-icon-arrowreturnthick-1-s" />
 										<p:menuitem value="Débiter ce compte" action="#"
@@ -198,20 +214,22 @@
 											icon="ui-icon-transfer-e-w" />
 									</p:menuButton>
 								</h:form>
-							<h:form
+								<h:form
 									rendered="#{not customerbean.customer.mySavingAccount.isActive}">
 
-									<p:commandButton class="bouttonActiver" type="button" 
+									<p:commandButton class="bouttonActiver" type="button"
 										onclick="PF('dlg2').show();" value="Ouvrir compte épargne"
 										action="#" />
 
-									<p:dialog header="Entrer le solde initial du compte"
-										position="static" widgetVar="dlg2">
+									<p:dialog header="Entrer le solde initial du compte" modal="true"
+										position="static" widgetVar="dlg2" >
 
 										<h:outputText value="solde initiale du compte : " />
+
 										<p:inputText id="solde" value="#{customerbean.amount}"
 											required="true" label="solde">
 										</p:inputText>
+										<span class="ui-inputgroup-addon">$</span>
 										<p:message for="solde" id="forSolde" display="icon" />
 
 										<p:commandButton value="valider" action="#" />
@@ -230,17 +248,6 @@
 						</f:facet>
 
 					</p:panelGrid>
-
-
-
-
-
-
-
-
-
-
-
 				</div>
 			</ui:define>
 		</ui:composition>
