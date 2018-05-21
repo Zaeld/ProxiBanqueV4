@@ -23,11 +23,7 @@ public class CurrentAccount extends Account{
 
 	@Override
 	public String toString() {
-		return "CurrentAccount [overdraft=" + overdraft + ", getNumberCompte()=" + getNumberCompte()
-				+ ", getIsActive()=" + getIsActive() + ", getBalance()=" + getBalance() + "]";
+		return "CurrentAccount [overdraft=" + overdraft + ", getId()=" + getId() + ", getIsActive()=" + getIsActive()
+				+ ", getBalance()=" + getBalance() + "]";
 	}
-	
-	
-	
-	
 }

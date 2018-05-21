@@ -25,7 +25,7 @@
 								var="item" tableStyle="table-layout: auto;" style="font-size: 25px">
 								
 								<f:facet name="header">
-									<p:outputLabel style="	font-size: 40px; line-height: 65px;"
+									<p:outputLabel style="	font-size: 35px; line-height: 65px;"
 										value="Voici la liste de vos clients"></p:outputLabel>
 
 									<p:commandButton styleClass="bouttoncreate"
@@ -34,8 +34,11 @@
 								</f:facet>
 								
 								<p:column>
-									<h:graphicImage value="resources/img/danger.png"
+								<p class="imgOverdraft">
+									<h:graphicImage  value="resources/img/danger.png" alt=""
 										rendered="#{(item.mySavingAccount.balance lt employebean.savingAccountLimit) || (item.myCurrentAccount.balance lt item.myCurrentAccount.overdraft)}" />
+								<span >compte(s) à découvert</span>
+								</p>
 								</p:column>
 
 								<p:column filterBy="#{item.name}">

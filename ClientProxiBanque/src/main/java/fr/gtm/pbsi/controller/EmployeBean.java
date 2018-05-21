@@ -28,7 +28,6 @@ public class EmployeBean {
 
 	public void setEmploye(Employe employe) {
 		this.employe = employe;
-		
 	}
 	
 	public Float getSavingAccountLimit() {
@@ -56,12 +55,13 @@ public class EmployeBean {
 		this.employe.setTypeFunction(1);
 		this.employe.setId(1);
 		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
-		Customer cust1 = new Customer("toto", "totoFamilly");
+		Customer cust1 = new Customer( "totoFamilly", "toto");
 		cust1.setMyCurrentAccount(new CurrentAccount());
 		cust1.setMySavingAccount(new SavingAccount());
-		Customer cust2 = (new Customer("tata", "tataFamilly"));
+		Customer cust2 = (new Customer("tataFamilly", "tata"));
 		CurrentAccount accountBad = new CurrentAccount();
-		accountBad.setBalance(0.0f);
+		accountBad.setIsActive(true);
+		accountBad.setBalance(-100.0f);
 		cust2.setMyCurrentAccount(accountBad);
 		cust2.setMySavingAccount(new SavingAccount());
 		maList.add(cust1);
