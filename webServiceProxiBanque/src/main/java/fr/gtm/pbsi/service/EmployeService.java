@@ -94,7 +94,7 @@ public class EmployeService {
 				EmployeService.LOGGER.info("Connection du gérant " + retour.getName() + " " + retour.getFirstName() + " à l'application.");
 			} else {// si c'est un conseiller on le renvoie avec sa liste de clients (et leurs
 					// compte)
-				final List<Customer> customers = this.daoCustomer.findAllByIdEmploye(employe.getId());
+				final List<Customer> customers = this.daoCustomer.findAllByIdEmploye(retour.getId());
 				for (final Customer customer : customers) {// on ajoute les comptes pour chaque clients
 					// Ajoute le compte courant
 					final Optional<Account> ca = this.daoAccount.findById(customer.getIdca());
