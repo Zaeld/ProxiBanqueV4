@@ -51,25 +51,25 @@ public class EmployeBean {
 	public String loginVerification() {
 		String forward = null;
 		System.out.println("employe envoyé :" + employe);
-		this.employe = serviceEmploye.loginVerification(this.employe);
+//		this.employe = serviceEmploye.loginVerification(this.employe);
 		//=======================================================
-//		this.employe.setTypeFunction(1);
-//		this.employe.setId(1);
-//		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
-//		Customer cust1 = new Customer( "totoFamilly", "toto");
-//		cust1.setMyCurrentAccount(new CurrentAccount());
-//		cust1.setMySavingAccount(new SavingAccount());
-//		Customer cust2 = (new Customer("tataFamilly", "tata"));
-//		CurrentAccount accountBad = new CurrentAccount();
-//		accountBad.setIsActive(true);
-//		accountBad.setBalance(-100.0f);
-//		cust2.setMyCurrentAccount(accountBad);
-//		cust2.setMySavingAccount(new SavingAccount());
-//		maList.add(cust1);
-//		maList.add(cust2);
-//		this.employe.setListCustomer(maList);
-//		System.out.println("cust 1 : " + cust1 );
-//		System.out.println("cust 2 : " + cust2);
+		this.employe.setTypeFunction(1);
+		this.employe.setId(1);
+		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
+		Customer cust1 = new Customer( "totoFamilly", "toto");
+		cust1.setMyCurrentAccount(new CurrentAccount());
+		cust1.setMySavingAccount(new SavingAccount());
+		Customer cust2 = (new Customer("tataFamilly", "tata"));
+		CurrentAccount accountBad = new CurrentAccount();
+		accountBad.setIsActive(true);
+		accountBad.setBalance(-100.0f);
+		cust2.setMyCurrentAccount(accountBad);
+		cust2.setMySavingAccount(new SavingAccount());
+		maList.add(cust1);
+		maList.add(cust2);
+		this.employe.setListCustomer(maList);
+		System.out.println("cust 1 : " + cust1 );
+		System.out.println("cust 2 : " + cust2);
 		//=======================================================
 System.out.println("employe reçu :" + employe);
 		// On test si l'employe a été trouvé en base de donnée

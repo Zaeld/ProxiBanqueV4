@@ -24,7 +24,7 @@ public class Customer extends People {
 	private String zipCode;
 	private String city;
 	@PrimaryKeyJoinColumn(referencedColumnName = "employe_id")
-	private Integer idConseiller;
+	private Integer idEmploye;
 	
 	@OneToOne
 	@PrimaryKeyJoinColumn(name = "currentAccount_id")
@@ -45,7 +45,7 @@ public class Customer extends People {
 		this.adress = adress;
 		this.zipCode = zipCode;
 		this.city = city;
-		this.idConseiller = idConseiller;
+		this.idEmploye = idConseiller;
 		this.myCurrentAccount = myCurrentAccount;
 		this.mySavingAccount = mySavingAccount;
 	}
@@ -57,7 +57,7 @@ public class Customer extends People {
 		this.adress = adress;
 		this.zipCode = zipCode;
 		this.city = city;
-		this.idConseiller = idConseiller;
+		this.idEmploye = idConseiller;
 		this.myCurrentAccount = myCurrentAccount;
 		this.mySavingAccount = mySavingAccount;
 	}
@@ -96,11 +96,11 @@ public class Customer extends People {
 	public CurrentAccount getMyCurrentAccount() {
 		return myCurrentAccount;
 	}
-	public Integer getIdConseiller() {
-		return idConseiller;
+	public Integer getIdemploye() {
+		return idEmploye;
 	}
-	public void setIdConseiller(Integer idConseiller) {
-		this.idConseiller = idConseiller;
+	public void setIdEmploye(Integer idEmploye) {
+		this.idEmploye = idEmploye;
 	}
 	public void setMyCurrentAccount(CurrentAccount myCurrentAccount) {
 		this.myCurrentAccount = myCurrentAccount;
