@@ -26,23 +26,23 @@
 
 							<p:row>
 								<p:column>
+								
+							
 									<p:outputLabel for="compteDebit" value="Compte débiteur :   " />
-									<p:selectOneMenu id="compteDebit" value="#" style="width:125px">
-										<f:selectItem itemLabel="Select One" itemValue="" />
-										<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-										<f:selectItem itemLabel="PS4" itemValue="PS4" />
-										<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
+									<p:selectOneMenu id="compteDebit" value="#{customerbean.idCompteDebiteur}" style="width:125px">
+									<f:selectItems value="#{customerbean.customerAccountList}"
+										var="account" itemValue="#{account.id}" />
 									</p:selectOneMenu>
+									
+									
 								</p:column>
 								<p:column class="">
 									<p:outputLabel for="compteCredit" value="Compte créditeur :   " />
-									<p:selectOneMenu id="compteCredit" value="#"
+									<p:selectOneMenu id="compteCredit" value="#{customerbean.idCompteCrediteur}"
 										style="width:125px">
 
-										<f:selectItem itemLabel="Select One" itemValue="" />
-										<f:selectItem itemLabel="Xbox One" itemValue="" />
-										<f:selectItem itemLabel="PS4" itemValue="" />
-										<f:selectItem itemLabel="Wii U" itemValue="" />
+									<f:selectItems value="#{customerbean.accountList}"
+										var="account" itemValue="#{account.id}" />
 									</p:selectOneMenu>
 
 								</p:column>
@@ -66,9 +66,9 @@
 									<!-- input montant -->
 									<h:outputText value="solde initiale du compte : " />
 									<span class="ui-inputgroup-addon">€</span>
-									<p:inputText id="solde" value="#{customerbean.amount}"
+									<p:inputNumber id="solde" value="#{customerbean.amountTransaction}"
 										required="true" label="solde">
-									</p:inputText>
+									</p:inputNumber>
 									<p:message for="solde" id="forSolde" display="icon" />
 								</p:column>
 							</p:row>
@@ -87,7 +87,8 @@
 										hideEffect="fade">
 										<p:commandButton value="Oui" type="button"
 											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-											action="#" />
+											action="${customerbean.transfert}" />
+											
 										<p:commandButton value="Non" type="button"
 											styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 									</p:confirmDialog>
