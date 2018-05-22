@@ -19,7 +19,7 @@
 		<p:toolbar class="navBar">
 			<f:facet name="left">
 				<p:commandButton value="Liste conseiller" icon="ui-icon-home"
-					action="#" />
+					action="#{employebean.loginVerification()}" />
 				<p:commandButton value="Infos transactions" icon="ui-icon-home"
 					action="#" />	
 			</f:facet>
@@ -27,7 +27,7 @@
 			<f:facet name="right">
 			<p:outputLabel class="headerText" > Espace personel de : #{employebean.employe.firstName}   #{employebean.employe.name}</p:outputLabel>
 				<p:commandButton value="Logout" icon="ui-icon-extlink"
-					action="#" />
+					action="#{employebean.logout()}" />
 			</f:facet>
 		</p:toolbar>
 	</h:form>
