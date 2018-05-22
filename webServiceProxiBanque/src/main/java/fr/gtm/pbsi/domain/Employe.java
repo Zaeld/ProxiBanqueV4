@@ -24,8 +24,10 @@ public class Employe extends People {
 	private Integer typeFunction; // 0 => gerant; 1 => conseiller
 	@Transient
 	private Collection<Customer> listCustomer;
+	
+	private Integer numberCustommers;
 
-	// CONSTRUCTORS
+	// ================ CONSTRUCTORS =====================
 	public Employe() {
 		super();
 	}
@@ -95,6 +97,14 @@ public class Employe extends People {
 
 	public void setListCustomer(Collection<Customer> listCustomer) {
 		this.listCustomer = listCustomer;
+	}
+	
+	public Integer getNumberCustommers() {
+		return numberCustommers;
+	}
+
+	public void setNumberCustommers(Integer numberCustommers) {
+		this.numberCustommers = numberCustommers;
 	}
 
 	// toString

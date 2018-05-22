@@ -3,7 +3,7 @@ package fr.gtm.pbsi.domain;
 public abstract class Account {
 
 	private Integer id;
-	private String numberCompte;
+	private String numberAccount;
 	private Boolean isActive;
 	private String dateCreation;
 	private Float balance;
@@ -11,7 +11,7 @@ public abstract class Account {
 	public Account() {
 		super();
 		this.id=0;
-		this.numberCompte="Inconnu";
+		this.numberAccount="Inconnu";
 		this.dateCreation = "Inconnu";
 		this.isActive = false;
 		this.balance = 0.0f;
@@ -19,7 +19,7 @@ public abstract class Account {
 	public Account(Integer id, String numberCompte, Boolean isActive, String dateCreation, Float balance) {
 		super();
 		this.id = id;
-		this.numberCompte = numberCompte;
+		this.numberAccount = numberCompte;
 		this.isActive = isActive;
 		this.dateCreation = dateCreation;
 		this.balance = balance;
@@ -30,11 +30,11 @@ public abstract class Account {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getNumberCompte() {
-		return numberCompte;
+	public String getNumberAccount() {
+		return numberAccount;
 	}
-	public void setNumberCompte(String numberCompte) {
-		this.numberCompte = numberCompte;
+	public void setNumberAccount(String numberAccount) {
+		this.numberAccount = numberAccount;
 	}
 	public Boolean getIsActive() {
 		return isActive;

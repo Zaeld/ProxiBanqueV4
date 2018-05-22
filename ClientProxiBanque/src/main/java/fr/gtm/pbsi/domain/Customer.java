@@ -8,6 +8,8 @@ public class Customer extends People {
 	private String zipCode;
 	private String city;
 	private Integer idEmploye;
+	private Integer idca;
+	private Integer idsa;
 	private CurrentAccount myCurrentAccount;
 	private SavingAccount mySavingAccount;
 
@@ -93,6 +95,14 @@ public class Customer extends People {
 
 	public void setMySavingAccount(SavingAccount mySavingAccount) {
 		this.mySavingAccount = mySavingAccount;
+	}
+
+	public Integer getIdsa() {
+		return this.idsa;
+	}
+
+	public void setIdsa(Integer idsa) {
+		this.idsa = idsa;
 	}
 
 	@Override

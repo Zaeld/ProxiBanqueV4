@@ -27,4 +27,9 @@ public abstract class People {
 		this.firstName = firstName;
 	}
 	
+	@Override
+	public String toString() {
+		return "People [name=" + name + ", firstName=" + firstName + "]";
+	}
+	
 }

@@ -7,7 +7,7 @@ public class SavingAccount extends Account{
 
 	public SavingAccount() {
 		super();
-		this.setNumberCompte("S" + numberGenerator.generate(15));
+		this.setNumberAccount("S" + numberGenerator.generate(15));
 		this.rate = 0.0f;
 	}
 
@@ -22,12 +22,10 @@ public class SavingAccount extends Account{
 	public void setRate(Float rate) {
 		this.rate = rate;
 	}
-
-
 	
 	@Override
 	public String toString() {
-		return "SavingAccount [rate=" + rate + ", getNumberCompte()=" + getNumberCompte() + ", getIsActive()="
+		return "SavingAccount [rate=" + rate + ", getNumberCompte()=" + getNumberAccount() + ", getIsActive()="
 				+ getIsActive() + ", getBalance()=" + getBalance() + "]";
 	}
 	

@@ -23,6 +23,7 @@ public class Customer extends People {
 	private String zipCode;
 	private String city;
 	private Integer idEmploye;
+	@Transient
 	private Employe employe;
 	private Integer idca;
 	@Transient

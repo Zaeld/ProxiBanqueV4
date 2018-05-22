@@ -9,7 +9,7 @@ public class CurrentAccount extends Account{
 	public CurrentAccount() {
 		super();
 		this.overdraft=0.0f;
-		this.setNumberCompte("C" + numberGenerator.generate(15));
+		this.setNumberAccount("C" + numberGenerator.generate(15));
 	}
 
 	public CurrentAccount(Integer id, String numberCompte, Boolean isActive, String dateCreation, Float balance) {
