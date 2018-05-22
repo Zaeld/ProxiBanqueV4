@@ -22,7 +22,7 @@ public class Employe extends People {
 	private String login;
 	private String password;
 	private Integer typeFunction; // 0 => gerant; 1 => conseiller
-	private Integer numberCustomer;
+	private Integer numberCustomers;
 	@Transient
 	private Collection<Customer> listCustomer;
 
@@ -31,22 +31,22 @@ public class Employe extends People {
 		super();
 	}
 
-	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
+	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomers, Collection<Customer> listCustomer) {
 		super(name, firstName);
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;
-		this.numberCustomer = numberCustomer;
+		this.numberCustomers = numberCustomers;
 		this.listCustomer = listCustomer;
 	}
 
-	public Employe(Integer id, String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
+	public Employe(Integer id, String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomers, Collection<Customer> listCustomer) {
 		super(name, firstName);
 		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;
-		this.numberCustomer = numberCustomer;
+		this.numberCustomers = numberCustomers;
 		this.listCustomer = listCustomer;
 	}
 
@@ -91,18 +91,18 @@ public class Employe extends People {
 		this.listCustomer = listCustomer;
 	}
 
-	public Integer getNumberCustomer() {
-		return this.numberCustomer;
+	public Integer getNumberCustomers() {
+		return this.numberCustomers;
 	}
 
-	public void setNumberCustomer(Integer numberCustomer) {
-		this.numberCustomer = numberCustomer;
+	public void setNumberCustomers(Integer numberCustomers) {
+		this.numberCustomers = numberCustomers;
 	}
 
 	// toString
 	@Override
 	public String toString() {
-		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", numberCustomer=" + this.numberCustomer
+		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", numberCustomers=" + this.numberCustomers
 				+ ", listCustomer=" + this.listCustomer + "]";
 	}
 

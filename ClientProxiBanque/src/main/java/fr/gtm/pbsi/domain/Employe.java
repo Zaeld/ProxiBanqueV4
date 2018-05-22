@@ -26,7 +26,7 @@ public class Employe extends People {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -34,7 +34,7 @@ public class Employe extends People {
 	}
 
 	public String getLogin() {
-		return login;
+		return this.login;
 	}
 
 	public void setLogin(String login) {
@@ -42,7 +42,7 @@ public class Employe extends People {
 	}
 
 	public String getPassword() {
-		return password;
+		return this.password;
 	}
 
 	public void setPassword(String password) {
@@ -50,7 +50,7 @@ public class Employe extends People {
 	}
 
 	public Integer getTypeFunction() {
-		return typeFunction;
+		return this.typeFunction;
 	}
 
 	public void setTypeFunction(Integer typeFunction) {
@@ -58,15 +58,15 @@ public class Employe extends People {
 	}
 
 	public List<Customer> getListCustomer() {
-		return listCustomer;
+		return this.listCustomer;
 	}
 
 	public void setListCustomer(List<Customer> listCustomer) {
 		this.listCustomer = listCustomer;
 	}
-	
+
 	public Integer getNumberCustommers() {
-		return numberCustommers;
+		return this.numberCustommers;
 	}
 
 	public void setNumberCustommers(Integer numberCustommers) {
@@ -75,8 +75,8 @@ public class Employe extends People {
 
 	@Override
 	public String toString() {
-		return "Employe [id=" + id + ", login=" + login + ", password=" + password + ", typeFunction=" + typeFunction
-				+ ", getName()=" + getName() + ", getFirstName()=" + getFirstName() + ", getClass()=" + getClass()
-				+ "]";
+		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", listCustomer=" + this.listCustomer
+				+ ", numberCustommers=" + this.numberCustommers + "]";
 	}
+
 }
