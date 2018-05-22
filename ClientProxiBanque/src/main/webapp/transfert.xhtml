@@ -24,21 +24,18 @@
 								</p:row>
 							</f:facet>
 
-							<p:row>
+							<p:row> <!-- ============== oneMenu cellules ================ -->
 								<p:column>
-								
-							
 									<p:outputLabel for="compteDebit" value="Compte débiteur :   " />
-									<p:selectOneMenu id="compteDebit" value="#{customerbean.idCompteDebiteur}" style="width:125px">
+									<p:selectOneMenu id="compteDebit" value="#{customerbean.idDebitAccount}" style="width:125px">
 									<f:selectItems value="#{customerbean.customerAccountList}"
 										var="account" itemValue="#{account.id}" />
 									</p:selectOneMenu>
 									
-									
 								</p:column>
 								<p:column class="">
 									<p:outputLabel for="compteCredit" value="Compte créditeur :   " />
-									<p:selectOneMenu id="compteCredit" value="#{customerbean.idCompteCrediteur}"
+									<p:selectOneMenu id="compteCredit" value="#{customerbean.idCreditAccount}"
 										style="width:125px">
 
 									<f:selectItems value="#{customerbean.accountList}"
@@ -61,14 +58,14 @@
 							</p:column>
 							</p:row>
 
-							<p:row>
+							<p:row><!-- ============== Input number Montant ================ -->
 								<p:column colspan="2">
 									<!-- input montant -->
 									<h:outputText value="solde initiale du compte : " />
-									<span class="ui-inputgroup-addon">€</span>
 									<p:inputNumber id="solde" value="#{customerbean.amountTransaction}"
 										required="true" label="solde">
 									</p:inputNumber>
+									<span class="ui-inputgroup-addon">€</span>
 									<p:message for="solde" id="forSolde" display="icon" />
 								</p:column>
 							</p:row>
@@ -85,7 +82,7 @@
 									<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
 									<p:confirmDialog global="true" showEffect="fade"
 										hideEffect="fade">
-										<p:commandButton value="Oui" type="button"
+										<p:commandButton value="Oui" 
 											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
 											action="${customerbean.transfert}" />
 											
@@ -101,6 +98,9 @@
 								<p:row>
 									<p:column colspan="2">
 										<p:spacer height="0"></p:spacer>
+										<p:commandButton value="Oui" 
+											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+											action="${customerbean.transfert}" />
 									</p:column>
 								</p:row>
 							</f:facet>
