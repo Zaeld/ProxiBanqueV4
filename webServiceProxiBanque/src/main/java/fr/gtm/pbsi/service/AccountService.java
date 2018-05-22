@@ -154,9 +154,7 @@ public class AccountService {
 	}
 	@PostMapping("/transaction")
 	public Transaction transactionOperation (@RequestBody Transaction transaction) {
-	
-		
-	
+
 		Transaction retour = new Transaction();
 		
 	 Integer typeTransaction=transaction.getTypeTransaction();
