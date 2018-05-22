@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 
 import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.Customer;
+import fr.gtm.pbsi.domain.Transaction;
 import fr.gtm.pbsi.service.CustomerService;
 import fr.gtm.pbsi.service.EmployeService;
 
@@ -21,6 +22,7 @@ public class CustomerBean {
 	private List<Account> debitAccount = new ArrayList<Account>();
 	private List<Account> creditAccount = new ArrayList<Account>();
 	private Float amount = 0.0f;
+	private Transaction transaction = new Transaction();
 
 	
 	
@@ -89,7 +91,17 @@ public class CustomerBean {
 			forward = "success";
 		return forward;
 	}
+	
+	public String transfert() {
+		String forward = null;
+		this.transaction = serviceCustomer.transfert(this.transaction);
+		if (this.transaction==null) {
+			forward = "fail";
 
+		} else
+			forward = "success";
+		return forward;
+	}
 
 	public String goUpdateCustomer(Customer customer) {
 		System.out.println("-- goUpdateCustomer Méthode --");
