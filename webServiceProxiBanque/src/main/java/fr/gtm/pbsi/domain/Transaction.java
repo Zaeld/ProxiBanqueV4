@@ -2,6 +2,7 @@ package fr.gtm.pbsi.domain;
 
 import java.sql.Date;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,11 +28,11 @@ public class Transaction {
 	
 	@ManyToOne
 	@JoinColumn(name = "debitAccount_id", referencedColumnName = "idAccount")
-	private Account debitAccount;
+	private Account debitAccount ;
 	
 	@ManyToOne
 	@JoinColumn(name = "creditAccount_id", referencedColumnName = "idAccount")
-	private Account creditAccount;
+	private Account creditAccount ;
 	
 	// CONSTRUCTORS
 	public Transaction() {
@@ -100,4 +101,5 @@ public class Transaction {
 		return "Transaction [id=" + id + ", date=" + date + ", typeTransaction=" + typeTransaction + ", value=" + value
 				+ ", debitAccount=" + debitAccount + ", creditAccount=" + creditAccount + "]";
 	}
+	
 }
