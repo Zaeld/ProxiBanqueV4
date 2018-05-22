@@ -12,12 +12,12 @@ public class Customer extends People {
 	private SavingAccount mySavingAccount;
 
 	public Customer() {
-		super("Entrer nom", "Entrer prénom");
+		super("", "");
 		this.id = 0;
-		this.email = "Entrer email";
-		this.adress = "Entrer adresse";
-		this.city = "Entrer ville";
-		this.zipCode = "Entrer code postal";
+		this.email = null;
+		this.adress = "";
+		this.city = "";
+		this.zipCode = "";
 		this.idEmploye = 0;
 	}
 

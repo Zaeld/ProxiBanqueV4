@@ -9,7 +9,7 @@
 
 <jsp:forward page="/faces/homeLogin.xhtml"></jsp:forward>
 
-<%-- <jsp:forward page="/faces/transfert.xhtml"></jsp:forward>
- --%>
+<%-- <jsp:forward page="/faces/fail.xhtml"></jsp:forward> --%>
+
 </body>
 </html>

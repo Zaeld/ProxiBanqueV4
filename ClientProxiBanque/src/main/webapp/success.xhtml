@@ -17,11 +17,9 @@
 				<div class="container">
 
 					<h:form class="placementFormulaire">
-						<p:outputLabel class="successText">Opération réalisée avec succès</p:outputLabel>
-
 						<div
-							style="background-color: green; font-size: xx-large; color: white; margin-top: 30px; border: 2px solid black; border-radius: 20px;">Opération
-							Réussie \o/ !!</div>
+							class="successText">L'opération : 
+							Réussie \o/ !! #{customerbean.message}
 				</div>
 
 				<p:commandButton value="Retour à la liste des clients"

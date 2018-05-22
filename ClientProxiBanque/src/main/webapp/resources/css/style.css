@@ -4,7 +4,7 @@ html, body {
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
-/* 	min-height: 100vh; */
+	/* 	min-height: 100vh; */
 	margin: 0px;
 }
 
@@ -155,9 +155,9 @@ html, body {
 	padding-bottom: 6%;
 }
 
-.my-dialogs{
-	 margin-top: 65px;
-	 position:absolute
+.my-dialogs {
+	margin-top: 65px;
+	position: absolute
 }
 
 .placementInfosClient {
@@ -321,8 +321,23 @@ html, body {
 	font-size: medium;
 }
 
-/* ================ Page Success ========================*/
-.successText{
-	
+/* ================ Page Success / fail ========================*/
+.successText {
+	background-color: green;
+	font-size: xx-large;
+	color: white;
+	margin-top: 30px;
+	border: 2px solid black;
+	border-radius: 20px;
+	margin:20px;
 }
 
+.failText {
+	background-color: red;
+	font-size: xx-large;
+	color: white;
+	margin-top: 30px;
+	border: 2px solid black;
+	border-radius: 20px;
+	margin:20px;
+}

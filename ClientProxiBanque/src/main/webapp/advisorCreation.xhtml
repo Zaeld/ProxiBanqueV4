@@ -12,7 +12,7 @@
 
 
 	<f:view>
-		<ui:composition template="templates/common.xhtml">
+		<ui:composition template="templates/commonManager.xhtml">
 			<ui:define name="content">
 				<div class="container">
 
@@ -22,7 +22,7 @@
 							<p:row>
 								<p:column colspan="4">
 									<p style="font-size: 40px">Veuillez entrer les informations
-										du nouveau client</p>
+										du nouveau conseiller</p>
 								</p:column>
 							</p:row>
 
@@ -37,7 +37,7 @@
 									<p:outputLabel for="nom" value="Nom : "></p:outputLabel>
 								</p:column>
 								<p:column>
-									<p:inputText id="nom" value="#{customerbean.customer.name}"
+									<p:inputText id="nom" value="#"
 										required="true" label="nom">
 										<f:validateLength minimum="2" />
 										<p:ajax update="forName" event="keyup" />
@@ -48,7 +48,7 @@
 								<p:column> Prenom : </p:column>
 								<p:column>
 									<p:inputText id="prenom"
-										value="#{customerbean.customer.firstName}" required="true"
+										value="#" required="true"
 										label="firstName">
 										<f:validateLength minimum="2" />
 										<p:ajax update="forFistname" event="keyup" />
@@ -57,60 +57,7 @@
 								</p:column>
 							</p:row>
 
-							<p:row>
-								<p:column colspan="4" styleClass="ui-widget-header">
-									Nouvelles coordonnées du client
-								</p:column>
-							</p:row>
-
-							<p:row>
-								<p:column> Adresse : </p:column>
-								<p:column>
-									<p:inputText id="adress"
-										value="#{customerbean.customer.adress}" required="true"
-										label="adress">
-										<f:validateLength minimum="2" />
-										<p:ajax update="forAdress" event="keyup" />
-									</p:inputText>
-									<p:message for="adress" id="forAdress" display="icon" />
-								</p:column>
-
-								<p:column> Code Postal : </p:column>
-								<p:column>
-									<div style="display: inline-block;">
-										<p:inputText value="#{customerbean.customer.zipCode}"
-											id="zipCode" required="true" label="zipCode">
-											<f:validateLength minimum="2" />
-											<p:ajax update="forZipCode" event="keyup" />
-										</p:inputText>
-										<p:message for="zipCode" id="forZipCode" display="icon" />
-									</div>
-
-								</p:column>
-							</p:row>
-
-							<p:row>
-								<p:column> Ville : </p:column>
-								<p:column>
-									<p:inputText value="#{customerbean.customer.city}" id="city"
-										required="true">
-										<f:validateLength minimum="2" />
-										<p:ajax update="forCity" event="keyup" />
-									</p:inputText>
-									<p:message for="city" id="forCity" display="icon" />
-								</p:column>
-
-								<p:column> Email : </p:column>
-								<p:column>
-									<p:inputText value="#{customerbean.customer.email}" id="email"
-										required="true">
-										<f:validateLength minimum="2" />
-										<p:ajax update="forEmail" event="keyup" />
-									</p:inputText>
-									<p:message for="email" id="forEmail" display="icon" />
-								</p:column>
-							</p:row>
-
+							
 							<f:facet name="footer">
 								<p:row>
 									<p:column colspan="4" style="text-align: center">
@@ -125,15 +72,15 @@
 											hideEffect="fade">
 											<p:commandButton value="Oui"
 												styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-												action="#{customerbean.createCustomer(employebean.employe.id)}" />
+												action="#" />
 											<p:commandButton value="Non" type="button"
 												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 										</p:confirmDialog>
 
 										<p:commandButton value="Oui" styleClass="ui-confirmdialog-yes"
 											icon="ui-icon-check"
-											action="#{customerbean.createCustomer(employebean.employe.id)}" />
-										<p:button outcome="customerList" value="Annuler" />
+											action="#" />
+										<p:button outcome="" value="Annuler" />
 
 									</p:column>
 								</p:row>

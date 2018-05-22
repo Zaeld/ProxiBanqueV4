@@ -17,7 +17,7 @@
 				<div class="container">
 
 				<h:form class="placementFormulaire">
-						<p:outputLabel>L'opération n'a pas pu être réalisée</p:outputLabel>
+						<div class="failText">L'opération n'a pas pu être réalisée   #{customerbean.message}</div>
 				
 
 						<p:button outcome="customerList" value="Retour à la liste des clients"/>
