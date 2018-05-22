@@ -23,6 +23,17 @@ html, body {
 	margin: 0;
 }
 
+.headerText {
+	font-family: "Times New Roman", Times, serif;
+	font-style: oblique;
+	max-width: 60%;
+	margin-right: 30px;
+	padding-top: 5px;
+	height: 5%;
+	color: white;
+	font-size: x-small;
+}
+
 .footer {
 	background-color: rgba(25, 25, 25);
 	text-align: center;
@@ -33,7 +44,7 @@ html, body {
 	height: 5%;
 	text-align: right;
 	color: white;
-	font-size: xx-small;
+	font-size: x-small;
 }
 
 .container {
@@ -329,7 +340,7 @@ html, body {
 	margin-top: 30px;
 	border: 2px solid black;
 	border-radius: 20px;
-	margin:20px;
+	margin: 20px;
 }
 
 .failText {
@@ -339,5 +350,5 @@ html, body {
 	margin-top: 30px;
 	border: 2px solid black;
 	border-radius: 20px;
-	margin:20px;
+	margin: 20px;
 }

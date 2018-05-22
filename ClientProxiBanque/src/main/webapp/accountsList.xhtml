@@ -115,7 +115,8 @@
 										<p:menuitem value="Débiter ce compte" action="#"
 											icon="ui-icon-arrowreturnthick-1-n" />
 										<p:separator />
-										<p:menuitem value="Virement" action="#"
+										<p:menuitem value="Virement"
+											action="#{customerbean.goTransfert()}"
 											icon="ui-icon-transfer-e-w" />
 									</p:menuButton>
 								</h:form>
@@ -130,13 +131,15 @@
 										position="static" widgetVar="dlg2">
 
 										<h:outputText value="solde initiale du compte : " />
-										<span class="ui-inputgroup-addon">$</span>
-										<p:inputText id="solde" value="#"
-											required="true" label="solde">
-										</p:inputText>
-										<p:message for="solde" id="forSolde" display="icon" />
 
-										<p:commandButton value="valider" action="#" />
+										<p:inputNumber id="solde" value="#{customerbean.solde}"
+											required="true" label="solde">
+											</p:inputNumber>
+											<span class="ui-inputgroup-addon">€</span>
+											<p:message for="solde" id="forSolde" display="icon" />
+
+											<p:commandButton value="valider"
+												action="#{customerbean.CurrentAccountActivation()}" />
 									</p:dialog>
 								</h:form>
 							</p:column>
@@ -210,7 +213,8 @@
 										<p:menuitem value="Débiter ce compte" action="#"
 											icon="ui-icon-arrowreturnthick-1-n" />
 										<p:separator />
-										<p:menuitem value="Virement" action="#"
+										<p:menuitem value="Virement"
+											action="#{customerbean.goTransfert}"
 											icon="ui-icon-transfer-e-w" />
 									</p:menuButton>
 								</h:form>
@@ -221,18 +225,17 @@
 										onclick="PF('dlg2').show();" value="Ouvrir compte épargne"
 										action="#" />
 
-									<p:dialog header="Entrer le solde initial du compte" modal="true"
-										position="static" widgetVar="dlg2" >
+									<p:dialog header="Entrer le solde initial du compte"
+										modal="true" position="static" widgetVar="dlg2">
 
 										<h:outputText value="solde initiale du compte : " />
-
-										<p:inputText id="solde" value="#{customerbean.amount}"
+										<p:inputNumber id="solde" value="#{customerbean.solde}"
 											required="true" label="solde">
-										</p:inputText>
-										<span class="ui-inputgroup-addon">$</span>
+										</p:inputNumber>
+										<span class="ui-inputgroup-addon">€</span>
 										<p:message for="solde" id="forSolde" display="icon" />
 
-										<p:commandButton value="valider" action="#" />
+										<p:commandButton value="valider" action="#{customerbean.SavingAccountActivation()}" />
 									</p:dialog>
 								</h:form>
 							</p:column>
