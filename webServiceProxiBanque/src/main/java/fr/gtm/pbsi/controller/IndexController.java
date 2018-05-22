@@ -35,21 +35,21 @@ public class IndexController {
 	}
 
 	private void createBoss() {
-		final Employe boss = new Employe("Cousin", "Olivier", "admin", "admin", 0, null);
+		final Employe boss = new Employe("Cousin", "Olivier", "admin", "admin", 0, 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, boss, Employe.class);
 	}
 
 	private void createConseiller() {
-		final Employe conseiller1 = new Employe("Fournier", "Pascal", "c1", "c1", 1, null);
+		final Employe conseiller1 = new Employe("Fournier", "Pascal", "c1", "c1", 1, 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller1, Employe.class);
 
-		final Employe conseiller2 = new Employe("Martin", "Laurine", "c2", "c2", 1, null);
+		final Employe conseiller2 = new Employe("Martin", "Laurine", "c2", "c2", 1, 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller2, Employe.class);
-		final Employe conseiller3 = new Employe("Delcroix", "Sarah", "c3", "c3", 1, null);
+		final Employe conseiller3 = new Employe("Delcroix", "Sarah", "c3", "c3", 1, 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller3, Employe.class);
-		final Employe conseiller4 = new Employe("Durand", "Guillaume", "c4", "c4", 1, null);
+		final Employe conseiller4 = new Employe("Durand", "Guillaume", "c4", "c4", 1, 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller4, Employe.class);
-		final Employe conseiller5 = new Employe("Arnaud", "Claire", "c5", "c5", 1, null);
+		final Employe conseiller5 = new Employe("Arnaud", "Claire", "c5", "c5", 1, 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller5, Employe.class);
 	}
 

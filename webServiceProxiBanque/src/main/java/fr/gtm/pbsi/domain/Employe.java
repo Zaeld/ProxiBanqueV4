@@ -22,6 +22,7 @@ public class Employe extends People {
 	private String login;
 	private String password;
 	private Integer typeFunction; // 0 => gerant; 1 => conseiller
+	private Integer numberCustomer;
 	@Transient
 	private Collection<Customer> listCustomer;
 
@@ -30,7 +31,7 @@ public class Employe extends People {
 		super();
 	}
 
-	public Employe(String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
+	public Employe(String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
 		super();
 		this.login = login;
 		this.password = password;
@@ -38,7 +39,7 @@ public class Employe extends People {
 		this.listCustomer = listCustomer;
 	}
 
-	public Employe(Integer id, String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
+	public Employe(Integer id, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
 		super();
 		this.id = id;
 		this.login = login;
@@ -47,7 +48,7 @@ public class Employe extends People {
 		this.listCustomer = listCustomer;
 	}
 
-	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
+	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
 		this.setName(name);
 		this.setFirstName(firstName);
 		this.login = login;
@@ -97,9 +98,19 @@ public class Employe extends People {
 		this.listCustomer = listCustomer;
 	}
 
+	public Integer getNumberCustomer() {
+		return this.numberCustomer;
+	}
+
+	public void setNumberCustomer(Integer numberCustomer) {
+		this.numberCustomer = numberCustomer;
+	}
+
 	// toString
 	@Override
 	public String toString() {
-		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", listCustomer=" + this.listCustomer + "]";
+		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", numberCustomer=" + this.numberCustomer
+				+ ", listCustomer=" + this.listCustomer + "]";
 	}
+
 }
