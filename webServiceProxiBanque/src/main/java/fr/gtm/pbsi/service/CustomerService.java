@@ -50,8 +50,10 @@ public class CustomerService {
 	@PostMapping({ "", "/" })
 	Customer create(@RequestBody Customer customer) {
 		// TODO changer pour que ce ne soit pas en dur
-		final String numberAccount1 = "c023654";
-		final String numberAccount2 = "s023654";
+		final String randomnumber1 = this.numberGenerator(15);
+		final String numberAccount1 = "c" + randomnumber1;
+		final String randomnumber2 = this.numberGenerator(15);
+		final String numberAccount2 = "s" + randomnumber2;
 		final String dateCreation = "25/04/1997";
 		final Float zero = (float) 0;
 		final Float rate = (float) 3;
@@ -100,7 +102,6 @@ public class CustomerService {
 		CustomerService.LOGGER.info("Récupération de la liste de tous les customers de ProxiBanque.");
 		return this.daoCustomer.findAll();
 	}
-	// TODO ajouter une méthode pour récupérer les clients d'un conseiller
 
 	/**
 	 * Methode get permettant de recuperer un client en BDD via son ID.
@@ -152,4 +153,15 @@ public class CustomerService {
 			return response;
 		}
 	}
+
+	public String numberGenerator(int length) {
+		final String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		final StringBuffer pass = new StringBuffer();
+		for (int x = 0; x < length; x++) {
+			final int i = (int) Math.floor(Math.random() * (chars.length() - 1));
+			pass.append(chars.charAt(i));
+		}
+		return pass.toString();
+	}
+
 }
