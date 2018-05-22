@@ -97,6 +97,7 @@ public class CustomerService {
 	 * 
 	 * @return la liste de tous les clients
 	 */
+	// TODO rajouter les comptes dans les clients ?
 	@GetMapping({ "", "/" })
 	List<Customer> readAll() {
 		CustomerService.LOGGER.info("Récupération de la liste de tous les customers de ProxiBanque.");
