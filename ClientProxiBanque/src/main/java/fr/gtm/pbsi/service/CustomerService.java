@@ -9,6 +9,7 @@ import com.sun.jersey.api.client.WebResource;
 
 import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.domain.Employe;
+import fr.gtm.pbsi.domain.Transaction;
 
 public class CustomerService {
 	private Client client = Client.create();
@@ -53,4 +54,28 @@ public class CustomerService {
 			}
 			return newCustomer;
 		}
+	
+	public Transaction transfert(Transaction transaction) {
+		String input=null;
+		String output=null;
+		Transaction transactionDone=null;
+		try {
+			input = mapper.writeValueAsString(transaction);
+		
+		WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/customer/transaction");
+		
+		ClientResponse reponse = webResource.type("application/json").post(ClientResponse.class, input);
+		
+		output=reponse.getEntity(String.class);
+		
+		transactionDone=mapper.readValue(output, Transaction.class);
+		
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return transactionDone;
+		
+	}	
+	
 }

@@ -8,6 +8,7 @@ import javax.faces.bean.SessionScoped;
 
 import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.Customer;
+import fr.gtm.pbsi.domain.Transaction;
 import fr.gtm.pbsi.service.CustomerService;
 import fr.gtm.pbsi.service.EmployeService;
 
@@ -21,6 +22,7 @@ public class CustomerBean {
 	private List<Account> debitAccount = new ArrayList<Account>();
 	private List<Account> creditAccount = new ArrayList<Account>();
 	private Float amount = 0.0f;
+	private Transaction transaction = new Transaction();
 
 	
 	
@@ -68,7 +70,9 @@ public class CustomerBean {
 	// ===================== Methode ======================
 
 
-	public String createCustomer() {
+	public String createCustomer(int idEmploye) {
+		// Set de l'idée employée dans l'attribut client avec un parse
+		this.customer.setIdEmploye((Integer)idEmploye);
 		String forward = null;
 		this.customer = serviceCustomer.createCustomer(this.customer);
 		if (customer.getId() > 0) {
@@ -80,9 +84,19 @@ public class CustomerBean {
 
 	public String updateCustomer(Customer customer) {
 		String forward = null;
-		Customer oldCustomer = customer;
 		this.customer = serviceCustomer.updateCustomer(this.customer);
-		if (customer == oldCustomer) {
+		if (this.customer==null) {
+			forward = "fail";
+
+		} else
+			forward = "success";
+		return forward;
+	}
+	
+	public String transfert() {
+		String forward = null;
+		this.transaction = serviceCustomer.transfert(this.transaction);
+		if (this.transaction==null) {
 			forward = "fail";
 
 		} else
@@ -104,13 +118,13 @@ public class CustomerBean {
 
 	public String goAccountsList(Customer customer) {
 		System.out.println("-- goAccountsList Méthode --");
-
 		this.customer = customer;
 		return "accountsList";
 	}
 
 	public String goCreateCustomerPage() {
 		System.out.println("-- showCreateCustomerPage Méthode --");
+		this.customer = new Customer();
 		return "customerCreation";
 	}
 

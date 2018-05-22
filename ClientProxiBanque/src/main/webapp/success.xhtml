@@ -17,13 +17,17 @@
 				<div class="container">
 
 					<h:form class="placementFormulaire">
-						<p:outputLabel>Opération réalisée avec succès</p:outputLabel>
+						<p:outputLabel class="successText">Opération réalisée avec succès</p:outputLabel>
 
+						<div
+							style="background-color: green; font-size: xx-large; color: white; margin-top: 30px; border: 2px solid black; border-radius: 20px;">Opération
+							Réussie \o/ !!</div>
+				</div>
 
-						<p:commandButton value="Retour à la liste des clients"
-							action="#{employebean.goCustomerListe()}" icon="ui-icon-check" />
-							
-					</h:form>
+				<p:commandButton value="Retour à la liste des clients"
+					action="#{employebean.goCustomerListe()}" icon="ui-icon-check" />
+
+				</h:form>
 				</div>
 			</ui:define>
 		</ui:composition>
