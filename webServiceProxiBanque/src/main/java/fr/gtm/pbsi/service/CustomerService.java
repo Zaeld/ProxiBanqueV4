@@ -59,8 +59,8 @@ public class CustomerService {
 		final SavingAccount savingAccount = new SavingAccount(numberAccount2, false, dateCreation, zero, rate);
 		final CurrentAccount ca = this.daoAccount.save(currentAccount);
 		final SavingAccount sa = this.daoAccount.save(savingAccount);
-		customer.setIdCurrentAccount(ca.getId());
-		customer.setIdSavingAccount(sa.getId());
+		customer.setIdca(ca.getId());
+		customer.setIdsa(sa.getId());
 		final Customer retour = this.daoCustomer.save(customer);
 		CustomerService.LOGGER.info("Création de " + retour + " en BDD.");
 		return retour;
@@ -77,8 +77,8 @@ public class CustomerService {
 		if (this.daoCustomer.existsById(customerId)) {
 			final Optional<Customer> retour = this.daoCustomer.findById(customerId);
 			final Customer response = retour.get();
-			this.daoAccount.deleteById(response.getIdCurrentAccount());
-			this.daoAccount.deleteById(response.getIdSavingAccount());
+			this.daoAccount.deleteById(response.getIdca());
+			this.daoAccount.deleteById(response.getIdsa());
 			this.daoCustomer.deleteById(customerId);
 			CustomerService.LOGGER.info("Suppression de " + response + " de la BDD.");
 			return 1;
@@ -113,8 +113,8 @@ public class CustomerService {
 		final Optional<Customer> retour = this.daoCustomer.findById(customerId);
 		if (retour.isPresent()) {
 			final Customer response = retour.get();
-			final Optional<Account> currentAccount = this.daoAccount.findById(response.getIdCurrentAccount());
-			final Optional<Account> savingAccount = this.daoAccount.findById(response.getIdSavingAccount());
+			final Optional<Account> currentAccount = this.daoAccount.findById(response.getIdca());
+			final Optional<Account> savingAccount = this.daoAccount.findById(response.getIdsa());
 			final CurrentAccount ca = (CurrentAccount) currentAccount.get();
 			final SavingAccount sa = (SavingAccount) savingAccount.get();
 			response.setCurrentAccount(ca);
