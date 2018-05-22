@@ -23,8 +23,7 @@ public class Customer extends People {
 	private String zipCode;
 	private String city;
 	private Integer idEmploye;
-	@Transient
-	private Employe employe;
+
 	private Integer idca;
 	@Transient
 	private CurrentAccount currentAccount;
@@ -46,7 +45,6 @@ public class Customer extends People {
 		this.zipCode = zipCode;
 		this.city = city;
 		this.idEmploye = idEmploye;
-		this.employe = employe;
 		this.idca = idca;
 		this.currentAccount = currentAccount;
 		this.idsa = idsa;
@@ -107,13 +105,6 @@ public class Customer extends People {
 		this.idEmploye = idEmploye;
 	}
 
-	public Employe getEmploye() {
-		return this.employe;
-	}
-
-	public void setEmploye(Employe employe) {
-		this.employe = employe;
-	}
 
 	public Integer getIdca() {
 		return this.idca;
@@ -150,8 +141,7 @@ public class Customer extends People {
 	// toString
 	@Override
 	public String toString() {
-		return "Customer [id=" + this.id + ", email=" + this.email + ", adress=" + this.adress + ", zipCode=" + this.zipCode + ", city=" + this.city + ", idEmploye=" + this.idEmploye + ", employe="
-				+ this.employe + ", idca=" + this.idca + ", myCurrentAccount=" + this.currentAccount + ", idsa=" + this.idsa + ", mySavingAccount=" + this.savingAccount + "]";
+		return "Customer [id=" + this.id + ", email=" + this.email + ", adress=" + this.adress + ", zipCode=" + this.zipCode + ", city=" + this.city + ", idEmploye=" + ", idca=" + this.idca + ", myCurrentAccount=" + this.currentAccount + ", idsa=" + this.idsa + ", mySavingAccount=" + this.savingAccount + "]";
 	}
 
 }

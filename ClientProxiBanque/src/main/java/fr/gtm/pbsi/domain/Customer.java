@@ -104,11 +104,20 @@ public class Customer extends People {
 	public void setIdsa(Integer idsa) {
 		this.idsa = idsa;
 	}
+	
+	public Integer getIdca() {
+		return idca;
+	}
+
+	public void setIdca(Integer idca) {
+		this.idca = idca;
+	}
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", email=" + email + ", idConseiller=" + idEmploye + ", myCurrentAccount="
-				+ myCurrentAccount + ", mySavingAccount=" + mySavingAccount + "]";
+		return "Customer [id=" + id + ", email=" + email + ", adress=" + adress + ", zipCode=" + zipCode + ", city="
+				+ city + ", idEmploye=" + idEmploye + ", idca=" + idca + ", idsa=" + idsa + ", myCurrentAccount="
+				+ myCurrentAccount + ", mySavingAccount=" + mySavingAccount + ", getName()=" + getName()
+				+ ", getFirstName()=" + getFirstName() + "]";
 	}
-
 }

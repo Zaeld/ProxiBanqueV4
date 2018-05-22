@@ -27,9 +27,9 @@ public class IndexController {
 	public ModelAndView displayIndex() {
 		final ModelAndView mav = new ModelAndView("welcome");
 
-		// this.createBoss();
-		// this.createConseiller();
-		// this.createCustomerToConseiller1();
+		 this.createBoss();
+		 this.createConseiller();
+		 this.createCustomerToConseiller1();
 
 		return mav;
 	}
