@@ -158,23 +158,25 @@ public class AccountService {
 		final Integer typeTransaction = transaction.getTypeTransaction();
 		switch (typeTransaction) {
 		case 1:
-
 			this.debited(transaction.getDebitAccount(), transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
-
+			AccountService.TRANSACTION
+					.info("Le compte " + transaction.getDebitAccount() + " a été débité de " + transaction.getValue() + ". Le nouvel état du compte est " + retour.getDebitAccount() + ".");
 			break;
 		case 2:
 			this.credited(transaction.getCreditAccount(), transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
-
+			AccountService.TRANSACTION
+					.info("Le compte " + transaction.getCreditAccount() + " a été crédité de " + transaction.getValue() + ". Le nouvel état du compte est " + retour.getCreditAccount() + ".");
 			break;
 		case 3:
 			this.transfert(transaction.getDebitAccount(), transaction.getCreditAccount(), transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
-
+			AccountService.TRANSACTION.info("Un virement compte à compte du compte " + transaction.getDebitAccount() + " au compte " + transaction.getCreditAccount() + " d'un montant de "
+					+ transaction.getValue() + " a été effectué. Le nouvel état de ces comptes est " + retour.getDebitAccount() + " et " + retour.getCreditAccount() + ".");
 			break;
 		default:
-
+			AccountService.TRANSACTION.error("Une erreur est survenue lors de la réalisation d'une transaction car cette dernière n'est pas reconnue par le système.");
 		}
 		return retour;
 	}
