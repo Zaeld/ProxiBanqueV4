@@ -1,6 +1,10 @@
 
 package fr.gtm.pbsi.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,8 +59,14 @@ public class CustomerService {
 		final String numberAccount1 = "c" + randomnumber1;
 		final String randomnumber2 = this.numberGenerator(15);
 		final String numberAccount2 = "s" + randomnumber2;
-		// TODO changer pour que ce ne soit pas en dur
-		final String dateCreation = "25/04/1997";
+		// Create an instance of SimpleDateFormat used for formatting the string
+		// representation of date (month/day/year)
+		final DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		// Get the date today using Calendar object.
+		final Date today = Calendar.getInstance().getTime();
+		// Using DateFormat format method we can create a string representation of a
+		// date with the defined format.
+		final String dateCreation = df.format(today);
 		final Float zero = (float) 0;
 		final Float rate = (float) 3;
 		// Instenciation des Comtpes
