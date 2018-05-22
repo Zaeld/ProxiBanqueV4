@@ -14,8 +14,39 @@
 		<ui:composition template="templates/commonLogin.xhtml">
 			<ui:define name="content">
 				<div class="container">
+
+
+
+					<p:ajaxStatus style="display:block;margin-bottom:2em;height:24px;">
+						<f:facet name="default">
+							<h:outputText value="Status: StandBy" />
+						</f:facet>
+
+						<f:facet name="start">
+							<p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+						</f:facet>
+
+						<f:facet name="complete">
+							<h:outputText value="Status: Completed" />
+						</f:facet>
+					</p:ajaxStatus>
+					
+
+
+					<p:ajaxStatus onstart="PF('statusDialog').show()"
+						onsuccess="PF('statusDialog').hide()" />
+
+					<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+						closable="false" resizable="false" showHeader="false">
+						<p:graphicImage name="/img/ajaxloadingbar.gif" />
+					</p:dialog>
+
+
+
+
 					<h:form class="placementFormulaire">
-						<p:panel id="panel" header="Veuillez vous connecter" style="font-size: 30px">
+						<p:panel id="panel" header="Veuillez vous connecter"
+							style="font-size: 30px">
 							<p:messages id="msgs" />
 
 							<h:panelGrid columns="3" cellpadding="5">
@@ -46,6 +77,8 @@
 
 							<p:commandButton value="Se connecter"
 								action="#{employebean.loginVerification()}" icon="ui-icon-check" />
+
+
 						</p:panel>
 					</h:form>
 				</div>
