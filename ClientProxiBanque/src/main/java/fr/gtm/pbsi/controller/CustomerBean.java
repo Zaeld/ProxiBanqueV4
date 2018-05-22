@@ -102,7 +102,37 @@ public class CustomerBean {
 
 	public void setCreditAccounts(List<Account> creditAccount) {
 		this.creditAccount = creditAccount;
-	} // ==================================================
+	}
+
+	public AccountService getServiceAccount() {
+		return serviceAccount;
+	}
+
+	public void setServiceAccount(AccountService serviceAccount) {
+		this.serviceAccount = serviceAccount;
+	}
+
+	public Transaction getTransaction() {
+		return transaction;
+	}
+
+	public void setTransaction(Transaction transaction) {
+		this.transaction = transaction;
+	}
+
+	public Float getSolde() {
+		return solde;
+	}
+
+	public void setSolde(Float solde) {
+		this.solde = solde;
+	}
+
+	public void setCreditAccount(List<Account> creditAccount) {
+		this.creditAccount = creditAccount;
+	}
+
+	// ==================================================
 
 	// ===================== Methode ======================
 
@@ -147,7 +177,10 @@ public class CustomerBean {
 		return forward;
 	}
 
-	/** Méthode permettant de créer et d'envoyer l'objet transaction nécessaire au traitement de l'opération bancaire
+	/**
+	 * Méthode permettant de créer et d'envoyer l'objet transaction nécessaire au
+	 * traitement de l'opération bancaire
+	 * 
 	 * @return String : page à afficher, page de succès si la création a bien eu
 	 *         lieu et page d'échec dans le cas contraire
 	 */
@@ -156,8 +189,9 @@ public class CustomerBean {
 		this.transaction = serviceAccount.createTransaction(amountTransaction, idDebitAccount, idCreditAccount);
 		this.transaction = serviceAccount.transfert(this.transaction);
 		// On met à jour les informations du client après la transaction
-		this.customer=serviceCustomer.updateCustomer(this.customer);
-		// Si l'opération bancaire a bien été réalisée, le service retourne un objet transaction non null
+		this.customer = serviceCustomer.updateCustomer(this.customer);
+		// Si l'opération bancaire a bien été réalisée, le service retourne un objet
+		// transaction non null
 		if (this.transaction == null) {
 			forward = "fail";
 
