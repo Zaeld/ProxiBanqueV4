@@ -71,6 +71,7 @@ public class CustomerBean {
 
 
 	public String createCustomer(int idEmploye) {
+		// Set de l'idée employée dans l'attribut client avec un parse
 		this.customer.setIdEmploye((Integer)idEmploye);
 		String forward = null;
 		this.customer = serviceCustomer.createCustomer(this.customer);
