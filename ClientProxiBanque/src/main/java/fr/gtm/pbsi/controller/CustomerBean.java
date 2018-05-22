@@ -81,15 +81,15 @@ public class CustomerBean {
 
 	public String updateCustomer(Customer customer) {
 		String forward = null;
-		Customer oldCustomer = customer;
 		this.customer = serviceCustomer.updateCustomer(this.customer);
-		if (customer == oldCustomer) {
+		if (this.customer==null) {
 			forward = "fail";
 
 		} else
 			forward = "success";
 		return forward;
 	}
+
 
 	public String goUpdateCustomer(Customer customer) {
 		System.out.println("-- goUpdateCustomer Méthode --");

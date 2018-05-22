@@ -52,7 +52,7 @@ public class EmployeBean {
 		String forward = null;
 		System.out.println("employe envoyé :" + employe);
 		
-		this.employe = serviceEmploye.loginVerification(this.employe);
+		this.employe = serviceEmploye.logiVerification(this.employe);
 		
 		//=======================================================
 //		this.employe.setTypeFunction(1);
