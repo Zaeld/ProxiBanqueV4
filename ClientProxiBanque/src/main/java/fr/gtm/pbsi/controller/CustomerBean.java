@@ -68,7 +68,8 @@ public class CustomerBean {
 	// ===================== Methode ======================
 
 
-	public String createCustomer() {
+	public String createCustomer(Integer idEmploye) {
+		this.customer.setIdEmploye(idEmploye);
 		String forward = null;
 		this.customer = serviceCustomer.createCustomer(this.customer);
 		if (customer.getId() > 0) {
@@ -104,13 +105,13 @@ public class CustomerBean {
 
 	public String goAccountsList(Customer customer) {
 		System.out.println("-- goAccountsList Méthode --");
-
 		this.customer = customer;
 		return "accountsList";
 	}
 
 	public String goCreateCustomerPage() {
 		System.out.println("-- showCreateCustomerPage Méthode --");
+		this.customer = new Customer();
 		return "customerCreation";
 	}
 

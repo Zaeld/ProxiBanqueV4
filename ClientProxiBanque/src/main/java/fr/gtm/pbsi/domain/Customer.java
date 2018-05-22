@@ -7,18 +7,18 @@ public class Customer extends People {
 	private String adress;
 	private String zipCode;
 	private String city;
-	private Integer idConseiller;
+	private Integer idEmploye;
 	private CurrentAccount myCurrentAccount;
 	private SavingAccount mySavingAccount;
 
 	public Customer() {
-		super();
+		super("Entrer nom", "Entrer prénom");
 		this.id = 0;
-		this.email = "Inconnu";
-		this.adress = "Inconnu";
-		this.city = "Inconnu";
-		this.zipCode = "Inconnu";
-		this.idConseiller = 0;
+		this.email = "Entrer email";
+		this.adress = "Entrer adresse";
+		this.city = "Entrer ville";
+		this.zipCode = "Entrer code postal";
+		this.idEmploye = 0;
 	}
 
 	public Customer(String name, String firstName) {
@@ -28,7 +28,7 @@ public class Customer extends People {
 		this.adress = "Inconnu";
 		this.city = "Inconnu";
 		this.zipCode = "Inconnu";
-		this.idConseiller = 0;
+		this.idEmploye = 0;
 	}
 
 	public Integer getId() {
@@ -71,12 +71,12 @@ public class Customer extends People {
 		this.city = city;
 	}
 
-	public Integer getIdConseiller() {
-		return idConseiller;
+	public Integer getIdEmploye() {
+		return idEmploye;
 	}
 
-	public void setIdConseiller(Integer idConseiller) {
-		this.idConseiller = idConseiller;
+	public void setIdEmploye(Integer idEmploye) {
+		this.idEmploye = idEmploye;
 	}
 
 	public CurrentAccount getMyCurrentAccount() {
@@ -97,7 +97,7 @@ public class Customer extends People {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", email=" + email + ", idConseiller=" + idConseiller + ", myCurrentAccount="
+		return "Customer [id=" + id + ", email=" + email + ", idConseiller=" + idEmploye + ", myCurrentAccount="
 				+ myCurrentAccount + ", mySavingAccount=" + mySavingAccount + "]";
 	}
 
