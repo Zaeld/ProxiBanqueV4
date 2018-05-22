@@ -16,12 +16,14 @@
 			<ui:define name="content">
 				<div class="container">
 
-					<h:form >
-						<p:panelGrid class="placementListeCLient" style="font-size: 30px" >
+					<h:form>
+						<p:panelGrid class="placementListeCLient" style="font-size: 30px">
 
 							<p:row>
-								<p:column colspan="4"><p style="font-size: 40px" >Veuillez entrer les
-							informations du nouveau client</p></p:column>
+								<p:column colspan="4">
+									<p style="font-size: 40px">Veuillez entrer les
+										informations du nouveau client</p>
+								</p:column>
 							</p:row>
 
 							<p:row>
@@ -74,18 +76,14 @@
 
 								<p:column>email : </p:column>
 								<p:column>
-									<p:inputText value="#{customerbean.customer.email}" id="email" required="true" />
+									<p:inputText value="#{customerbean.customer.email}" id="email"
+										required="true" />
 								</p:column>
 							</p:row>
 
 							<f:facet name="footer">
 								<p:row>
 									<p:column colspan="4" style="text-align: center">
-
-
-
-
-
 										<p:commandButton value="Confirmer">
 											<p:confirm header="Confirmation"
 												message="Valider la création du nouveau client ?"
@@ -95,13 +93,16 @@
 										<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
 										<p:confirmDialog global="true" showEffect="fade"
 											hideEffect="fade">
-											<p:commandButton value="Oui" type="button"
+											<p:commandButton value="Oui"
 												styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
 												action="#{customerbean.createCustomer(employebean.employe.id)}" />
 											<p:commandButton value="Non" type="button"
 												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
 										</p:confirmDialog>
 
+										<p:commandButton value="Oui" styleClass="ui-confirmdialog-yes"
+											icon="ui-icon-check"
+											action="#{customerbean.createCustomer(employebean.employe.id)}" />
 										<p:button outcome="customerList" value="Annuler" />
 
 									</p:column>
@@ -109,10 +110,6 @@
 							</f:facet>
 						</p:panelGrid>
 					</h:form>
-
-
-
-
 				</div>
 			</ui:define>
 		</ui:composition>
