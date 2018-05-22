@@ -24,7 +24,7 @@
 								<p:spacer />
 								<p:outputLabel for="login" value="Login : " />
 								<p:inputText id="login" value="#{employebean.employe.login}"
-									required="true" label="Login">
+									required="true" label="login">
 									<f:validateLength minimum="2" />
 									<p:ajax update="forLogin" event="keyup" />
 								</p:inputText>
@@ -33,7 +33,7 @@
 								<p:spacer />
 								<p:spacer />
 								<p:spacer />
-								<p:outputLabel for="password" value="password : " />
+								<p:outputLabel for="password" value="Password : " />
 								<p:password id="password"
 									value="#{employebean.employe.password}" label="password"
 									required="true">
