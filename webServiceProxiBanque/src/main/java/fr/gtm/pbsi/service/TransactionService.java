@@ -32,7 +32,7 @@ public class TransactionService {
 	@Autowired
 	private ITransactionDao daoTransaction;
 
-	private static final Logger LOGGER = LoggerFactory.getLogger("transactions");
+	private static final Logger LOGGER = LoggerFactory.getLogger(TransactionService.class);
 
 	/**
 	 * Methode post permettant l'insertion en BDD d'une transaction.
