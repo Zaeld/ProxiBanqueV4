@@ -53,6 +53,12 @@ public class Employe extends People{
 		public void setListCustomer(List<Customer> listCustomer) {
 			this.listCustomer = listCustomer;
 		}
-		
+
+		@Override
+		public String toString() {
+			return "Employe [id=" + id + ", login=" + login + ", password=" + password + ", typeFunction="
+					+ typeFunction + ", getName()=" + getName() + ", getFirstName()=" + getFirstName() + ", getClass()="
+					+ getClass() + "]";
+		}	
 		
 }
