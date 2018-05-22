@@ -25,37 +25,28 @@ public class Employe extends People {
 	private Integer numberCustomer;
 	@Transient
 	private Collection<Customer> listCustomer;
-	
-	private Integer numberCustommers;
 
 	// ================ CONSTRUCTORS =====================
 	public Employe() {
 		super();
 	}
 
-	public Employe(String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
-		super();
+	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
+		super(name, firstName);
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;
+		this.numberCustomer = numberCustomer;
 		this.listCustomer = listCustomer;
 	}
 
-	public Employe(Integer id, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
-		super();
+	public Employe(Integer id, String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
+		super(name, firstName);
 		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;
-		this.listCustomer = listCustomer;
-	}
-
-	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomer, Collection<Customer> listCustomer) {
-		this.setName(name);
-		this.setFirstName(firstName);
-		this.login = login;
-		this.password = password;
-		this.typeFunction = typeFunction;
+		this.numberCustomer = numberCustomer;
 		this.listCustomer = listCustomer;
 	}
 
@@ -98,14 +89,6 @@ public class Employe extends People {
 
 	public void setListCustomer(Collection<Customer> listCustomer) {
 		this.listCustomer = listCustomer;
-	}
-	
-	public Integer getNumberCustommers() {
-		return numberCustommers;
-	}
-
-	public void setNumberCustommers(Integer numberCustommers) {
-		this.numberCustommers = numberCustommers;
 	}
 
 	public Integer getNumberCustomer() {

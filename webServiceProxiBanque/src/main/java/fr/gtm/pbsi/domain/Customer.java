@@ -36,9 +36,9 @@ public class Customer extends People {
 		super();
 	}
 
-	public Customer(Integer id, String email, String adress, String zipCode, String city, Integer idEmploye, Employe employe, Integer idca, CurrentAccount currentAccount, Integer idsa,
-			SavingAccount savingAccount) {
-		super();
+	public Customer(Integer id, String name, String firstName, String email, String adress, String zipCode, String city, Integer idEmploye, Employe employe, Integer idca,
+			CurrentAccount currentAccount, Integer idsa, SavingAccount savingAccount) {
+		super(name, firstName);
 		this.id = id;
 		this.email = email;
 		this.adress = adress;
@@ -105,7 +105,6 @@ public class Customer extends People {
 		this.idEmploye = idEmploye;
 	}
 
-
 	public Integer getIdca() {
 		return this.idca;
 	}
@@ -141,7 +140,8 @@ public class Customer extends People {
 	// toString
 	@Override
 	public String toString() {
-		return "Customer [id=" + this.id + ", email=" + this.email + ", adress=" + this.adress + ", zipCode=" + this.zipCode + ", city=" + this.city + ", idEmploye=" + ", idca=" + this.idca + ", myCurrentAccount=" + this.currentAccount + ", idsa=" + this.idsa + ", mySavingAccount=" + this.savingAccount + "]";
+		return "Customer [id=" + this.id + ", email=" + this.email + ", adress=" + this.adress + ", zipCode=" + this.zipCode + ", city=" + this.city + ", idEmploye=" + ", idca=" + this.idca
+				+ ", myCurrentAccount=" + this.currentAccount + ", idsa=" + this.idsa + ", mySavingAccount=" + this.savingAccount + "]";
 	}
 
 }
