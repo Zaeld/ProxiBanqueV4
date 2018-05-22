@@ -155,6 +155,8 @@ public class CustomerBean {
 		String forward = null;
 		this.transaction = serviceAccount.createTransaction(amountTransaction, idDebitAccount, idCreditAccount);
 		this.transaction = serviceAccount.transfert(this.transaction);
+		// On met à jour les informations du client après la transaction
+		this.customer=serviceCustomer.updateCustomer(this.customer);
 		// Si l'opération bancaire a bien été réalisée, le service retourne un objet transaction non null
 		if (this.transaction == null) {
 			forward = "fail";
