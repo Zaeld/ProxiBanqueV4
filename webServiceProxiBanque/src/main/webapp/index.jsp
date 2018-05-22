@@ -8,6 +8,6 @@
 <title>Accueil</title>
 </head>
 <body>
-	<c:redirect url="welcome.jsp"></c:redirect>
+	<c:redirect url="welcome.xhtml"></c:redirect>
 </body>
 </html>

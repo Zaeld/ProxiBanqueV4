@@ -16,8 +16,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.gtm.pbsi.dao.IAccountDao;
 import fr.gtm.pbsi.dao.ICustomerDao;
+import fr.gtm.pbsi.domain.Account;
+import fr.gtm.pbsi.domain.CurrentAccount;
 import fr.gtm.pbsi.domain.Customer;
+import fr.gtm.pbsi.domain.SavingAccount;
 
 /**
  * Classe WebService/Service de Customer contenant les methodes CRUDs.
@@ -32,6 +36,9 @@ public class CustomerService {
 	@Autowired
 	private ICustomerDao daoCustomer;
 
+	@Autowired
+	private IAccountDao daoAccount;
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
 
 	/**
@@ -41,8 +48,19 @@ public class CustomerService {
 	 * @return le client cree
 	 */
 	@PostMapping({ "", "/" })
-	// TODO creation des comptes avant la creation du client
 	Customer create(@RequestBody Customer customer) {
+		// TODO changer pour que ce ne soit pas en dur
+		final String numberAccount1 = "c023654";
+		final String numberAccount2 = "s023654";
+		final String dateCreation = "25/04/1997";
+		final Float zero = (float) 0;
+		final Float rate = (float) 3;
+		final CurrentAccount currentAccount = new CurrentAccount(numberAccount1, false, dateCreation, zero, zero);
+		final SavingAccount savingAccount = new SavingAccount(numberAccount2, false, dateCreation, zero, rate);
+		final CurrentAccount ca = this.daoAccount.save(currentAccount);
+		final SavingAccount sa = this.daoAccount.save(savingAccount);
+		customer.setIdCurrentAccount(ca.getId());
+		customer.setIdSavingAccount(sa.getId());
 		final Customer retour = this.daoCustomer.save(customer);
 		CustomerService.LOGGER.info("Création de " + retour + " en BDD.");
 		return retour;
@@ -54,14 +72,15 @@ public class CustomerService {
 	 * @param customerId
 	 * @return 1 pour signifier que le client est bien supprimer en BDD.
 	 */
-	// TODO Suppression des comptes avant la suppression du client ou deja pris en
-	// compte par la cascade ?
 	@DeleteMapping("/{customerId}")
 	Integer delete(@PathVariable Integer customerId) {
 		if (this.daoCustomer.existsById(customerId)) {
 			final Optional<Customer> retour = this.daoCustomer.findById(customerId);
-			CustomerService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
+			final Customer response = retour.get();
+			this.daoAccount.deleteById(response.getIdCurrentAccount());
+			this.daoAccount.deleteById(response.getIdSavingAccount());
 			this.daoCustomer.deleteById(customerId);
+			CustomerService.LOGGER.info("Suppression de " + response + " de la BDD.");
 			return 1;
 		} else {
 			CustomerService.LOGGER.error("Tentative de suppression d'un customer échouée car l'ID donné n'est pas trouvable dans la BDD.");
@@ -93,8 +112,15 @@ public class CustomerService {
 	Customer read(@PathVariable Integer customerId) {
 		final Optional<Customer> retour = this.daoCustomer.findById(customerId);
 		if (retour.isPresent()) {
-			CustomerService.LOGGER.info("Récupération de " + retour + ".");
-			return retour.get();
+			final Customer response = retour.get();
+			final Optional<Account> currentAccount = this.daoAccount.findById(response.getIdCurrentAccount());
+			final Optional<Account> savingAccount = this.daoAccount.findById(response.getIdSavingAccount());
+			final CurrentAccount ca = (CurrentAccount) currentAccount.get();
+			final SavingAccount sa = (SavingAccount) savingAccount.get();
+			response.setCurrentAccount(ca);
+			response.setSavingAccount(sa);
+			CustomerService.LOGGER.info("Récupération de " + response + ".");
+			return response;
 		} else {
 			CustomerService.LOGGER.error("Tentative de récupération d'un customer échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final Customer response = new Customer();

@@ -7,30 +7,37 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("currentAccount")
 public class CurrentAccount extends Account {
-	
+
 	@Column
 	private Float overdraft;
-	
+
 	// CONSTRUCTOR
 	public CurrentAccount() {
 		super();
 	}
+
+	public CurrentAccount(String numberAccount, Boolean isActive, String dateCreation, Float balance, Float overdraft) {
+		super(numberAccount, isActive, dateCreation, balance);
+		this.overdraft = overdraft;
+	}
+
 	public CurrentAccount(Float overdraft) {
 		super();
 		this.overdraft = overdraft;
 	}
-	
+
 	// GETTERS AND SETTERS
 	public Float getOverdraft() {
-		return overdraft;
+		return this.overdraft;
 	}
+
 	public void setOverdraft(Float overdraft) {
 		this.overdraft = overdraft;
 	}
-	
+
 	// toString
 	@Override
 	public String toString() {
-		return "CurrentAccount [overdraft=" + overdraft + "]";
+		return "CurrentAccount [overdraft=" + this.overdraft + "]";
 	}
 }

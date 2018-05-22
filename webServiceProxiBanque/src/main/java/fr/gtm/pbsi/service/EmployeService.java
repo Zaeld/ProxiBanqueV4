@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.gtm.pbsi.dao.ICustomerDao;
 import fr.gtm.pbsi.dao.IEmployeDao;
+import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.domain.Employe;
 
 /**
@@ -32,6 +34,9 @@ public class EmployeService {
 
 	@Autowired
 	private IEmployeDao daoEmploye;
+
+	@Autowired
+	private ICustomerDao daoCustomer;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeService.class);
 
@@ -134,8 +139,11 @@ public class EmployeService {
 	Employe read(@PathVariable Integer employeId) {
 		final Optional<Employe> retour = this.daoEmploye.findById(employeId);
 		if (retour.isPresent()) {
-			EmployeService.LOGGER.info("Récupération de " + retour + ".");
-			return retour.get();
+			final Employe response = retour.get();
+			final List<Customer> listCustomer = this.daoCustomer.findAllByIdEmploye(response.getId());
+			response.setListCustomer(listCustomer);
+			EmployeService.LOGGER.info("Récupération de " + response + ".");
+			return response;
 		} else {
 			EmployeService.LOGGER.error("Tentative de récupération d'un employe échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final Employe response = new Employe();

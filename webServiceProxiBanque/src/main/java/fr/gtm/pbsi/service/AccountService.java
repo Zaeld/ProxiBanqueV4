@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.gtm.pbsi.dao.IAccountDao;
-import fr.gtm.pbsi.dao.ITransactionDao;
 import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.CurrentAccount;
-import fr.gtm.pbsi.domain.Transaction;
 
 /**
  * Classe WebService/Service de Account contenant les methodes CRUDs.
@@ -34,9 +32,6 @@ public class AccountService {
 
 	@Autowired
 	private IAccountDao daoAccount;
-	
-	@Autowired
-	private ITransactionDao daoTransaction;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(AccountService.class);
 
@@ -127,62 +122,5 @@ public class AccountService {
 			response.setId(0);
 			return response;
 		}
-		
 	}
-	public Account debited(Account account, Float amount) {
-		account.setBalance(account.getBalance() - amount);
-		return account = daoAccount.save(account);
-		
-		
-	
-}
-	public Account credited(Account account, Float amount) {
-		account.setBalance(account.getBalance() + amount);
-		return account = daoAccount.save(account);
-		
-	
-}
-	public void transfert (Account debitedAccount, Account creditedAccount, Float amount) {
-		 this.debited(debitedAccount,amount);
-		
-		 this.credited(creditedAccount, amount);
-		
-		
-		
-		
-		
-	}
-	@PostMapping("/transaction")
-	public Transaction transactionOperation (@RequestBody Transaction transaction) {
-
-		Transaction retour = new Transaction();
-		
-	 Integer typeTransaction=transaction.getTypeTransaction();
-	switch(typeTransaction)
-	{
-	  case 1:
-		 
-		  this.debited(transaction.getDebitAccount(), transaction.getValue());
-		  retour=daoTransaction.save(transaction);
-		  
-	
-		break;
-	  case 2:
-		  this.credited(transaction.getCreditAccount(),transaction.getValue());
-		  retour=daoTransaction.save(transaction);
-		
-		break;
-	  case 3:
-		  this.transfert(transaction.getDebitAccount(), transaction.getCreditAccount(), transaction.getValue());
-		  retour=daoTransaction.save(transaction);
-		  
-		break;
-	  default:
-		  
-		  
-		
-	}
-	return retour;
-	}
-	
 }

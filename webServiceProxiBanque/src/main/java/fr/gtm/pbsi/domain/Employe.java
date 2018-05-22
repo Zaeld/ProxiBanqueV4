@@ -2,16 +2,13 @@ package fr.gtm.pbsi.domain;
 
 import java.util.Collection;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "employe")
@@ -22,17 +19,10 @@ public class Employe extends People {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	@Column
 	private String login;
-
-	@Column
 	private String password;
-
-	@Column
 	private Integer typeFunction; // 0 => gerant; 1 => conseiller
-
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name = "employe_id", referencedColumnName = "idEmploye")
+	@Transient
 	private Collection<Customer> listCustomer;
 
 	// CONSTRUCTORS
@@ -51,6 +41,15 @@ public class Employe extends People {
 	public Employe(Integer id, String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
 		super();
 		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.typeFunction = typeFunction;
+		this.listCustomer = listCustomer;
+	}
+
+	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
+		this.setName(name);
+		this.setFirstName(firstName);
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;

@@ -1,5 +1,7 @@
 package fr.gtm.pbsi.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.gtm.pbsi.domain.Customer;
@@ -11,5 +13,8 @@ import fr.gtm.pbsi.domain.Customer;
  *         DAO evolue qui manipule une entite JPA/Hibernate.
  */
 public interface ICustomerDao extends JpaRepository<Customer, Integer> {
+
+	// Methode permettant de recuperer le customer dont l'idEmploye est donne
+	List<Customer> findAllByIdEmploye(Integer idEmploye);
 
 }
