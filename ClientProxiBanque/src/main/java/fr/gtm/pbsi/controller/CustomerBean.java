@@ -68,7 +68,7 @@ public class CustomerBean {
 	// ===================== Methode ======================
 
 
-	public String createCustomer(Integer idEmploye) {
+	public String createCustomer(int idEmploye) {
 		this.customer.setIdEmploye(idEmploye);
 		String forward = null;
 		this.customer = serviceCustomer.createCustomer(this.customer);
