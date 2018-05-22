@@ -50,8 +50,11 @@ public class EmployeBean {
 
 	public String loginVerification() {
 		String forward = null;
+<<<<<<< HEAD
 		System.out.println("employe envoyé :" + employe);
 		
+=======
+>>>>>>> refs/heads/dfghh
 		this.employe = serviceEmploye.loginVerification(this.employe);
 		//=======================================================
 //		this.employe.setTypeFunction(1);

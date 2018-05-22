@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.3</version>
+			<version>6.2</version>
 		</dependency>
 		<!-- PrimeFaces 5 TEMPLATES -->
 		<dependency>
