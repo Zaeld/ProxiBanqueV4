@@ -8,6 +8,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 import fr.gtm.pbsi.domain.Account;
+import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.domain.Transaction;
 
 public class AccountService {
@@ -34,14 +35,15 @@ public class AccountService {
 		}
 		return accountList;
 	}
-	
+
 	public Account readAccount(Integer idAccount) {
 
 		String output = null;
 		Account account = null;
 		try {
 
-			WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/"+idAccount);
+			WebResource webResource = client
+					.resource("http://localhost:8080/webServiceProxiBanque/account/" + idAccount);
 
 			ClientResponse reponse = webResource.accept("application/json").get(ClientResponse.class);
 
@@ -55,16 +57,16 @@ public class AccountService {
 		}
 		return account;
 	}
-	
-public Transaction createTransaction(Float amountTransaction, Integer idDebitAccount, Integer idCreditAccount) {
 
-Account debitAccount = this.readAccount(idDebitAccount);
-Account creditAccount = this.readAccount(idCreditAccount);
-Transaction transaction = new Transaction(amountTransaction, debitAccount, creditAccount);
-	return transaction;
-	
-}
-	
+	public Transaction createTransaction(Float amountTransaction, Integer idDebitAccount, Integer idCreditAccount) {
+
+		Account debitAccount = this.readAccount(idDebitAccount);
+		Account creditAccount = this.readAccount(idCreditAccount);
+		Transaction transaction = new Transaction(amountTransaction, debitAccount, creditAccount);
+		return transaction;
+
+	}
+
 	public Transaction transfert(Transaction transaction) {
 		String input = null;
 		String output = null;
@@ -87,4 +89,5 @@ Transaction transaction = new Transaction(amountTransaction, debitAccount, credi
 		}
 		return transactionDone;
 	}
+
 }

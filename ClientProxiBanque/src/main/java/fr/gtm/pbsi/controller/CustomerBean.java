@@ -28,11 +28,11 @@ public class CustomerBean {
 	private Integer idDebitAccount;
 	private Integer idCreditAccount;
 	private List<Account> customerAccountList = new ArrayList<Account>();
-	private List<Account> accountList=null;
-	
-	
+	private List<Account> accountList = null;
+	private Float solde;
+
 	// ============= assesseurs ============
-	
+
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -103,14 +103,13 @@ public class CustomerBean {
 
 	public void setCreditAccounts(List<Account> creditAccount) {
 		this.creditAccount = creditAccount;
-	}	// ==================================================
+	} // ==================================================
 
 	// ===================== Methode ======================
 
-
 	public String createCustomer(int idEmploye) {
 		// Set de l'idée employée dans l'attribut client avec un parse
-		this.customer.setIdEmploye((Integer)idEmploye);
+		this.customer.setIdEmploye((Integer) idEmploye);
 		String forward = null;
 		this.customer = serviceCustomer.createCustomer(this.customer);
 		if (customer.getId() > 0) {
@@ -123,25 +122,34 @@ public class CustomerBean {
 	public String updateCustomer(Customer customer) {
 		String forward = null;
 		this.customer = serviceCustomer.updateCustomer(this.customer);
-		if (this.customer==null) {
+		if (this.customer == null) {
 			forward = "fail";
 
 		} else
 			forward = "success";
 		return forward;
 	}
-	
+
 	public String transfert() {
 		String forward = null;
 		this.transaction = serviceAccount.createTransaction(amountTransaction, idDebitAccount, idCreditAccount);
 		this.transaction = serviceAccount.transfert(this.transaction);
-		if (this.transaction==null) {
+		if (this.transaction == null) {
 			forward = "fail";
 
 		} else
 			forward = "success";
 		return forward;
 	}
+
+	public void CurrentAccountActivation() {
+		this.customer = this.serviceCustomer.CurrentAccountActivation(this.customer, this.solde);
+	}
+
+	public void SavingAccountActivation() {
+		this.customer = this.serviceCustomer.SavingAccountActivation(this.customer, this.solde);
+	}
+
 	public String goUpdateCustomer(Customer customer) {
 		System.out.println("-- goUpdateCustomer Méthode --");
 		this.customer = customer;
@@ -151,8 +159,8 @@ public class CustomerBean {
 	public String goTransfert(Customer customer) {
 		System.out.println("-- goTransfert Méthode --");
 		this.customer = customer;
-		this.customerAccountList=serviceCustomer.AccountList(customer);
-		this.accountList=serviceAccount.getAllAccount();
+		this.customerAccountList = serviceCustomer.AccountList(customer);
+		this.accountList = serviceAccount.getAllAccount();
 		return "transfert";
 	}
 

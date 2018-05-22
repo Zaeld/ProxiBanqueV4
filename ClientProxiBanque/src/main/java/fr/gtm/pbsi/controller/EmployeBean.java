@@ -20,10 +20,22 @@ public class EmployeBean {
 	private EmployeService serviceEmploye = new EmployeService();
 	private Float savingAccountLimit = 0.0f; 
 	private String message = null;
-	
+	private List<Employe> advisorList = new ArrayList<Employe>();
+	private List<Customer> customerListOfAdvisor = new ArrayList<Customer>();
+
 	//=====================Assesseurs ======================
+	
+	
 	public Employe getEmploye() {
 		return employe;
+	}
+
+	public List<Employe> getAdvisorList() {
+		return advisorList;
+	}
+
+	public void setAdvisorList(List<Employe> advisorList) {
+		this.advisorList = advisorList;
 	}
 
 	public void setEmploye(Employe employe) {
@@ -77,8 +89,10 @@ System.out.println("employe reçu :" + employe);
 			
 			// 0 => gerant; 1 => conseiller
 			if (employe.getTypeFunction() == 0) {
+				this.advisorList=serviceEmploye.getAllAdvisor();
 				forward = "employeList";
 			} else {
+				this.customerListOfAdvisor=serviceEmploye.getAllCustomerOfAdvisor(employe);
 				forward = "customerList";
 			}
 			return forward;
