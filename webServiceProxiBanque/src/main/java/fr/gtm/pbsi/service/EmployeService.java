@@ -125,8 +125,13 @@ public class EmployeService {
 	 */
 	@GetMapping({ "", "/" })
 	List<Employe> readAll() {
+		final List<Employe> retour = this.daoEmploye.findAll();
+		for (final Employe employe : retour) {
+			final List<Customer> customers = this.daoCustomer.findAllByIdEmploye(employe.getId());
+			employe.setNumberCustomer(customers.size());
+		}
 		EmployeService.LOGGER.info("Récupération de la liste des employes de ProxiBanque.");
-		return this.daoEmploye.findAll();
+		return retour;
 	}
 
 	/**
@@ -159,8 +164,13 @@ public class EmployeService {
 	 */
 	@GetMapping("/adviser")
 	List<Employe> readAdviser() {
+		final List<Employe> retour = this.daoEmploye.findAllByTypeFunction(1);
+		for (final Employe employe : retour) {
+			final List<Customer> customers = this.daoCustomer.findAllByIdEmploye(employe.getId());
+			employe.setNumberCustomer(customers.size());
+		}
 		EmployeService.LOGGER.info("Récupération de la liste des conseiller de ProxiBanque.");
-		return this.daoEmploye.findAllByTypeFunction(1);
+		return retour;
 	}
 
 	/**
