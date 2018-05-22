@@ -50,8 +50,8 @@ public class EmployeBean {
 
 	public String loginVerification() {
 		String forward = null;
-		//this.employe = serviceEmploye.loginVerification(this.employe);
-		//=======================================================
+//		this.employe = serviceEmploye.loginVerification(this.employe);
+//		=======================================================
 		this.employe.setTypeFunction(1);
 		this.employe.setId(1);
 		ArrayList<Customer> maList  = new ArrayList<Customer>() ;
@@ -69,7 +69,7 @@ public class EmployeBean {
 		this.employe.setListCustomer(maList);
 		System.out.println("cust 1 : " + cust1 );
 		System.out.println("cust 2 : " + cust2);
-		//=======================================================
+//		=======================================================
 
 		// On test si l'employe a été trouvé en base de donnée
 		if (employe.getId() > 0) {
