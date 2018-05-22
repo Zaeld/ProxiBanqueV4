@@ -3,21 +3,22 @@ package fr.gtm.pbsi.service;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-
 import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.Customer;
-import fr.gtm.pbsi.domain.Employe;
-import fr.gtm.pbsi.domain.Transaction;
+
 
 public class CustomerService {
 	private Client client = Client.create();
 	private ObjectMapper mapper = new ObjectMapper();
 
+	/** Méthode permettant d'insérer un objet client en base de donnée
+	 * @param customer : Objet à insérer en base de donnée
+	 * @return Customer : Objet inséré en base de donnée
+	 */
 	public Customer createCustomer(Customer customer) {
 		String input = null;
 		String output = null;
@@ -41,6 +42,10 @@ public class CustomerService {
 
 	}
 
+	/** Méthode permettant la modification d'un objet client en bdd
+	 * @param customer : Objet déjà présent en bdd et devant être modifié
+	 * @return Customer : Objet client après modification
+	 */
 	public Customer updateCustomer(Customer customer) {
 		String input = null;
 		String output = null;
@@ -59,7 +64,11 @@ public class CustomerService {
 		return newCustomer;
 	}
 
-	public List<Account> AccountList(Customer customer) {
+	/** Regroupement des comptes du client en une liste
+	 * @param customer : Client dont les comptes vont être ajoutés dans une liste
+	 * @return List : Liste de compte du client
+	 */
+	public List<Account> accountList(Customer customer) {
 		List<Account> accountList = new ArrayList<Account>();
 		accountList.add(customer.getMyCurrentAccount());
 		accountList.add(customer.getMySavingAccount());
@@ -67,14 +76,24 @@ public class CustomerService {
 
 	}
 
-	public Customer CurrentAccountActivation(Customer customer, Float solde) {
+	/** Méthode activant le compte courant du client et le mettant à jour
+	 * @param customer : client du compte à activer
+	 * @param solde : Montant de départ du compte
+	 * @return Customer : Client après opération pour mettre à jour le bean
+	 */
+	public Customer currentAccountActivation(Customer customer, Float solde) {
 		customer.getMyCurrentAccount().setIsActive(true);
 		customer.getMyCurrentAccount().setBalance(solde);
 		this.updateCustomer(customer);
 		return customer;
 	}
-
-	public Customer SavingAccountActivation(Customer customer, Float solde) {
+	
+	/** Méthode activant le compte épargne du client et le mettant à jour
+	 * @param customer : client du compte à activer
+	 * @param solde : Montant de départ du compte
+	 * @return Customer : Client après opération pour mettre à jour le bean
+	 */
+	public Customer savingAccountActivation(Customer customer, Float solde) {
 		customer.getMySavingAccount().setIsActive(true);
 		customer.getMySavingAccount().setBalance(solde);
 		this.updateCustomer(customer);

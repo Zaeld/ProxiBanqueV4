@@ -1,28 +1,12 @@
 package fr.gtm.pbsi.service;
 
-
-
-
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-
-import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.Customer;
-
-//import javax.ws.rs.client.Client;
-//import javax.ws.rs.client.ClientBuilder;
-//import javax.ws.rs.client.Entity;
-//import javax.ws.rs.client.Invocation;
-//import javax.ws.rs.client.WebTarget;
-//import javax.ws.rs.core.MediaType;
-//import javax.ws.rs.core.Response;
-
 import fr.gtm.pbsi.domain.Employe;
-
 import java.io.IOException;
 import java.util.List;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -30,6 +14,10 @@ public class EmployeService {
 private Client client = Client.create();
 private ObjectMapper mapper = new ObjectMapper();
 
+	/** Méthode permettant à un employé de s'identifier sur la page de connexion du site
+	 * @param employe : Objet comportant les identifiants de connexion à comparer avec la base de donnée pour retourner l'employé correspondant
+	 * @return Employe : Objet employé de la base de donnée correspondant aux identifiants
+	 */
 	public Employe loginVerification(Employe employe) {
 		
 		String input=null;
@@ -51,19 +39,12 @@ private ObjectMapper mapper = new ObjectMapper();
 			e.printStackTrace();
 		}
 		return newEmploye;
-//		String res = "{login:\"test\",paswword:\"123\"}";
-//		Client client = ClientBuilder.newBuilder().build();
-//		WebTarget webTarget = client.target("http://localhost:8080/webServiceProxiBanque/employe/authentification");
-//		
-//		Invocation.Builder invocationBuilder = webTarget.request(MediaType.APPLICATION_JSON);
-//		System.out.println(res);
-//		Response response = invocationBuilder.post(Entity.entity(res, MediaType.APPLICATION_JSON));
-//		System.out.println(res);
-//		Employe newEmploye = response.readEntity(Employe.class);
-//		System.out.println(newEmploye);
-//		return newEmploye;
 
 	}
+	/** Méthode permettant de mettre à jour un employé déjà existant en base de donnée
+	 * @param employe : Employé présent en base de donnée et devant être modifié
+	 * @return Employe : Employé après modification de ses propriétés
+	 */
 	public Employe updateEmploye(Employe employe) {
 		String input=null;
 		String output=null;
@@ -81,6 +62,10 @@ private ObjectMapper mapper = new ObjectMapper();
 			return newEmploye;
 		}
 	
+	/** Méthode permettant d'insérer un objet Employe en base de donnée
+	 * @param employe : Objet à insérer en base de donnée
+	 * @return Employe : Objet inséré en base de donnée
+	 */
 	public Employe createEmploye(Employe employe) {
 		String input=null;
 		String output=null;
@@ -98,12 +83,18 @@ private ObjectMapper mapper = new ObjectMapper();
 			return newEmploye;
 		}
 	
+	/** Méthode permettant de supprimer un employé de la base de donnée
+	 * @param employe : Employe à supprimer
+	 */
 	public void deleteEmploye(Employe employe) {
 		WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/employe/delete/"+employe.getId());
 		ClientResponse response = webResource.accept("application/json").delete(ClientResponse.class);
 	
 	}
 	
+	/** Méthode utilisée pour récupérer la liste de tous les employés de la banque
+	 * @return List : liste des employés de la banque
+	 */
 	public List<Employe> getAllAdvisor(){
 		String output = null;
 		List<Employe> advisorList = null;
@@ -123,6 +114,10 @@ private ObjectMapper mapper = new ObjectMapper();
 		}
 		return advisorList;
 	}
+	/** Méthode permettant de retourner tous les clients d'un conseiller
+	 * @param employe : Conseiller dont les clients doivent être retournés
+	 * @return List : Liste de clients du conseilelr
+	 */
 	public List<Customer> getAllCustomerOfAdvisor(Employe employe){
 		String output = null;
 		List<Customer> customerList = null;
