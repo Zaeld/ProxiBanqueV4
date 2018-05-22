@@ -38,6 +38,7 @@ public class TransactionService {
 	 * Methode post permettant l'insertion en BDD d'une transaction.
 	 * 
 	 * @param transaction
+	 *            . transaction a ajouter en BDD
 	 * @return la transaction creee
 	 */
 	@PostMapping({ "", "/" })
@@ -51,6 +52,7 @@ public class TransactionService {
 	 * Methode delete permettant la suppression d'une transaction en BDD via son ID.
 	 * 
 	 * @param transactionId
+	 *            : id de la transaction a supprimer
 	 * @return 1 pour signifier que la transaction est bien supprimer en BDD.
 	 */
 	@DeleteMapping("/{transactionId}")
@@ -83,6 +85,7 @@ public class TransactionService {
 	 * Methode get permettant de recuperer une transaction en BDD via son ID.
 	 * 
 	 * @param transactionId
+	 *            : id de la transaction demandee
 	 * @return la transaction demandee
 	 */
 	@GetMapping("/{transactionId}")
@@ -106,7 +109,9 @@ public class TransactionService {
 	 * transaction et renvoie la transaction modifiee.
 	 * 
 	 * @param transactionId
+	 *            : id de la transaction a modifier
 	 * @param transaction
+	 *            : nouvel etat de la transaction a modifier en BDD
 	 * @return la transaction modifiee
 	 */
 	@PutMapping("/{transactionId}")

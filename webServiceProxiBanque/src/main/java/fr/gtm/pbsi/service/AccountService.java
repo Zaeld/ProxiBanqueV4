@@ -45,6 +45,7 @@ public class AccountService {
 	 * Methode post permettant l'insertion en BDD d'un compte.
 	 * 
 	 * @param account
+	 *            : le compte a ajouter en BDD
 	 * @return le compte cree
 	 */
 	@PostMapping({ "", "/" })
@@ -58,14 +59,15 @@ public class AccountService {
 	 * Methode delete permettant la suppression d'un compte en BDD via son ID.
 	 * 
 	 * @param accountId
+	 *            : l'id du compte a supprimer
 	 * @return 1 pour signifier que la suppression s'est bien passee
 	 */
 	@DeleteMapping("/{accountId}")
 	Integer delete(@PathVariable Integer accountId) {
 		if (this.daoAccount.existsById(accountId)) {
 			final Optional<Account> retour = this.daoAccount.findById(accountId);
-			AccountService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
 			this.daoAccount.deleteById(accountId);
+			AccountService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
 			return 1;
 		} else {
 			AccountService.LOGGER.error("Tentative de suppression d'un account échouée car l'ID donné n'est pas trouvable dans la BDD.");
@@ -90,6 +92,7 @@ public class AccountService {
 	 * Methode get permettant de recuperer un compte en BDD via son ID.
 	 * 
 	 * @param accountId
+	 *            : id du compte demande
 	 * @return le compte demande
 	 */
 	@GetMapping("/{accountId}")
@@ -99,9 +102,9 @@ public class AccountService {
 			AccountService.LOGGER.info("Récupération de " + retour + ".");
 			return retour.get();
 		} else {
-			AccountService.LOGGER.error("Tentative de récupération d'un account échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final CurrentAccount response = new CurrentAccount();
 			response.setId(0);
+			AccountService.LOGGER.error("Tentative de récupération d'un account échouée car l'ID donné n'a aucune correspondance en BDD.");
 			return response;
 		}
 	}
@@ -113,7 +116,9 @@ public class AccountService {
 	 * compte modifie.
 	 * 
 	 * @param customerId
+	 *            : id du compte a modifier
 	 * @param customer
+	 *            : nouvel etat du compte a modifier en BDD
 	 * @return le client modifie
 	 */
 	@PutMapping("/{accountId}")
@@ -123,12 +128,11 @@ public class AccountService {
 			AccountService.LOGGER.info("Modification de " + account + " en " + retour + " dans la BDD.");
 			return retour;
 		} else {
-			AccountService.LOGGER.error("Tentative de modification de " + account + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			final CurrentAccount response = new CurrentAccount();
 			response.setId(0);
+			AccountService.LOGGER.error("Tentative de modification de " + account + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			return response;
 		}
-
 	}
 
 	public Account debited(Account account, Float amount) {
@@ -176,6 +180,9 @@ public class AccountService {
 					+ transaction.getValue() + " a été effectué. Le nouvel état de ces comptes est " + retour.getDebitAccount() + " et " + retour.getCreditAccount() + ".");
 			break;
 		default:
+			final Transaction vide = new Transaction();
+			vide.setId(0);
+			retour = vide;
 			AccountService.TRANSACTION.error("Une erreur est survenue lors de la réalisation d'une transaction car cette dernière n'est pas reconnue par le système.");
 		}
 		return retour;
