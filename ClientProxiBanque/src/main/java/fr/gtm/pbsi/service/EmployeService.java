@@ -169,4 +169,30 @@ public class EmployeService {
 		return customerList;
 	}
 
+	
+	/**
+	 * Méthode permettant de retourner tous les clients de la banque
+	 * 
+	 * @return List : Liste de clients de la banque
+	 */
+	public List<Customer> getAllCustomer() {
+		String output = null;
+		List<Customer> customerList = null;
+		try {
+
+			final WebResource webResource = this.client.resource("http://localhost:8080/webServiceProxiBanque/customer/");
+
+			final ClientResponse reponse = webResource.accept("application/json").get(ClientResponse.class);
+
+			output = reponse.getEntity(String.class);
+
+			customerList = this.mapper.readValue(output, List.class);
+
+		} catch (final IOException e) {
+			//
+			e.printStackTrace();
+		}
+		return customerList;
+	}
+	
 }

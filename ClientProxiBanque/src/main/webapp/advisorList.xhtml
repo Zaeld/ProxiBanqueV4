@@ -28,11 +28,12 @@
 									<p:outputLabel style="	font-size: 30px; line-height: 60px;"
 										value="Voici la liste des conseillés de la banque"></p:outputLabel>
 
-						<!-- 			<p:commandButton type="button" styleClass="bouttoncreate"
-										value="Créer un nouveau Conseiller" action="#"
-										icon="ui-icon-pencil" /> -->
+									<p:commandButton styleClass="bouttoncreate"
+										value="Créer un nouveau Conseiller" action="#{employebean.goAdvisorCreation()}"
+										icon="ui-icon-pencil" /> 
 
 								</f:facet>
+								
 								<p:column filterBy="#{item.name}">
 									<f:facet name="header">
 										<h:outputText value="Nom" />
@@ -46,13 +47,11 @@
 									</f:facet>
 									<h:outputText value="#{item.firstName}" />
 								</p:column>
-
-
+								
 								<p:column >
 									<f:facet name="header">
 										<h:outputText value="Nombre de clients gérés" />
 									</f:facet>
-									<h:outputText value="#{item.numberCustommers}" />
 								</p:column>
 							</p:dataTable>
 						</div>

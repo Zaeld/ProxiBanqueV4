@@ -15,7 +15,8 @@
 			<ui:define name="content">
 				<div class="container">
 
-					<div style="width:50%; heigth:400px; margin-left: 25%; padding-top: 2%;">
+					<div
+						style="width: 50%; heigth: 400px; margin-left: 25%; padding-top: 2%;">
 						<div id="dataNbTransaction" class="hidden"
 							value="120, 190, 200, 250, 200, 230, 270, 280, 290, 210, 211, 212"></div>
 						<div id="dataValues" class="hidden"
@@ -26,33 +27,53 @@
 					</div>
 
 					<div>
-						<p:dataTable value="#{employebean.employe.listCustomer}"
-							var="item" tableStyle="table-layout: auto;">
+						<p:dataTable Style="margin:35px"
+							value="#{employebean.customerListOfAdvisor}" var="item"
+							tableStyle="table-layout: auto;">
 							<f:facet name="header">
 								<p:outputLabel style="	font-size: 30px; line-height: 60px;"
 									value="Liste des clients à découvert et leur conseiller"></p:outputLabel>
 							</f:facet>
 
-							<p:column filterBy="#">
-								<f:facet name="header">
-									<h:outputText value="Client" />
-								</f:facet>
-								<h:outputText value="#" />
+							<p:column>
+								<p class="imgOverdraft">
+									<h:graphicImage value="resources/img/danger.png" alt=""
+										rendered="#{(item.savingAccount.balance lt employebean.savingAccountLimit) || (item.currentAccount.balance lt item.currentAccount.overdraft)}" />
+									<span>compte(s) à découvert</span>
+								</p>
 							</p:column>
+
+								<p:column filterBy="#{item.name}">
+									<f:facet name="header">
+										<h:outputText value="Nom" />
+									</f:facet>
+									<h:outputText value="#{item.name}" />
+								</p:column>
+
+								<p:column filterBy="#{item.firstName}">
+									<f:facet name="header">
+
+										<h:outputText value="Prénom" />
+									</f:facet>
+									<h:outputText value="#{item.firstName}" />
+								</p:column>
+
+								<p:column filterBy="#{item.email}">
+									<f:facet name="header">
+										<h:outputText value="email" />
+									</f:facet>
+									<h:outputText value="#{item.email}" />
+								</p:column>
 
 							<p:column filterBy="#">
 								<f:facet name="header">
 									<h:outputText value="Conseiller" />
 								</f:facet>
-								<h:outputText value="#" />
+								<h:outputText value="#{item.idEmploye}" />
 							</p:column>
 
 						</p:dataTable>
 					</div>
-
-
-
-
 
 					<h:outputScript library="javascript"
 						name="/lib/Chart.bundle.min.js" target="body" />
