@@ -7,6 +7,7 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import fr.gtm.pbsi.domain.Account;
+import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.domain.Transaction;
 
 public class AccountService {
@@ -130,5 +131,35 @@ public class AccountService {
 		}
 		return transactionDone;
 	}
+	/**
+	 * Méthode activant le compte courant du client et le mettant à jour
+	 * 
+	 * @param customer
+	 *            : client du compte à activer
+	 * @param solde
+	 *            : Montant de départ du compte
+	 * @return Customer : Client après opération pour mettre à jour le bean
+	 */
+	public Customer currentAccountActivation(Customer customer, Float solde) {
+		customer.getCurrentAccount().setIsActive(true);
+		customer.getCurrentAccount().setBalance(solde);
+		this.updateAccount(customer.getCurrentAccount());
+		return customer;
+	}
 
+	/**
+	 * Méthode activant le compte épargne du client et le mettant à jour
+	 * 
+	 * @param customer
+	 *            : client du compte à activer
+	 * @param solde
+	 *            : Montant de départ du compte
+	 * @return Customer : Client après opération pour mettre à jour le bean
+	 */
+	public Customer savingAccountActivation(Customer customer, Float solde) {
+		customer.getSavingAccount().setIsActive(true);
+		customer.getSavingAccount().setBalance(solde);
+		this.updateAccount(customer.getSavingAccount());
+		return customer;
+	}
 }

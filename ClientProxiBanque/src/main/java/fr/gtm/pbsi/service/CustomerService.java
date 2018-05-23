@@ -82,36 +82,4 @@ public class CustomerService {
 		return accountList;
 
 	}
-
-	/**
-	 * Méthode activant le compte courant du client et le mettant à jour
-	 * 
-	 * @param customer
-	 *            : client du compte à activer
-	 * @param solde
-	 *            : Montant de départ du compte
-	 * @return Customer : Client après opération pour mettre à jour le bean
-	 */
-	public Customer currentAccountActivation(Customer customer, Float solde) {
-		customer.getCurrentAccount().setIsActive(true);
-		customer.getCurrentAccount().setBalance(solde);
-		this.updateCustomer(customer);
-		return customer;
-	}
-
-	/**
-	 * Méthode activant le compte épargne du client et le mettant à jour
-	 * 
-	 * @param customer
-	 *            : client du compte à activer
-	 * @param solde
-	 *            : Montant de départ du compte
-	 * @return Customer : Client après opération pour mettre à jour le bean
-	 */
-	public Customer savingAccountActivation(Customer customer, Float solde) {
-		customer.getSavingAccount().setIsActive(true);
-		customer.getSavingAccount().setBalance(solde);
-		this.updateCustomer(customer);
-		return customer;
-	}
 }

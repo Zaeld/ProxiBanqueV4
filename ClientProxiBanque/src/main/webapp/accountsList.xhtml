@@ -94,8 +94,9 @@
 										rendered="#{(customerbean.customer.currentAccount.balance lt customerbean.customer.currentAccount.overdraft)}" />
 
 								</p:outputLabel>
-								<Br />
-								<Br />
+								Page account		#{customerbean.customer.currentAccount.isActive}
+								
+Page account not active ? #{not customerbean.customer.currentAccount.isActive}
 								<p:outputLabel
 									rendered="#{customerbean.customer.currentAccount.isActive}"> découvert autorisé : #{customerbean.customer.currentAccount.overdraft} €  </p:outputLabel>
 							</p:column>
@@ -108,6 +109,7 @@
 								styleClass="#{customerbean.customer.currentAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
 								<h:form
 									rendered="#{customerbean.customer.currentAccount.isActive}">
+							
 									<p:menuButton value="Transation bancaire"
 										class="bouttonTransaction2" icon=" ui-icon-transferthick-e-w">
 										<p:menuitem value="Créditer ce compte" action="#"
@@ -116,31 +118,22 @@
 											icon="ui-icon-arrowreturnthick-1-n" />
 										<p:separator />
 										<p:menuitem value="Virement"
-											action="#{customerbean.goTransfert()}"
+											action="#{customerbean.goTransfert(customerbean.customer)}"
 											icon="ui-icon-transfer-e-w" />
 									</p:menuButton>
 								</h:form>
 								<h:form
 									rendered="#{not customerbean.customer.currentAccount.isActive}">
+									<h:outputText value="solde initiale du compte : " />
 
-									<p:commandButton class="bouttonActiver" type="button"
-										onclick="PF('dlg2').show();" value="Ouvrir compte courant"
-										action="#" />
-
-									<p:dialog header="Entrer le solde initial du compte"
-										position="static" widgetVar="dlg2">
-
-										<h:outputText value="solde initiale du compte : " />
-
-										<p:inputNumber id="solde" value="#{customerbean.solde}"
+										<p:inputText id="solde" value="#{customerbean.solde}"
 											required="true" label="solde">
-											</p:inputNumber>
+											</p:inputText>
 											<span class="ui-inputgroup-addon">€</span>
 											<p:message for="solde" id="forSolde" display="icon" />
 
-											<p:commandButton value="valider"
+											<p:commandButton value="Ouvrir compte"
 												action="#{customerbean.currentAccountActivation()}" />
-									</p:dialog>
 								</h:form>
 							</p:column>
 							<!--  ============================================================ -->
@@ -214,7 +207,7 @@
 											icon="ui-icon-arrowreturnthick-1-n" />
 										<p:separator />
 										<p:menuitem value="Virement"
-											action="#{customerbean.goTransfert}"
+											action="#{customerbean.goTransfert(customerbean.customer)}"
 											icon="ui-icon-transfer-e-w" />
 									</p:menuButton>
 								</h:form>

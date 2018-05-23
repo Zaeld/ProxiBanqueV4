@@ -26,7 +26,7 @@ public class CustomerBean {
 	private Integer idCreditAccount;
 	private List<Account> customerAccountList = new ArrayList<Account>();
 	private List<Account> accountList = null;
-	private Float solde;
+	private Float solde = 0.0f;
 
 	// =====================Assesseurs ======================
 
@@ -128,6 +128,8 @@ public class CustomerBean {
 		this.customer = serviceCustomer.createCustomer(this.customer);
 		// Si le client a bien été créé, le client retourné par le service possède un id
 		// assigné par la base de donnée non null
+
+		this.message = " 'creation du client' ";
 		if (customer.getId() > 0) {
 			forward = "success";
 		} else
@@ -147,6 +149,7 @@ public class CustomerBean {
 		String forward = null;
 		this.customer = serviceCustomer.updateCustomer(this.customer);
 		// Si la modification a bien eu lieu, le service retourne bien un client
+		this.message = " 'mise à jour du client' ";
 		if (this.customer == null) {
 			forward = "fail";
 		} else
@@ -169,6 +172,7 @@ public class CustomerBean {
 		this.customer = serviceCustomer.updateCustomer(this.customer);
 		// Si l'opération bancaire a bien été réalisée, le service retourne un objet
 		// transaction non null
+		this.message = " virement compte à compte ";
 		if (this.transaction == null) {
 			forward = "fail";
 
@@ -182,7 +186,9 @@ public class CustomerBean {
 	 * la page
 	 */
 	public String currentAccountActivation() {
-		this.customer = this.serviceCustomer.currentAccountActivation(this.customer, this.solde);
+		System.out.println("currentAccountActivation méthode");
+		this.customer = this.serviceAccount.currentAccountActivation(this.customer, this.solde);
+		System.out.println(this.customer + "   " + this.customer.getCurrentAccount());
 		return "accountsList";
 	}
 
@@ -191,7 +197,8 @@ public class CustomerBean {
 	 * la page
 	 */
 	public String savingAccountActivation() {
-		this.customer = this.serviceCustomer.savingAccountActivation(this.customer, this.solde);
+		System.out.println("savingAccountActivation méthode");
+		this.customer = this.serviceAccount.savingAccountActivation(this.customer, this.solde);
 		return "accountsList";
 	}
 
