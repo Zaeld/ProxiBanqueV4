@@ -98,7 +98,7 @@ public class AccountService {
 	@GetMapping("/isActive")
 	List<Account> readAllActive() {
 		AccountService.LOGGER.info("Récupération de la liste de tous les accounts actifs de ProxiBanque.");
-		return this.daoAccount.findAllByIsActive(1);
+		return this.daoAccount.findAllByIsActive(true);
 	}
 
 	/**
@@ -147,7 +147,7 @@ public class AccountService {
 			return response;
 		}
 	}
-	
+
 	@PutMapping("updatecurrentaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody CurrentAccount ca) {
 		if (this.daoAccount.existsById(accountId)) {
@@ -161,7 +161,7 @@ public class AccountService {
 			return response;
 		}
 	}
-	
+
 	@PutMapping("updatesavingaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody SavingAccount sa) {
 		if (this.daoAccount.existsById(accountId)) {

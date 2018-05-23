@@ -16,6 +16,6 @@ import fr.gtm.pbsi.domain.Account;
 public interface IAccountDao extends JpaRepository<Account, Integer> {
 
 	// Methode pour recuperer tous les comptes actifs
-	List<Account> findAllByIsActive(Integer isActive);
+	List<Account> findAllByIsActive(Boolean isActive);
 
 }
