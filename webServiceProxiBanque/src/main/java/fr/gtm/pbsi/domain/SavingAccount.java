@@ -38,6 +38,7 @@ public class SavingAccount extends Account {
 	// toString
 	@Override
 	public String toString() {
-		return "SavingAccount [rate=" + this.rate + "]";
+		return "SavingAccount [id=" + this.id + ", numberCompte=" + this.numberAccount + ", isActive=" + this.isActive + ", dateCreation=" + this.dateCreation + ", balance=" + this.balance + ", rate="
+				+ this.rate + "]";
 	}
 }
