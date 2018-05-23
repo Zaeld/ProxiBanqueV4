@@ -1,5 +1,7 @@
 package fr.gtm.pbsi.dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import fr.gtm.pbsi.domain.Account;
@@ -12,5 +14,8 @@ import fr.gtm.pbsi.domain.Account;
  *
  */
 public interface IAccountDao extends JpaRepository<Account, Integer> {
+
+	// Methode pour recuperer tous les comptes actifs
+	List<Account> findAllByIsActive(Integer isActive);
 
 }

@@ -92,6 +92,7 @@ public class TransactionService {
 	Transaction read(@PathVariable Integer transactionId) {
 		final Optional<Transaction> retour = this.daoTransaction.findById(transactionId);
 		if (retour.isPresent()) {
+			System.out.println(retour.get());
 			TransactionService.LOGGER.info("Récupération de " + retour + ".");
 			return retour.get();
 		} else {

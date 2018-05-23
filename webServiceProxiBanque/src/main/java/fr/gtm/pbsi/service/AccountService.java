@@ -89,6 +89,18 @@ public class AccountService {
 	}
 
 	/**
+	 * Methode permettant de recuperer la liste de tous les comptes actifs presents
+	 * en BDD.
+	 * 
+	 * @return la liste des comptes actifs
+	 */
+	@GetMapping("/isActive")
+	List<Account> readAllActive() {
+		AccountService.LOGGER.info("Récupération de la liste de tous les accounts actifs de ProxiBanque.");
+		return this.daoAccount.findAllByIsActive(1);
+	}
+
+	/**
 	 * Methode get permettant de recuperer un compte en BDD via son ID.
 	 * 
 	 * @param accountId
@@ -135,13 +147,13 @@ public class AccountService {
 		}
 	}
 
-	
-
 	/**
-	 * Methode qui debite le montant renseigner sur le compte debiteur 
- 	 *renseigner
-	 * @param account Le compte dont le solde va etre mis a jour 
-	 * @param amount montant qui va etre soustrait a la solde du compte
+	 * Methode qui debite le montant renseigner sur le compte debiteur renseigner
+	 * 
+	 * @param account
+	 *            Le compte dont le solde va etre mis a jour
+	 * @param amount
+	 *            montant qui va etre soustrait a la solde du compte
 	 * @return le compte mis a jour avec sont nouveau solde
 	 */
 	public Account debited(Account account, Float amount) {
@@ -151,9 +163,12 @@ public class AccountService {
 	}
 
 	/**
-	 * Methode qui credite le montant sur le compte a crediter renseigne . 
-	 * @param account Le compte dont le solde va etre mis a jour
-	 * @param amount montant qui va etre ajoute a la solde du compte
+	 * Methode qui credite le montant sur le compte a crediter renseigne .
+	 * 
+	 * @param account
+	 *            Le compte dont le solde va etre mis a jour
+	 * @param amount
+	 *            montant qui va etre ajoute a la solde du compte
 	 * @return le compte mis a jour avec sont nouveau solde
 	 */
 	public Account credited(Account account, Float amount) {
@@ -167,9 +182,13 @@ public class AccountService {
 	 * le compte a crediter du montant donne par la requete puis debite le compte a
 	 * debiter de ce meme montant. Si un probleme survient, la methode retourne
 	 * false. Sinon le virement s'est bien effectue et elle retourne true.
-	 * @param debitedAccount appel de la méthode debited
-	 * @param creditedAccount appel de la méthode credited
-	 * @param amount montant echanger entre les deux comptre lors du virement
+	 * 
+	 * @param debitedAccount
+	 *            appel de la méthode debited
+	 * @param creditedAccount
+	 *            appel de la méthode credited
+	 * @param amount
+	 *            montant echanger entre les deux comptre lors du virement
 	 */
 	public void transfert(Account debitedAccount, Account creditedAccount, Float amount) {
 		this.debited(debitedAccount, amount);
@@ -177,11 +196,13 @@ public class AccountService {
 		this.credited(creditedAccount, amount);
 
 	}
-	
+
 	/**
-	 * Methode @Post permetant de realiser un debit credit ou virement 
-	 * et qui permet de mettre en place un enregistrement de l'operation banquaire
-	 * @param transaction enregistrement d'une operation banquaire
+	 * Methode @Post permetant de realiser un debit credit ou virement et qui permet
+	 * de mettre en place un enregistrement de l'operation banquaire
+	 * 
+	 * @param transaction
+	 *            enregistrement d'une operation banquaire
 	 * @return un transaction
 	 */
 	@PostMapping("/transaction")
