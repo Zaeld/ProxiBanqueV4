@@ -24,22 +24,25 @@
 								</p:row>
 							</f:facet>
 
-							<p:row> <!-- ============== oneMenu cellules ================ -->
+							<p:row>
+								<!-- ============== oneMenu cellules ================ -->
 								<p:column>
 									<p:outputLabel for="compteDebit" value="Compte débiteur :   " />
-									<p:selectOneMenu id="compteDebit" value="#{customerbean.idDebitAccount}" style="width:125px">
-									<f:selectItems value="#{customerbean.customerAccountList}"
-										var="account" itemValue="#{account.id}" />
+									<p:selectOneMenu id="compteDebit"
+										value="#{customerbean.idDebitAccount}" style="width:125px">
+										<f:selectItems value="#{customerbean.customerAccountList}"
+											var="account" itemValue="#{account.id}"
+											rendered="#{account.isActive}" />
 									</p:selectOneMenu>
-									
+
 								</p:column>
 								<p:column class="">
 									<p:outputLabel for="compteCredit" value="Compte créditeur :   " />
-									<p:selectOneMenu id="compteCredit" value="#{customerbean.idCreditAccount}"
-										style="width:125px">
+									<p:selectOneMenu id="compteCredit"
+										value="#{customerbean.idCreditAccount}" style="width:125px">
 
-									<f:selectItems value="#{customerbean.accountList}"
-										var="account" itemValue="#{account.id}" />
+										<f:selectItems value="#{customerbean.accountList}"
+											var="account" itemValue="#{account.id}" />
 									</p:selectOneMenu>
 
 								</p:column>
@@ -48,22 +51,23 @@
 							<p:row>
 								<p:column>
 									<!-- ================= Détail du comptye débiteur ================= -->
-									<p:outputLabel id="debitAccount"
-										rendered="#">Compte épargne</p:outputLabel>
-										
+									<p:outputLabel id="debitAccount" rendered="#">Compte épargne</p:outputLabel>
+Détails compte débiteur :
 								</p:column>
 								<p:column>
 									<!-- ================= Détails du compte créditeur  ================= -->
-							Détails compte débiteur :
+							Détails compte créditeur :
 							</p:column>
 							</p:row>
 
-							<p:row><!-- ============== Input number Montant ================ -->
+							<p:row>
+								<!-- ============== Input number Montant ================ -->
 								<p:column colspan="2">
 									<!-- input montant -->
 									<h:outputText value="solde initiale du compte : " />
-									<p:inputNumber id="solde" value="#{customerbean.amountTransaction}"
-										required="true" label="solde">
+									<p:inputNumber id="solde"
+										value="#{customerbean.amountTransaction}" required="true"
+										label="solde">
 									</p:inputNumber>
 									<span class="ui-inputgroup-addon">€</span>
 									<p:message for="solde" id="forSolde" display="icon" />
@@ -74,19 +78,16 @@
 								<p:column colspan="2">
 									<!-- Bouttons valider / annuler -->
 
-								<p:commandButton value="Oui" 
-											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-											action="${customerbean.transfert}" />
-											
-										<p:commandButton value="Non" type="button"
-											styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-									
+									<p:commandButton value="Confirmer"
+										styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
+										action="${customerbean.transfert}" />
+
 									<p:spacer width="1"></p:spacer>
 									<p:button outcome="accountsList" value="Annuler" />
 								</p:column>
 							</p:row>
 
-				
+
 
 						</p:panelGrid>
 

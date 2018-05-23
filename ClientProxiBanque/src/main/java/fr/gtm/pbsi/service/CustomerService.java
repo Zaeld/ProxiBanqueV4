@@ -30,7 +30,8 @@ public class CustomerService {
 		try {
 			input = this.mapper.writeValueAsString(customer);
 			System.out.println(input);
-			final WebResource webResource = this.client.resource("http://localhost:8080/webServiceProxiBanque/customer/");
+			final WebResource webResource = this.client
+					.resource("http://localhost:8080/webServiceProxiBanque/customer/");
 
 			final ClientResponse reponse = webResource.type("application/json").post(ClientResponse.class, input);
 
@@ -58,7 +59,8 @@ public class CustomerService {
 		Customer newCustomer = null;
 		try {
 			input = this.mapper.writeValueAsString(customer);
-			final WebResource webResource = this.client.resource("http://localhost:8080/webServiceProxiBanque/customer/" + customer.getId());
+			final WebResource webResource = this.client
+					.resource("http://localhost:8080/webServiceProxiBanque/customer/" + customer.getId());
 			final ClientResponse response = webResource.type("application/json").put(ClientResponse.class, input);
 			output = response.getEntity(String.class);
 			newCustomer = this.mapper.readValue(output, Customer.class);
@@ -77,8 +79,13 @@ public class CustomerService {
 	 */
 	public List<Account> accountList(Customer customer) {
 		final List<Account> accountList = new ArrayList<Account>();
-		accountList.add(customer.getCurrentAccount());
-		accountList.add(customer.getSavingAccount());
+		if (customer.getCurrentAccount().getIsActive()) {
+
+			accountList.add(customer.getCurrentAccount());
+		}
+		if (customer.getSavingAccount().getIsActive()) {
+			accountList.add(customer.getSavingAccount());
+		}
 		return accountList;
 
 	}
