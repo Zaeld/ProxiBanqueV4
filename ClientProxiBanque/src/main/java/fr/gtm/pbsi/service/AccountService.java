@@ -151,7 +151,7 @@ System.out.println("Création d'une transaction");
 //}
 //		Account debitAccount = this.readAccount(idDebitAccount);
 //		Account creditAccount = this.readAccount(idDebitAccount);
-		Transaction transaction = new Transaction(amountTransaction, idDebitAccount, idDebitAccount);
+		Transaction transaction = new Transaction(amountTransaction, idDebitAccount, idCreditAccount);
 		System.out.println("retour d'une transaction");
 
 		return transaction;
@@ -170,11 +170,12 @@ System.out.println("Création d'une transaction");
 			input = mapper.writeValueAsString(transaction);
 System.out.println("début webService avec"+input);
 			WebResource webResource = client
-					.resource("http://localhost:8080/webServiceProxiBanque/customer/transaction");
+					.resource("http://localhost:8080/webServiceProxiBanque/account/transaction");
 
 			ClientResponse reponse = webResource.type("application/json").post(ClientResponse.class, input);
 
 			output = reponse.getEntity(String.class);
+			System.out.println("fin webService avec"+output);
 
 			transactionDone = mapper.readValue(output, Transaction.class);
 
