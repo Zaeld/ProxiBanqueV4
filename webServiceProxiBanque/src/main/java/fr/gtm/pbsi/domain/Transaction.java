@@ -45,6 +45,15 @@ public class Transaction {
 		this.creditAccount = creditAccount;
 	}
 
+	public Transaction(Date date, Integer typeTransaction, Float value, Integer iddebitAccount, Integer idcreditAccount) {
+		super();
+		this.date = date;
+		this.typeTransaction = typeTransaction;
+		this.value = value;
+		this.iddebitAccount = iddebitAccount;
+		this.idcreditAccount = idcreditAccount;
+	}
+
 	public Transaction(Integer id, Date date, Integer typeTransaction, Float value, Integer iddebitAccount, Account debitAccount, Integer idcreditAccount, Account creditAccount) {
 		super();
 		this.id = id;

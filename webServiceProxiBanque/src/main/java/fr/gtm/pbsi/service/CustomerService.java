@@ -102,7 +102,7 @@ public class CustomerService {
 			// Suppresssion des comptes associes
 			this.daoAccount.deleteById(response.getIdca());
 			this.daoAccount.deleteById(response.getIdsa());
-			// µSuppression du client
+			// Suppression du client
 			this.daoCustomer.deleteById(customerId);
 			CustomerService.LOGGER.info("Suppression de " + response + " de la BDD.");
 			return 1;
