@@ -135,25 +135,55 @@ public class AccountService {
 		}
 	}
 
+	
+
+	/**
+	 * Methode qui debite le montant renseigner sur le compte debiteur 
+ 	 *renseigner
+	 * @param account Le compte dont le solde va etre mis a jour 
+	 * @param amount montant qui va etre soustrait a la solde du compte
+	 * @return le compte mis a jour avec sont nouveau solde
+	 */
 	public Account debited(Account account, Float amount) {
 		account.setBalance(account.getBalance() - amount);
 		return account = this.daoAccount.save(account);
 
 	}
 
+	/**
+	 * Methode qui credite le montant sur le compte a crediter renseigne . 
+	 * @param account Le compte dont le solde va etre mis a jour
+	 * @param amount montant qui va etre ajoute a la solde du compte
+	 * @return le compte mis a jour avec sont nouveau solde
+	 */
 	public Account credited(Account account, Float amount) {
 		account.setBalance(account.getBalance() + amount);
 		return account = this.daoAccount.save(account);
 
 	}
 
+	/**
+	 * Methode qui realise un virement de compte à compte. Pour cela, elle credite
+	 * le compte a crediter du montant donne par la requete puis debite le compte a
+	 * debiter de ce meme montant. Si un probleme survient, la methode retourne
+	 * false. Sinon le virement s'est bien effectue et elle retourne true.
+	 * @param debitedAccount appel de la méthode debited
+	 * @param creditedAccount appel de la méthode credited
+	 * @param amount montant echanger entre les deux comptre lors du virement
+	 */
 	public void transfert(Account debitedAccount, Account creditedAccount, Float amount) {
 		this.debited(debitedAccount, amount);
 
 		this.credited(creditedAccount, amount);
 
 	}
-
+	
+	/**
+	 * Methode @Post permetant de realiser un debit credit ou virement 
+	 * et qui permet de mettre en place un enregistrement de l'operation banquaire
+	 * @param transaction enregistrement d'une operation banquaire
+	 * @return un transaction
+	 */
 	@PostMapping("/transaction")
 	public Transaction transactionOperation(@RequestBody Transaction transaction) {
 

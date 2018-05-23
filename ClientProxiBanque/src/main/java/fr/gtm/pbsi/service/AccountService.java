@@ -60,6 +60,35 @@ public class AccountService {
 		}
 		return account;
 	}
+	
+	/**
+	 * @param account
+	 * @return
+	 */
+	public Account updateAccount(Account account) {
+		String input=null;
+		String output=null;
+		Account newAccount=null;
+			try {
+				input = mapper.writeValueAsString(account);
+				WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/"+account.getId());
+				ClientResponse response = webResource.type("application/json").put(ClientResponse.class, input);
+				output = response.getEntity(String.class);
+				newAccount = mapper.readValue(output, Account.class);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return newAccount;
+		}
+	
+	/**
+	 * @param account
+	 */
+	public void deleteAccount(Account account) {
+		WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/delete/"+account.getId());
+		ClientResponse response = webResource.accept("application/json").delete(ClientResponse.class);
+	}
 
 	/** Création d'un objet transaction
 	 * @param amountTransaction : montant de la transaction
