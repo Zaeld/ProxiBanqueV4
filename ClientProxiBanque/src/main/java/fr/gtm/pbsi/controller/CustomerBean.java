@@ -20,13 +20,13 @@ public class CustomerBean {
 	private EmployeService serviceEmploye = new EmployeService();
 	private AccountService serviceAccount = new AccountService();
 	private String message = "test message";
-	private Float amountTransaction = 0.0f;
+	private Float amountTransaction;
 	private Transaction transaction = new Transaction();
 	private Integer idDebitAccount;
 	private Integer idCreditAccount;
 	private List<Account> customerAccountList = new ArrayList<Account>();
 	private List<Account> accountList = null;
-	private Float solde = 0.0f;
+	private Float solde;
 
 	// =====================Assesseurs ======================
 
