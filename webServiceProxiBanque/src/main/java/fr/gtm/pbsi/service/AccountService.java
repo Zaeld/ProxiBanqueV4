@@ -209,9 +209,9 @@ public class AccountService {
 	 *            montant qui va etre soustrait a la solde du compte
 	 * @return le compte mis a jour avec sont nouveau solde
 	 */
-	public Account debited(Account account, Float amount) {
-		account.setBalance(account.getBalance() - amount);
-		return account = this.daoAccount.save(account);
+	public Account debited(Account debit, Float amount) {
+		debit.setBalance(debit.getBalance() - amount);
+		return debit = this.daoAccount.save(debit);
 
 	}
 
@@ -224,9 +224,9 @@ public class AccountService {
 	 *            montant qui va etre ajoute a la solde du compte
 	 * @return le compte mis a jour avec sont nouveau solde
 	 */
-	public Account credited(Account account, Float amount) {
-		account.setBalance(account.getBalance() + amount);
-		return account = this.daoAccount.save(account);
+	public Account credited(Account credit, Float amount) {
+		credit.setBalance(credit.getBalance() + amount);
+		return credit = this.daoAccount.save(credit);
 
 	}
 
@@ -245,7 +245,6 @@ public class AccountService {
 	 */
 	public void transfert(Account debitedAccount, Account creditedAccount, Float amount) {
 		this.debited(debitedAccount, amount);
-
 		this.credited(creditedAccount, amount);
 
 	}
@@ -281,7 +280,7 @@ public class AccountService {
 			AccountService.TRANSACTION.info("Le compte " + da + " a été débité de " + transaction.getValue() + ".");
 			break;
 		case 2:
-			idcredit = transaction.getIddebitAccount();
+			idcredit = transaction.getIdcreditAccount();
 			creditAccount = this.daoAccount.findById(idcredit);
 			ca = creditAccount.get();
 			this.credited(ca, transaction.getValue());
@@ -289,12 +288,16 @@ public class AccountService {
 			AccountService.TRANSACTION.info("Le compte " + ca + " a été crédité de " + transaction.getValue() + ".");
 			break;
 		case 3:
+			// recuperation des id des comptes
 			iddebit = transaction.getIddebitAccount();
+			idcredit = transaction.getIdcreditAccount();
+			// Recuperation du compte debit
 			debitAccount = this.daoAccount.findById(iddebit);
 			da = debitAccount.get();
-			idcredit = transaction.getIddebitAccount();
+			// recuperation du compte credit
 			creditAccount = this.daoAccount.findById(idcredit);
 			ca = creditAccount.get();
+			// realisation du virement cac
 			this.transfert(da, ca, transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
 			AccountService.TRANSACTION.info("Un virement compte à compte du compte " + da + " au compte " + ca + " d'un montant de " + transaction.getValue() + " a été effectué.");

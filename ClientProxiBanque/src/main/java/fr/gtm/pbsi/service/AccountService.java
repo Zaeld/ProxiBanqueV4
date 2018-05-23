@@ -64,7 +64,9 @@ public class AccountService {
 	}
 	
 	/**
-	 * @param account
+	 * Méthode permettant de mettre à jour un compte déjà existant en base de
+	 * donnée
+	 * @param account  compte présent en base de donnée et devant être modifié
 	 * @return
 	 */
 	public Account updateAccount(Account account) {
@@ -84,8 +86,10 @@ public class AccountService {
 			return newAccount;
 		}
 	/**
-	 * @param account
-	 * @return
+	 * Méthode permettant de mettre à jour un compte courant déjà existant en base de
+	 * donnée
+	 * @param account  compte courant présent en base de donnée et devant être modifié
+	 * @return compte courant après modification de ses propriétés
 	 */
 	public CurrentAccount updateCurrentAccount(CurrentAccount account) {
 		String input=null;
@@ -104,8 +108,10 @@ public class AccountService {
 			return newAccount;
 		}
 	/**
-	 * @param account
-	 * @return
+	 * Méthode permettant de mettre à jour un compte epargne déjà existant en base de
+	 * donnée
+	 * @param account compte epargne présent en base de donnée et devant être modifié
+	 * @return compte epargne après modification de ses propriétés
 	 */
 	public SavingAccount updateSavingAccount(SavingAccount account) {
 		String input=null;
@@ -125,7 +131,8 @@ public class AccountService {
 		}
 	
 	/**
-	 * @param account
+	 Méthode permettant de supprimer un compte de la base de donnée via sont id
+	 * @param account le compte bancaire qui sera supprimer
 	 */
 	public void deleteAccount(Account account) {
 		WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/delete/"+account.getId());
