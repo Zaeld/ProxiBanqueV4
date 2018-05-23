@@ -128,8 +128,8 @@
 										onclick="PF('dlg1').show();" value="Ouvrir compte épargne"
 										action="#" />
 
-									<p:dialog header="Entrer le solde initial du compte"
-										modal="true" position="top" widgetVar="dlg1">
+									<p:dialog styleClass="positionPopup" header="Entrer le solde initial du compte"
+										modal="true" position="center center" widgetVar="dlg1">
 
 										<h:outputText value="solde initiale du compte : " />
 										<p:inputNumber id="solde" value="#{customerbean.solde}"
@@ -225,8 +225,8 @@
 										onclick="PF('dlg2').show();" value="Ouvrir compte épargne"
 										action="#" />
 
-									<p:dialog header="Entrer le solde initial du compte"
-										modal="true" position="top" widgetVar="dlg2">
+									<p:dialog styleClass="positionPopup"  header="Entrer le solde initial du compte" 
+										modal="true" position="center center" widgetVar="dlg2">
 
 										<h:outputText value="solde initiale du compte : " />
 										<p:inputNumber id="solde" value="#{customerbean.solde}"
