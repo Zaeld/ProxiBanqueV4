@@ -38,6 +38,7 @@ public class CurrentAccount extends Account {
 	// toString
 	@Override
 	public String toString() {
-		return "CurrentAccount [overdraft=" + this.overdraft + "]";
+		return "CurrentAccount [id=" + this.id + ", numberCompte=" + this.numberAccount + ", isActive=" + this.isActive + ", dateCreation=" + this.dateCreation + ", balance=" + this.balance
+				+ ", overdraft=" + this.overdraft + "]";
 	}
 }
