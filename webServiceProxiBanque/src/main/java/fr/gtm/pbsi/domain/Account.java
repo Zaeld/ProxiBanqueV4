@@ -23,8 +23,8 @@ public abstract class Account {
 	protected Integer id;
 
 	protected String numberAccount;
-	protected Boolean isActive;
 	protected String dateCreation;
+	protected Boolean isActive;
 	protected Float balance;
 
 	// CONSTRUCTORS
