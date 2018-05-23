@@ -35,7 +35,7 @@ public class IndexController {
 			this.createBoss();
 			this.createConseiller();
 			this.createCustomersToEmployes();
-			this.updateAccountToActive();
+			// this.updateAccountToActive();
 			this.createTransaction();
 		}
 		return mav;
@@ -120,43 +120,27 @@ public class IndexController {
 	private void createTransaction() {
 		@SuppressWarnings("deprecation")
 		final Date d1 = new Date(14, 02, 24);
-		final Integer tT1 = 1;
-		final Float v1 = (float) 500;
-		final Integer id1 = 1;
-		final Integer ic1 = 3;
-		final Transaction t1 = new Transaction(d1, tT1, v1, id1, ic1);
-		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t1, Transaction.class);
 		@SuppressWarnings("deprecation")
 		final Date d2 = new Date(17, 10, 10);
-		final Integer tT2 = 1;
-		final Float v2 = (float) 1000;
-		final Integer id2 = 2;
-		final Integer ic2 = 5;
-		final Transaction t2 = new Transaction(d2, tT2, v2, id2, ic2);
-		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t2, Transaction.class);
 		@SuppressWarnings("deprecation")
 		final Date d3 = new Date(18, 01, 05);
-		final Integer tT3 = 1;
-		final Float v3 = (float) 387;
-		final Integer id3 = 3;
-		final Integer ic3 = 2;
-		final Transaction t3 = new Transaction(d3, tT3, v3, id3, ic3);
-		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t3, Transaction.class);
 		@SuppressWarnings("deprecation")
 		final Date d4 = new Date(18, 04, 27);
-		final Integer tT4 = 1;
-		final Float v4 = (float) 2154;
-		final Integer id4 = 4;
-		final Integer ic4 = 6;
-		final Transaction t4 = new Transaction(d4, tT4, v4, id4, ic4);
-		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t4, Transaction.class);
 		@SuppressWarnings("deprecation")
 		final Date d5 = new Date(18, 03, 11);
-		final Integer tT5 = 1;
-		final Float v5 = (float) 974;
-		final Integer id5 = 1;
-		final Integer ic5 = 7;
-		final Transaction t5 = new Transaction(d5, tT5, v5, id5, ic5);
+
+		final Transaction t1 = new Transaction(d1, 3, 500f, 1, 3);
+		final Transaction t2 = new Transaction(d2, 3, 1000f, 5, 2);
+		final Transaction t3 = new Transaction(d3, 3, 387f, 3, 2);
+		final Transaction t4 = new Transaction(d4, 3, 2145f, 4, 6);
+		final Transaction t5 = new Transaction(d5, 3, 974f, 1, 7);
+
+		System.out.println(t1);
+
+		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t1, Transaction.class);
+		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t2, Transaction.class);
+		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t3, Transaction.class);
+		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t4, Transaction.class);
 		this.rt.postForObject("http://localhost:8080/webServiceProxiBanque/transaction/", t5, Transaction.class);
 	}
 

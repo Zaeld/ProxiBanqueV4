@@ -264,21 +264,39 @@ public class AccountService {
 		Transaction retour = new Transaction();
 
 		final Integer typeTransaction = transaction.getTypeTransaction();
+		Integer iddebit;
+		Integer idcredit;
+		Optional<Account> debitAccount;
+		Optional<Account> creditAccount;
+		Account da;
+		Account ca;
+
 		switch (typeTransaction) {
 		case 1:
-			this.debited(transaction.getDebitAccount(), transaction.getValue());
+			iddebit = transaction.getIddebitAccount();
+			debitAccount = this.daoAccount.findById(iddebit);
+			da = debitAccount.get();
+			this.debited(da, transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
-			AccountService.TRANSACTION
-					.info("Le compte " + transaction.getDebitAccount() + " a été débité de " + transaction.getValue() + ". Le nouvel état du compte est " + retour.getDebitAccount() + ".");
+			AccountService.TRANSACTION.info("Le compte " + da + " a été débité de " + transaction.getValue() + ". Le nouvel état du compte est " + retour.getDebitAccount() + ".");
 			break;
 		case 2:
-			this.credited(transaction.getCreditAccount(), transaction.getValue());
+			idcredit = transaction.getIddebitAccount();
+			creditAccount = this.daoAccount.findById(idcredit);
+			ca = creditAccount.get();
+			this.credited(ca, transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
 			AccountService.TRANSACTION
 					.info("Le compte " + transaction.getCreditAccount() + " a été crédité de " + transaction.getValue() + ". Le nouvel état du compte est " + retour.getCreditAccount() + ".");
 			break;
 		case 3:
-			this.transfert(transaction.getDebitAccount(), transaction.getCreditAccount(), transaction.getValue());
+			iddebit = transaction.getIddebitAccount();
+			debitAccount = this.daoAccount.findById(iddebit);
+			da = debitAccount.get();
+			idcredit = transaction.getIddebitAccount();
+			creditAccount = this.daoAccount.findById(idcredit);
+			ca = creditAccount.get();
+			this.transfert(da, ca, transaction.getValue());
 			retour = this.daoTransaction.save(transaction);
 			AccountService.TRANSACTION.info("Un virement compte à compte du compte " + transaction.getDebitAccount() + " au compte " + transaction.getCreditAccount() + " d'un montant de "
 					+ transaction.getValue() + " a été effectué. Le nouvel état de ces comptes est " + retour.getDebitAccount() + " et " + retour.getCreditAccount() + ".");
