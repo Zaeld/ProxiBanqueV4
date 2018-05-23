@@ -24,29 +24,26 @@ public class Employe extends People {
 	private Integer typeFunction; // 0 => gerant; 1 => conseiller
 	@Transient
 	private Collection<Customer> listCustomer;
-	private Integer numberCustomers;
 
 	// ================ CONSTRUCTORS =====================
 	public Employe() {
 		super();
 	}
 
-	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomers, Collection<Customer> listCustomer) {
+	public Employe(String name, String firstName, String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
 		super(name, firstName);
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;
-		this.numberCustomers = numberCustomers;
 		this.listCustomer = listCustomer;
 	}
 
-	public Employe(Integer id, String name, String firstName, String login, String password, Integer typeFunction, Integer numberCustomers, Collection<Customer> listCustomer) {
+	public Employe(Integer id, String name, String firstName, String login, String password, Integer typeFunction, Collection<Customer> listCustomer) {
 		super(name, firstName);
 		this.id = id;
 		this.login = login;
 		this.password = password;
 		this.typeFunction = typeFunction;
-		this.numberCustomers = numberCustomers;
 		this.listCustomer = listCustomer;
 	}
 
@@ -91,19 +88,10 @@ public class Employe extends People {
 		this.listCustomer = listCustomer;
 	}
 
-	public Integer getNumberCustomers() {
-		return this.numberCustomers;
-	}
-
-	public void setNumberCustomers(Integer numberCustomers) {
-		this.numberCustomers = numberCustomers;
-	}
-
 	// toString
 	@Override
 	public String toString() {
-		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", numberCustomers=" + this.numberCustomers
-				+ ", listCustomer=" + this.listCustomer + "]";
+		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", listCustomer=" + this.listCustomer + "]";
 	}
 
 }

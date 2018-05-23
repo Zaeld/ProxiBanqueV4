@@ -9,13 +9,11 @@ public class Employe extends People {
 	private String password;
 	private Integer typeFunction;
 	private List<Customer> listCustomer;
-	private Integer numberCustommers;
 
 	public Employe() {
 		super();
 		this.login = "";
 		this.password = "";
-		this.numberCustommers = 0;
 	}
 
 	public Employe(String name, String firstName, String login, String password, Integer typeFunction) {
@@ -65,18 +63,9 @@ public class Employe extends People {
 		this.listCustomer = listCustomer;
 	}
 
-	public Integer getNumberCustommers() {
-		return this.numberCustommers;
-	}
-
-	public void setNumberCustommers(Integer numberCustommers) {
-		this.numberCustommers = numberCustommers;
-	}
-
 	@Override
 	public String toString() {
-		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", listCustomer=" + this.listCustomer
-				+ ", numberCustommers=" + this.numberCustommers + "]";
+		return "Employe [id=" + this.id + ", login=" + this.login + ", password=" + this.password + ", typeFunction=" + this.typeFunction + ", listCustomer=" + this.listCustomer + "]";
 	}
 
 }

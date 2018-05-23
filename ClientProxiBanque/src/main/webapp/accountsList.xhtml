@@ -59,45 +59,45 @@
 
 							<!-- =========================== Détails compte courant =========================== -->
 							<p:column
-								styleClass="#{customerbean.customer.myCurrentAccount.isActive ? 'cellule' : 'celluleInactive'}">
+								styleClass="#{customerbean.customer.currentAccount.isActive ? 'cellule' : 'celluleInactive'}">
 								<p:outputLabel
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}">Compte courant : Ouvert</p:outputLabel>
+									rendered="#{customerbean.customer.currentAccount.isActive}">Compte courant : Ouvert</p:outputLabel>
 								<p:outputLabel
-									rendered="#{not customerbean.customer.myCurrentAccount.isActive}">Compte courant : Fermé</p:outputLabel>
+									rendered="#{not customerbean.customer.currentAccount.isActive}">Compte courant : Fermé</p:outputLabel>
 								<p:spacer />
 								<Br />
 								<Br />
 								<Br />
 								<p:outputLabel
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
-									Numéro compte : #{customerbean.customer.myCurrentAccount.numberCompte}		
+									rendered="#{customerbean.customer.currentAccount.isActive}">
+									Numéro compte : #{customerbean.customer.currentAccount.numberAccount}		
 								</p:outputLabel>
 								<Br />
 								<Br />
 
 								<p:outputLabel
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
-									Date de création  : #{customerbean.customer.myCurrentAccount.dateCreation}		
+									rendered="#{customerbean.customer.currentAccount.isActive}">
+									Date de création  : #{customerbean.customer.currentAccount.dateCreation}		
 								</p:outputLabel>
 								<Br />
 								<Br />
 
 								<p:outputLabel
-									styleClass="#{(customerbean.customer.myCurrentAccount.balance lt customerbean.customer.myCurrentAccount.overdraft) ? 'alerteText' : 'standardText'}"
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
+									styleClass="#{(customerbean.customer.currentAccount.balance lt customerbean.customer.currentAccount.overdraft) ? 'alerteText' : 'standardText'}"
+									rendered="#{customerbean.customer.currentAccount.isActive}">
 									<h:graphicImage value="resources/img/danger.png"
-										rendered="#{(customerbean.customer.myCurrentAccount.balance lt customerbean.customer.myCurrentAccount.overdraft)}" />
+										rendered="#{(customerbean.customer.currentAccount.balance lt customerbean.customer.currentAccount.overdraft)}" />
 										
-									 Solde : #{customerbean.customer.myCurrentAccount.balance} €
+									 Solde : #{customerbean.customer.currentAccount.balance} €
 									 
 									 <h:graphicImage value="resources/img/danger.png"
-										rendered="#{(customerbean.customer.myCurrentAccount.balance lt customerbean.customer.myCurrentAccount.overdraft)}" />
+										rendered="#{(customerbean.customer.currentAccount.balance lt customerbean.customer.currentAccount.overdraft)}" />
 
 								</p:outputLabel>
 								<Br />
 								<Br />
 								<p:outputLabel
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}"> découvert autorisé : #{customerbean.customer.myCurrentAccount.overdraft} €  </p:outputLabel>
+									rendered="#{customerbean.customer.currentAccount.isActive}"> découvert autorisé : #{customerbean.customer.currentAccount.overdraft} €  </p:outputLabel>
 							</p:column>
 							<!--  ============================================================ -->
 						</p:row>
@@ -105,9 +105,9 @@
 						<p:row>
 							<!-- =================== boutton compte courant ===================== -->
 							<p:column
-								styleClass="#{customerbean.customer.myCurrentAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
+								styleClass="#{customerbean.customer.currentAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
 								<h:form
-									rendered="#{customerbean.customer.myCurrentAccount.isActive}">
+									rendered="#{customerbean.customer.currentAccount.isActive}">
 									<p:menuButton value="Transation bancaire"
 										class="bouttonTransaction2" icon=" ui-icon-transferthick-e-w">
 										<p:menuitem value="Créditer ce compte" action="#"
@@ -121,7 +121,7 @@
 									</p:menuButton>
 								</h:form>
 								<h:form
-									rendered="#{not customerbean.customer.myCurrentAccount.isActive}">
+									rendered="#{not customerbean.customer.currentAccount.isActive}">
 
 									<p:commandButton class="bouttonActiver" type="button"
 										onclick="PF('dlg2').show();" value="Ouvrir compte courant"
@@ -157,45 +157,45 @@
 						<p:row>
 							<!-- ============ détails compte epargne ============ -->
 							<p:column
-								styleClass="#{customerbean.customer.mySavingAccount.isActive ? 'cellule' : 'celluleInactive'}">
+								styleClass="#{customerbean.customer.savingAccount.isActive ? 'cellule' : 'celluleInactive'}">
 								<p:outputLabel
-									rendered="#{customerbean.customer.mySavingAccount.isActive}">Compte épargne : Ouvert</p:outputLabel>
+									rendered="#{customerbean.customer.savingAccount.isActive}">Compte épargne : Ouvert</p:outputLabel>
 								<p:outputLabel
-									rendered="#{not customerbean.customer.mySavingAccount.isActive}">Compte épargne : Fermé</p:outputLabel>
+									rendered="#{not customerbean.customer.savingAccount.isActive}">Compte épargne : Fermé</p:outputLabel>
 								<p:spacer />
 								<Br />
 								<Br />
 								<Br />
 								<p:outputLabel
-									rendered="#{customerbean.customer.mySavingAccount.isActive}">
-									Numéro compte : #{customerbean.customer.mySavingAccount.numberCompte}		
+									rendered="#{customerbean.customer.savingAccount.isActive}">
+									Numéro compte : #{customerbean.customer.savingAccount.numberAccount}		
 								</p:outputLabel>
 								<Br />
 								<Br />
 
 								<p:outputLabel
-									rendered="#{customerbean.customer.mySavingAccount.isActive}">
-									Date de création : #{customerbean.customer.myCurrentAccount.dateCreation}		
+									rendered="#{customerbean.customer.savingAccount.isActive}">
+									Date de création : #{customerbean.customer.currentAccount.dateCreation}		
 								</p:outputLabel>
 								<Br />
 								<Br />
 
 								<p:outputLabel
-									styleClass="#{(customerbean.customer.mySavingAccount.balance lt employebean.savingAccountLimit) ? 'alerteText' : 'standardText'}"
-									rendered="#{customerbean.customer.mySavingAccount.isActive}">
+									styleClass="#{(customerbean.customer.savingAccount.balance lt employebean.savingAccountLimit) ? 'alerteText' : 'standardText'}"
+									rendered="#{customerbean.customer.savingAccount.isActive}">
 									<h:graphicImage value="resources/img/danger.png"
-										rendered="#{(customerbean.customer.mySavingAccount.balance lt employebean.savingAccountLimit)}" />
+										rendered="#{(customerbean.customer.savingAccount.balance lt employebean.savingAccountLimit)}" />
 										
-									 Solde : #{customerbean.customer.mySavingAccount.balance} €
+									 Solde : #{customerbean.customer.savingAccount.balance} €
 									 
 									 <h:graphicImage value="resources/img/danger.png"
-										rendered="#{(customerbean.customer.mySavingAccount.balance lt employebean.savingAccountLimit)}" />
+										rendered="#{(customerbean.customer.savingAccount.balance lt employebean.savingAccountLimit)}" />
 
 								</p:outputLabel>
 								<Br />
 								<Br />
 								<p:outputLabel
-									rendered="#{customerbean.customer.mySavingAccount.isActive}"> taux d'interet : #{customerbean.customer.mySavingAccount.rate} %  </p:outputLabel>
+									rendered="#{customerbean.customer.savingAccount.isActive}"> taux d'interet : #{customerbean.customer.savingAccount.rate} %  </p:outputLabel>
 								<!--  ============================================================ -->
 							</p:column>
 						</p:row>
@@ -203,9 +203,9 @@
 						<p:row>
 							<!-- ==================== bouton compte epargne ==================== -->
 							<p:column
-								styleClass="#{customerbean.customer.mySavingAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
+								styleClass="#{customerbean.customer.savingAccount.isActive ? 'celluleSmall' : 'celluleSmallInactive'}">
 								<h:form
-									rendered="#{customerbean.customer.mySavingAccount.isActive}">
+									rendered="#{customerbean.customer.savingAccount.isActive}">
 									<p:menuButton value="Transation bancaire"
 										class="bouttonTransaction2" icon=" ui-icon-transferthick-e-w">
 										<p:menuitem value="Créditer ce compte" action="#"
@@ -219,7 +219,7 @@
 									</p:menuButton>
 								</h:form>
 								<h:form
-									rendered="#{not customerbean.customer.mySavingAccount.isActive}">
+									rendered="#{not customerbean.customer.savingAccount.isActive}">
 
 									<p:commandButton class="bouttonActiver" type="button"
 										onclick="PF('dlg2').show();" value="Ouvrir compte épargne"
