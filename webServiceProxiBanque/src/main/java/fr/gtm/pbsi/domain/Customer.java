@@ -54,6 +54,15 @@ public class Customer extends People {
 		super(name, firstName);
 		this.idEmploye = idEmploye;
 	}
+	
+	public Customer(String name, String firstName, String email, String adress, String zipCode, String city, Integer idEmploye) {
+		super(name, firstName);
+		this.email = email;
+		this.adress = adress;
+		this.zipCode = zipCode;
+		this.city = city;
+		this.idEmploye = idEmploye;
+	}
 
 	// GETTERS AND SETTERS
 	public Integer getId() {
