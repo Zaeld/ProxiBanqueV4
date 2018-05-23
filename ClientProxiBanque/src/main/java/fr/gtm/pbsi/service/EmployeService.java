@@ -127,7 +127,7 @@ public class EmployeService {
 		List<Employe> advisorList = null;
 		try {
 
-			final WebResource webResource = this.client.resource("http://localhost:8080/webServiceProxiBanque/employe/");
+			final WebResource webResource = this.client.resource("http://localhost:8080/webServiceProxiBanque/employe/adviser/");
 
 			final ClientResponse reponse = webResource.accept("application/json").get(ClientResponse.class);
 

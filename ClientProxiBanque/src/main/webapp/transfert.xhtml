@@ -17,7 +17,7 @@
 				<div class="container">
 
 					<h:form>
-						<p:panelGrid class="placementTransaction">
+						<p:panelGrid class="placementTransaction" style="font-size: 25px">
 							<f:facet name="header">
 								<p:row>
 									<p:column colspan="2" class="celluleTitre">Virement compte à compte</p:column>
@@ -32,7 +32,7 @@
 										value="#{customerbean.idDebitAccount}" style="width:125px">
 										<f:selectItems value="#{customerbean.customerAccountList}"
 											var="account" itemValue="#{account.id}"
-											rendered="#{account.isActive}" />
+											 />
 									</p:selectOneMenu>
 
 								</p:column>
@@ -41,8 +41,8 @@
 									<p:selectOneMenu id="compteCredit"
 										value="#{customerbean.idCreditAccount}" style="width:125px">
 
-										<f:selectItems value="#{customerbean.accountList}"
-											var="account" itemValue="#{account.id}" />
+										<f:selectItems value="#{customerbean.accountList}" 
+											var="account" itemValue="#{account.id}" itemLabel="#{account}" />
 									</p:selectOneMenu>
 
 								</p:column>

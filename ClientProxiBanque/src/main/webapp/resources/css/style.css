@@ -374,3 +374,16 @@ bouttonDiscard {
 	border-radius: 20px;
 	margin: 20px;
 }
+
+.positionPopup{
+	width: auto;
+    height: auto;
+    position: absolute;
+    visibility: visible;
+    left: 50%;
+    top: 50%;
+    z-index: 1003;
+    display: block;
+    margin-left: -25%;
+    margin-top: -25%;
+}

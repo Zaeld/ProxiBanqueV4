@@ -55,5 +55,8 @@ public abstract class Account {
 		this.balance = balance;
 	}
 	
-	
+	@Override
+	public String toString() {
+		return " Compte bancaire -- [ numéro : " + getNumberAccount() + ", solde : " + getBalance() + "]";
+	}
 }
