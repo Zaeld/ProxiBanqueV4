@@ -147,7 +147,6 @@ public class AccountService {
 			return response;
 		}
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Methode put permettant de modifier un compte courant en BDD grace a son ID et
@@ -161,9 +160,6 @@ public class AccountService {
 	 *            : nouvel etat du compte a modifier en BDD
 	 * @return le compte modifie
 	 */
-=======
-	
->>>>>>> refs/heads/stef_merc_aprem
 	@PutMapping("/updatecurrentaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody CurrentAccount ca) {
 		if (this.daoAccount.existsById(accountId)) {
@@ -177,7 +173,6 @@ public class AccountService {
 			return response;
 		}
 	}
-<<<<<<< HEAD
 
 	/**
 	 * Methode put permettant de modifier un compte epargne en BDD grace a son ID et
@@ -191,9 +186,6 @@ public class AccountService {
 	 *            : nouvel etat du compte a modifier en BDD
 	 * @return le compte modifie
 	 */
-=======
-	
->>>>>>> refs/heads/stef_merc_aprem
 	@PutMapping("/updatesavingaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody SavingAccount sa) {
 		if (this.daoAccount.existsById(accountId)) {
