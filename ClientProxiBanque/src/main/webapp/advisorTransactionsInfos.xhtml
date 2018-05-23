@@ -8,15 +8,59 @@
 <h:head>
 	<title>Home</title>
 </h:head>
-<h:body>
+<h:body onload="testLancement();">
+
 	<f:view>
 		<ui:composition template="templates/commonManager.xhtml">
 			<ui:define name="content">
 				<div class="container">
-					
-					<!-- Mettre toute la page dans ce div  container -->
-					
-					
+
+					<div style="width:50%; heigth:400px; margin-left: 25%; padding-top: 2%;">
+						<div id="dataNbTransaction" class="hidden"
+							value="120, 190, 200, 250, 200, 230, 270, 280, 290, 210, 211, 212"></div>
+						<div id="dataValues" class="hidden"
+							value="23000,29000,12000,33000,18000,22000,32000,22000,21000,29000,27000,17000"></div>
+						<div id="dataMonths" class="hidden"
+							value="janvier, février, mars, avril, mai, juin,juillet,août,septembre,octobre,novembre,décembre"></div>
+						<canvas id="myChart" width="400" height="400"></canvas>
+					</div>
+
+					<div>
+						<p:dataTable value="#{employebean.employe.listCustomer}"
+							var="item" tableStyle="table-layout: auto;">
+							<f:facet name="header">
+								<p:outputLabel style="	font-size: 30px; line-height: 60px;"
+									value="Liste des clients à découvert et leur conseiller"></p:outputLabel>
+							</f:facet>
+
+							<p:column filterBy="#">
+								<f:facet name="header">
+									<h:outputText value="Client" />
+								</f:facet>
+								<h:outputText value="#" />
+							</p:column>
+
+							<p:column filterBy="#">
+								<f:facet name="header">
+									<h:outputText value="Conseiller" />
+								</f:facet>
+								<h:outputText value="#" />
+							</p:column>
+
+						</p:dataTable>
+					</div>
+
+
+
+
+
+					<h:outputScript library="javascript"
+						name="/lib/Chart.bundle.min.js" target="body" />
+					<h:outputScript library="javascript" name="/lib/Chart.min.js"
+						target="body" />
+
+					<h:outputScript library="javascript" name="drawGraph.js"
+						target="body" />
 				</div>
 			</ui:define>
 		</ui:composition>
