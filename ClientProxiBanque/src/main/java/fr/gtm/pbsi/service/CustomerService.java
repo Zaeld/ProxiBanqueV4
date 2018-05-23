@@ -35,7 +35,6 @@ public class CustomerService {
 			newCustomer = mapper.readValue(output, Customer.class);
 			System.out.println(newCustomer);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return newCustomer;
@@ -58,7 +57,6 @@ public class CustomerService {
 			output = response.getEntity(String.class);
 			newCustomer = mapper.readValue(output, Customer.class);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return newCustomer;

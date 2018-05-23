@@ -35,7 +35,6 @@ private ObjectMapper mapper = new ObjectMapper();
 		newEmploye=mapper.readValue(output, Employe.class);
 		
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return newEmploye;
@@ -56,7 +55,7 @@ private ObjectMapper mapper = new ObjectMapper();
 				output = response.getEntity(String.class);
 				newEmploye = mapper.readValue(output, Employe.class);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				// 
 				e.printStackTrace();
 			}
 			return newEmploye;
@@ -77,7 +76,7 @@ private ObjectMapper mapper = new ObjectMapper();
 				output = response.getEntity(String.class);
 				newEmploye = mapper.readValue(output, Employe.class);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				// 
 				e.printStackTrace();
 			}
 			return newEmploye;
@@ -109,7 +108,7 @@ private ObjectMapper mapper = new ObjectMapper();
 			advisorList = mapper.readValue(output, List.class);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 		return advisorList;
@@ -132,7 +131,7 @@ private ObjectMapper mapper = new ObjectMapper();
 			customerList = mapper.readValue(output, List.class);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			// 
 			e.printStackTrace();
 		}
 		return customerList;

@@ -31,7 +31,6 @@ public class AccountService {
 			accountList = mapper.readValue(output, List.class);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return accountList;
@@ -57,7 +56,6 @@ public class AccountService {
 			account = mapper.readValue(output, Account.class);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return account;
@@ -99,7 +97,6 @@ public class AccountService {
 			transactionDone = mapper.readValue(output, Transaction.class);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return transactionDone;
