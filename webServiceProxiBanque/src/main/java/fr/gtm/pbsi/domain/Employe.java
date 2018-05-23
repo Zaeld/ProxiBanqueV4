@@ -22,9 +22,9 @@ public class Employe extends People {
 	private String login;
 	private String password;
 	private Integer typeFunction; // 0 => gerant; 1 => conseiller
-	private Integer numberCustomers;
 	@Transient
 	private Collection<Customer> listCustomer;
+	private Integer numberCustomers;
 
 	// ================ CONSTRUCTORS =====================
 	public Employe() {

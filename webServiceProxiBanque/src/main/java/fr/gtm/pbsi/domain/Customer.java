@@ -23,11 +23,10 @@ public class Customer extends People {
 	private String zipCode;
 	private String city;
 	private Integer idEmploye;
-
 	private Integer idca;
+	private Integer idsa;
 	@Transient
 	private CurrentAccount currentAccount;
-	private Integer idsa;
 	@Transient
 	private SavingAccount savingAccount;
 

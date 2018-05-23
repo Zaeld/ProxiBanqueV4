@@ -23,9 +23,9 @@ public class Transaction {
 	private Integer typeTransaction;
 	private Float value;
 	private Integer iddebitAccount;
+	private Integer idcreditAccount;
 	@Transient
 	private Account debitAccount;
-	private Integer idcreditAccount;
 	@Transient
 	private Account creditAccount;
 
