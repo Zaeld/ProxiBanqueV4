@@ -24,6 +24,9 @@ private ObjectMapper mapper = new ObjectMapper();
 		String output=null;
 		Employe newEmploye=null;
 		try {
+			System.out.println("dans le try...");
+			System.out.println(input);
+			System.out.println(employe);
 			input = mapper.writeValueAsString(employe);
 		
 		WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/employe/authentification");
@@ -31,9 +34,9 @@ private ObjectMapper mapper = new ObjectMapper();
 		ClientResponse reponse = webResource.type("application/json").post(ClientResponse.class, input);
 		
 		output=reponse.getEntity(String.class);
-		
+		System.out.println(output);
 		newEmploye=mapper.readValue(output, Employe.class);
-		
+		System.out.println(newEmploye);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

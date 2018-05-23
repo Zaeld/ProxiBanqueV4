@@ -13,9 +13,9 @@ public class Employe extends People {
 
 	public Employe() {
 		super();
-		this.login = "";
-		this.password = "";
-		this.numberCustommers = 0;
+//		this.login = "";
+//		this.password = "";
+//		this.numberCustommers = 0;
 	}
 
 	public Employe(String name, String firstName, String login, String password, Integer typeFunction) {

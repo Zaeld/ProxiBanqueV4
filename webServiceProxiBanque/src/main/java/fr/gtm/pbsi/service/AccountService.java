@@ -20,6 +20,7 @@ import fr.gtm.pbsi.dao.IAccountDao;
 import fr.gtm.pbsi.dao.ITransactionDao;
 import fr.gtm.pbsi.domain.Account;
 import fr.gtm.pbsi.domain.CurrentAccount;
+import fr.gtm.pbsi.domain.SavingAccount;
 import fr.gtm.pbsi.domain.Transaction;
 
 /**
@@ -131,6 +132,34 @@ public class AccountService {
 			final CurrentAccount response = new CurrentAccount();
 			response.setId(0);
 			AccountService.LOGGER.error("Tentative de modification de " + account + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
+			return response;
+		}
+	}
+	
+	@PutMapping("updatecurrentaccount/{accountId}")
+	Account update(@PathVariable Integer accountId, @RequestBody CurrentAccount ca) {
+		if (this.daoAccount.existsById(accountId)) {
+			final Account retour = this.daoAccount.save(ca);
+			AccountService.LOGGER.info("Modification de " + ca + " en " + retour + " dans la BDD.");
+			return retour;
+		} else {
+			final CurrentAccount response = new CurrentAccount();
+			response.setId(0);
+			AccountService.LOGGER.error("Tentative de modification de " + ca + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
+			return response;
+		}
+	}
+	
+	@PutMapping("updatesavingaccount/{accountId}")
+	Account update(@PathVariable Integer accountId, @RequestBody SavingAccount sa) {
+		if (this.daoAccount.existsById(accountId)) {
+			final Account retour = this.daoAccount.save(sa);
+			AccountService.LOGGER.info("Modification de " + sa + " en " + retour + " dans la BDD.");
+			return retour;
+		} else {
+			final CurrentAccount response = new CurrentAccount();
+			response.setId(0);
+			AccountService.LOGGER.error("Tentative de modification de " + sa + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			return response;
 		}
 	}
