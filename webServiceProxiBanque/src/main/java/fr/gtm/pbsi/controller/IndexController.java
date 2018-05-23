@@ -1,7 +1,5 @@
 package fr.gtm.pbsi.controller;
 
-import java.sql.Date;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -264,22 +262,12 @@ public class IndexController {
 	}
 
 	private void createTransaction() {
-		@SuppressWarnings("deprecation")
-		final Date d1 = new Date(14, 02, 24);
-		@SuppressWarnings("deprecation")
-		final Date d2 = new Date(17, 10, 10);
-		@SuppressWarnings("deprecation")
-		final Date d3 = new Date(18, 01, 05);
-		@SuppressWarnings("deprecation")
-		final Date d4 = new Date(18, 04, 27);
-		@SuppressWarnings("deprecation")
-		final Date d5 = new Date(18, 03, 11);
 
-		final Transaction t1 = new Transaction(d1, 3, 500f, 1, 3);
-		final Transaction t2 = new Transaction(d2, 3, 1000f, 5, 2);
-		final Transaction t3 = new Transaction(d3, 3, 387f, 3, 2);
-		final Transaction t4 = new Transaction(d4, 3, 2145f, 4, 6);
-		final Transaction t5 = new Transaction(d5, 3, 974f, 1, 7);
+		final Transaction t1 = new Transaction("25/08/2017 14:55:41", 3, 500f, 1, 3);
+		final Transaction t2 = new Transaction("10/02/2018 21:54:10", 3, 1000f, 5, 2);
+		final Transaction t3 = new Transaction("15/04/2018 12:30:20", 3, 387f, 3, 2);
+		final Transaction t4 = new Transaction("18/03/2018 09:50:10", 3, 2145f, 4, 6);
+		final Transaction t5 = new Transaction("29/03/2018 10:20:34", 3, 974f, 1, 7);
 
 		System.out.println(t1);
 

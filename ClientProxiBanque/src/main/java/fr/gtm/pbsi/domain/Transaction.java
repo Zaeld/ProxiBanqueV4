@@ -1,12 +1,10 @@
 package fr.gtm.pbsi.domain;
 
-import java.sql.Date;
-
 public class Transaction {
 
 	private Integer id;
 
-	private Date date;
+	private String date;
 	private Integer typeTransaction;
 	private Float value;
 	private Integer iddebitAccount;
@@ -26,7 +24,7 @@ public class Transaction {
 		this.idcreditAccount = idcreditAccount;
 	}
 
-	public Transaction(Date date, Integer typeTransaction, Float value, Account debitAccount, Account creditAccount) {
+	public Transaction(String date, Integer typeTransaction, Float value, Account debitAccount, Account creditAccount) {
 		super();
 		this.date = date;
 		this.typeTransaction = typeTransaction;
@@ -35,7 +33,7 @@ public class Transaction {
 		this.creditAccount = creditAccount;
 	}
 
-	public Transaction(Integer id, Date date, Integer typeTransaction, Float value, Account debitAccount, Account creditAccount) {
+	public Transaction(Integer id, String date, Integer typeTransaction, Float value, Account debitAccount, Account creditAccount) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -54,11 +52,11 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return this.date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 

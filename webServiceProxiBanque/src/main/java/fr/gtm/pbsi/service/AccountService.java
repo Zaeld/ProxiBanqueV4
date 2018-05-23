@@ -1,6 +1,10 @@
 
 package fr.gtm.pbsi.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -270,12 +274,24 @@ public class AccountService {
 		Account da;
 		Account ca;
 
+		// Create an instance of SimpleDateFormat used for formatting the string
+		// representation of date (month/day/year)
+		final DateFormat df = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		// Get the date today using Calendar object.
+		final Date today = Calendar.getInstance().getTime();
+		// Using DateFormat format method we can create a string representation of a
+		// date with the defined format.
+		final String dateCreation = df.format(today);
+
 		switch (typeTransaction) {
 		case 1:
 			iddebit = transaction.getIddebitAccount();
 			debitAccount = this.daoAccount.findById(iddebit);
 			da = debitAccount.get();
 			this.debited(da, transaction.getValue());
+
+			transaction.setDate(dateCreation);
+
 			retour = this.daoTransaction.save(transaction);
 			AccountService.TRANSACTION.info("Le compte " + da + " a été débité de " + transaction.getValue() + ".");
 			break;
@@ -284,6 +300,9 @@ public class AccountService {
 			creditAccount = this.daoAccount.findById(idcredit);
 			ca = creditAccount.get();
 			this.credited(ca, transaction.getValue());
+
+			transaction.setDate(dateCreation);
+
 			retour = this.daoTransaction.save(transaction);
 			AccountService.TRANSACTION.info("Le compte " + ca + " a été crédité de " + transaction.getValue() + ".");
 			break;
@@ -299,6 +318,9 @@ public class AccountService {
 			ca = creditAccount.get();
 			// realisation du virement cac
 			this.transfert(da, ca, transaction.getValue());
+
+			transaction.setDate(dateCreation);
+
 			retour = this.daoTransaction.save(transaction);
 			AccountService.TRANSACTION.info("Un virement compte à compte du compte " + da + " au compte " + ca + " d'un montant de " + transaction.getValue() + " a été effectué.");
 			break;

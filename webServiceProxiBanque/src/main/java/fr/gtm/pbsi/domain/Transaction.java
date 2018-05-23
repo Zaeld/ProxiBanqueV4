@@ -1,7 +1,5 @@
 package fr.gtm.pbsi.domain;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -19,7 +17,7 @@ public class Transaction {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private Date date;
+	private String date;
 	private Integer typeTransaction; // 1 => debit, 2 => credit, 3 => virement CaC
 	private Float value;
 	private Integer iddebitAccount;
@@ -34,7 +32,7 @@ public class Transaction {
 		super();
 	}
 
-	public Transaction(Date date, Integer typeTransaction, Float value, Integer iddebitAccount, Account debitAccount, Integer idcreditAccount, Account creditAccount) {
+	public Transaction(String date, Integer typeTransaction, Float value, Integer iddebitAccount, Account debitAccount, Integer idcreditAccount, Account creditAccount) {
 		super();
 		this.date = date;
 		this.typeTransaction = typeTransaction;
@@ -45,7 +43,7 @@ public class Transaction {
 		this.creditAccount = creditAccount;
 	}
 
-	public Transaction(Date date, Integer typeTransaction, Float value, Integer iddebitAccount, Integer idcreditAccount) {
+	public Transaction(String date, Integer typeTransaction, Float value, Integer iddebitAccount, Integer idcreditAccount) {
 		super();
 		this.date = date;
 		this.typeTransaction = typeTransaction;
@@ -54,7 +52,7 @@ public class Transaction {
 		this.idcreditAccount = idcreditAccount;
 	}
 
-	public Transaction(Integer id, Date date, Integer typeTransaction, Float value, Integer iddebitAccount, Account debitAccount, Integer idcreditAccount, Account creditAccount) {
+	public Transaction(Integer id, String date, Integer typeTransaction, Float value, Integer iddebitAccount, Account debitAccount, Integer idcreditAccount, Account creditAccount) {
 		super();
 		this.id = id;
 		this.date = date;
@@ -75,12 +73,12 @@ public class Transaction {
 		this.id = id;
 	}
 
-	public Date getDate() {
+	public String getDate() {
 		return this.date;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDate(String date2) {
+		this.date = date2;
 	}
 
 	public Integer getTypeTransaction() {
