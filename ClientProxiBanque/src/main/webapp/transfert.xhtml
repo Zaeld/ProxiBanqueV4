@@ -74,36 +74,19 @@
 								<p:column colspan="2">
 									<!-- Bouttons valider / annuler -->
 
-									<p:commandButton value="Confirmer">
-										<p:confirm header="Confirmation"
-											message="Valider la transaction  ?" icon="ui-icon-alert" />
-									</p:commandButton>
-
-									<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
-									<p:confirmDialog global="true" showEffect="fade"
-										hideEffect="fade">
-										<p:commandButton value="Oui" 
+								<p:commandButton value="Oui" 
 											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
 											action="${customerbean.transfert}" />
 											
 										<p:commandButton value="Non" type="button"
 											styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-									</p:confirmDialog>
+									
 									<p:spacer width="1"></p:spacer>
 									<p:button outcome="accountsList" value="Annuler" />
 								</p:column>
 							</p:row>
 
-							<f:facet name="footer">
-								<p:row>
-									<p:column colspan="2">
-										<p:spacer height="0"></p:spacer>
-										<p:commandButton value="Oui" 
-											styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-											action="${customerbean.transfert}" />
-									</p:column>
-								</p:row>
-							</f:facet>
+				
 
 						</p:panelGrid>
 

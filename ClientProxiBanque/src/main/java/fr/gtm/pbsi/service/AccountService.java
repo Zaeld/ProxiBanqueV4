@@ -22,7 +22,7 @@ public class AccountService {
 		List<Account> accountList = null;
 		try {
 
-			WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/");
+			WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/isActive");
 
 			ClientResponse reponse = webResource.accept("application/json").get(ClientResponse.class);
 
@@ -97,10 +97,12 @@ public class AccountService {
 	 * @return Transaction : objet envoyé au webService pour le traitement du virement
 	 */
 	public Transaction createTransaction(Float amountTransaction, Integer idDebitAccount, Integer idCreditAccount) {
-
+System.out.println("Création d'une transaction");
 		Account debitAccount = this.readAccount(idDebitAccount);
 		Account creditAccount = this.readAccount(idCreditAccount);
 		Transaction transaction = new Transaction(amountTransaction, debitAccount, creditAccount);
+		System.out.println("retour d'une transaction");
+
 		return transaction;
 
 	}
@@ -115,7 +117,7 @@ public class AccountService {
 		Transaction transactionDone = null;
 		try {
 			input = mapper.writeValueAsString(transaction);
-
+System.out.println("début webService avec"+input);
 			WebResource webResource = client
 					.resource("http://localhost:8080/webServiceProxiBanque/customer/transaction");
 
