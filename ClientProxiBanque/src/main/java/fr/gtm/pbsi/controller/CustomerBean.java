@@ -20,8 +20,6 @@ public class CustomerBean {
 	private EmployeService serviceEmploye = new EmployeService();
 	private AccountService serviceAccount = new AccountService();
 	private String message = "test message";
-	private List<Account> debitAccount = new ArrayList<Account>();
-	private List<Account> creditAccount = new ArrayList<Account>();
 	private Float amountTransaction = 0.0f;
 	private Transaction transaction = new Transaction();
 	private Integer idDebitAccount;
@@ -88,22 +86,6 @@ public class CustomerBean {
 		this.message = message;
 	}
 
-	public List<Account> getDebitAccount() {
-		return debitAccount;
-	}
-
-	public void setDebitAccount(List<Account> debitAccount) {
-		this.debitAccount = debitAccount;
-	}
-
-	public List<Account> getCreditAccount() {
-		return creditAccount;
-	}
-
-	public void setCreditAccounts(List<Account> creditAccount) {
-		this.creditAccount = creditAccount;
-	}
-
 	public AccountService getServiceAccount() {
 		return serviceAccount;
 	}
@@ -127,11 +109,6 @@ public class CustomerBean {
 	public void setSolde(Float solde) {
 		this.solde = solde;
 	}
-
-	public void setCreditAccount(List<Account> creditAccount) {
-		this.creditAccount = creditAccount;
-	}
-
 	// ==================================================
 
 	// ===================== Methode ======================
@@ -186,7 +163,7 @@ public class CustomerBean {
 	 */
 	public String transfert() {
 		String forward = null;
-		this.transaction = serviceAccount.createTransaction(amountTransaction, idDebitAccount, idCreditAccount);
+		this.transaction = serviceAccount.createTransaction(this.amountTransaction, this.idDebitAccount, this.idCreditAccount);
 		this.transaction = serviceAccount.transfert(this.transaction);
 		// On met à jour les informations du client après la transaction
 		this.customer = serviceCustomer.updateCustomer(this.customer);
@@ -204,16 +181,18 @@ public class CustomerBean {
 	 * Méthode permettant d'activer(créer) le compte courant du client affichée dans
 	 * la page
 	 */
-	public void currentAccountActivation() {
+	public String currentAccountActivation() {
 		this.customer = this.serviceCustomer.currentAccountActivation(this.customer, this.solde);
+		return "accountsList";
 	}
 
 	/**
 	 * Méthode permettant d'activer(créer) le compte épargne du client affichée dans
 	 * la page
 	 */
-	public void savingAccountActivation() {
+	public String savingAccountActivation() {
 		this.customer = this.serviceCustomer.savingAccountActivation(this.customer, this.solde);
+		return "accountsList";
 	}
 
 	/**
