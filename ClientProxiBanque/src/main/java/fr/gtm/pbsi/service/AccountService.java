@@ -25,7 +25,7 @@ public class AccountService {
 		List<Account> accountList = null;
 		try {
 
-			WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/");
+			WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/isActive");
 
 			ClientResponse reponse = webResource.accept("application/json").get(ClientResponse.class);
 
@@ -151,7 +151,10 @@ System.out.println("Création d'une transaction");
 //}
 //		Account debitAccount = this.readAccount(idDebitAccount);
 //		Account creditAccount = this.readAccount(idDebitAccount);
+
 		Transaction transaction = new Transaction(amountTransaction, idDebitAccount, idCreditAccount);
+		transaction.setTypeTransaction(3);
+
 		System.out.println("retour d'une transaction");
 
 		return transaction;
