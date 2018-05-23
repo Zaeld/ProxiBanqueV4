@@ -26,8 +26,7 @@ public class CurrentAccount extends Account{
 
 	@Override
 	public String toString() {
-		return "CurrentAccount [overdraft=" + overdraft + ", getId()=" + getId() + ", getIsActive()=" + getIsActive()
-				+ ", getBalance()=" + getBalance() + "]";
+		return " Compte courant -- [ numéro : " + getNumberAccount() + ", solde : " + getBalance() + "]";
 	}
 
 }

@@ -296,10 +296,24 @@ html, body {
 	margin: 10px;
 }
 
-.bouttonCreate2 {
+.bouttonValidate {
+	font-size: 50px;
 	text-align: center;
-	background-color: deepskyblue;
+	background-color: rgba(254, 220, 106);
 	color: black;
+	margin: 15px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+bouttonDiscard {
+	font-size: 25px;
+	text-align: center;
+	background-color: rgba(254, 220, 106);
+	color: black;
+	margin: 15px;
+	border: 1px solid black;
+	border-radius: 5px;
 }
 
 /* debitCompte page */
@@ -315,6 +329,14 @@ html, body {
 }
 
 .bouttonValider {
+	margin-top: 20px;
+	float: middle;
+	background-color: rgba(105, 105, 105);
+	color: white;
+	font-size: large;
+}
+
+.bouttonValider2 {
 	margin-top: 20px;
 	float: middle;
 	background-color: rgba(105, 105, 105);

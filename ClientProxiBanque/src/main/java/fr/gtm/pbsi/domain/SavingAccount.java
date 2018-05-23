@@ -25,8 +25,7 @@ public class SavingAccount extends Account{
 	
 	@Override
 	public String toString() {
-		return "SavingAccount [rate=" + rate + ", getNumberCompte()=" + getNumberAccount() + ", getIsActive()="
-				+ getIsActive() + ", getBalance()=" + getBalance() + "]";
+		return " Compte épargne -- [ numéro : " + getNumberAccount() + ", solde : " + getBalance() + "]";
 	}
 	
 	
