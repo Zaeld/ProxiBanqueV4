@@ -132,7 +132,7 @@ public class AccountService {
 	 *            : id du compte a modifier
 	 * @param customer
 	 *            : nouvel etat du compte a modifier en BDD
-	 * @return le client modifie
+	 * @return le compte modifie
 	 */
 	@PutMapping("/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody Account account) {
@@ -147,7 +147,19 @@ public class AccountService {
 			return response;
 		}
 	}
-	
+
+	/**
+	 * Methode put permettant de modifier un compte courant en BDD grace a son ID et
+	 * au nouvel etat du compte. Si l'ID donne n'existe pas en BDD, la methode
+	 * renvoie un compte possedant un ID = 0. Sinon elle modifie le compte et
+	 * renvoie le compte modifie.
+	 * 
+	 * @param accountId
+	 *            : id du compte a modifier
+	 * @param ca
+	 *            : nouvel etat du compte a modifier en BDD
+	 * @return le compte modifie
+	 */
 	@PutMapping("/updatecurrentaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody CurrentAccount ca) {
 		if (this.daoAccount.existsById(accountId)) {
@@ -161,7 +173,19 @@ public class AccountService {
 			return response;
 		}
 	}
-	
+
+	/**
+	 * Methode put permettant de modifier un compte epargne en BDD grace a son ID et
+	 * au nouvel etat du compte. Si l'ID donne n'existe pas en BDD, la methode
+	 * renvoie un compte possedant un ID = 0. Sinon elle modifie le compte et
+	 * renvoie le compte modifie.
+	 * 
+	 * @param accountId
+	 *            : id du compte a modifier
+	 * @param sa
+	 *            : nouvel etat du compte a modifier en BDD
+	 * @return le compte modifie
+	 */
 	@PutMapping("/updatesavingaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody SavingAccount sa) {
 		if (this.daoAccount.existsById(accountId)) {
@@ -232,7 +256,7 @@ public class AccountService {
 	 * 
 	 * @param transaction
 	 *            enregistrement d'une operation banquaire
-	 * @return un transaction
+	 * @return une transaction
 	 */
 	@PostMapping("/transaction")
 	public Transaction transactionOperation(@RequestBody Transaction transaction) {
