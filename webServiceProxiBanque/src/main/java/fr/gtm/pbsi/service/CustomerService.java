@@ -55,9 +55,9 @@ public class CustomerService {
 	@PostMapping({ "", "/" })
 	Customer create(@RequestBody Customer customer) {
 		// Creation des numeros de comptes et des Floats
-		final String randomnumber1 = this.numberGenerator(15);
+		final String randomnumber1 = this.numberGenerator(10);
 		final String numberAccount1 = "c" + randomnumber1;
-		final String randomnumber2 = this.numberGenerator(15);
+		final String randomnumber2 = this.numberGenerator(10);
 		final String numberAccount2 = "s" + randomnumber2;
 		// Create an instance of SimpleDateFormat used for formatting the string
 		// representation of date (month/day/year)
@@ -205,7 +205,7 @@ public class CustomerService {
 	 * @return : une chaine de caractere aleatoire de la taille desirees
 	 */
 	public String numberGenerator(int length) {
-		final String chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+		final String chars = "1234567890";
 		final StringBuffer pass = new StringBuffer();
 		for (int x = 0; x < length; x++) {
 			final int i = (int) Math.floor(Math.random() * (chars.length() - 1));
