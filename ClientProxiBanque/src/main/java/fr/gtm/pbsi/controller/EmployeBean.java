@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+
 import fr.gtm.pbsi.domain.Customer;
 import fr.gtm.pbsi.domain.Employe;
 import fr.gtm.pbsi.service.EmployeService;
@@ -14,7 +15,7 @@ import fr.gtm.pbsi.service.EmployeService;
 public class EmployeBean {
 	// Déclaration des variables locales
 	private Employe employe = new Employe();
-	private EmployeService serviceEmploye = new EmployeService();
+	private final EmployeService serviceEmploye = new EmployeService();
 	private Float savingAccountLimit = 0.0f;
 	private String message = null;
 	private List<Employe> advisorList = new ArrayList<Employe>();
@@ -23,11 +24,11 @@ public class EmployeBean {
 	// =====================Assesseurs ======================
 
 	public Employe getEmploye() {
-		return employe;
+		return this.employe;
 	}
 
 	public List<Customer> getCustomerListOfAdvisor() {
-		return customerListOfAdvisor;
+		return this.customerListOfAdvisor;
 	}
 
 	public void setCustomerListOfAdvisor(List<Customer> customerListOfAdvisor) {
@@ -35,7 +36,7 @@ public class EmployeBean {
 	}
 
 	public List<Employe> getAdvisorList() {
-		return advisorList;
+		return this.advisorList;
 	}
 
 	public void setAdvisorList(List<Employe> advisorList) {
@@ -47,7 +48,7 @@ public class EmployeBean {
 	}
 
 	public Float getSavingAccountLimit() {
-		return savingAccountLimit;
+		return this.savingAccountLimit;
 	}
 
 	public void setSavingAccountLimit(Float savingAccountLimit) {
@@ -55,7 +56,7 @@ public class EmployeBean {
 	}
 
 	public String getMessage() {
-		return message;
+		return this.message;
 	}
 
 	public void setMessage(String message) {
@@ -68,12 +69,13 @@ public class EmployeBean {
 	 * fonction de l'employé connecté
 	 * 
 	 * @return String : Retoune la page d'acceuil correspondant au type de fonction
-	 *         de l'employé connecté ou vers la page d'erreur si la connexion a échouée
+	 *         de l'employé connecté ou vers la page d'erreur si la connexion a
+	 *         échouée
 	 */
 	public String loginVerification() {
 		String forward = null;
-		System.out.println("employe envoyé :" + employe);
-		this.employe = serviceEmploye.loginVerification(this.employe);
+		System.out.println("employe envoyé :" + this.employe);
+		this.employe = this.serviceEmploye.loginVerification(this.employe);
 		// =======================================================
 		// this.employe.setTypeFunction(1);
 		// this.employe.setId(1);
@@ -93,16 +95,17 @@ public class EmployeBean {
 		// System.out.println("cust 1 : " + cust1 );
 		// System.out.println("cust 2 : " + cust2);
 		// =======================================================
-		System.out.println("employe reçu :" + employe);
+		System.out.println("employe reçu :" + this.employe);
 		// On test si l'employe a été trouvé en base de donnée
-		if (employe.getId() > 0) {
+		if (this.employe.getId() > 0) {
 
 			// 0 => gerant; 1 => conseiller
-			if (employe.getTypeFunction() == 0) {
-				this.advisorList = serviceEmploye.getAllAdvisor();
+			if (this.employe.getTypeFunction() == 0) {
+				this.advisorList = this.serviceEmploye.getAllAdvisor();
 				forward = "employeList";
 			} else {
-				this.customerListOfAdvisor = serviceEmploye.getAllCustomerOfAdvisor(employe);
+				// this.customerListOfAdvisor =
+				// this.serviceEmploye.getAllCustomerOfAdvisor(this.employe);
 				forward = "customerList";
 			}
 			return forward;
@@ -110,7 +113,10 @@ public class EmployeBean {
 		return "homeLoginBad";
 	}
 
-	/** Méthode permettant de retourner à la page de Login et d'identifier un nouvel employé
+	/**
+	 * Méthode permettant de retourner à la page de Login et d'identifier un nouvel
+	 * employé
+	 * 
 	 * @return String : page de redirection
 	 */
 	public String logout() {
@@ -118,12 +124,15 @@ public class EmployeBean {
 		return "homeLogin";
 	}
 
-	/** Méthode appelée lors d'une redirection vers la liste de client du conseiller permettant sa mise à jour
+	/**
+	 * Méthode appelée lors d'une redirection vers la liste de client du conseiller
+	 * permettant sa mise à jour
+	 * 
 	 * @return String : page contenant la liste des clients
 	 */
 	public String goCustomerListe() {
 		System.out.println("-- goCustomerListe methode --");
-		this.employe = serviceEmploye.updateEmploye(this.employe);
+		this.employe = this.serviceEmploye.updateEmploye(this.employe);
 		return "customerList";
 	}
 

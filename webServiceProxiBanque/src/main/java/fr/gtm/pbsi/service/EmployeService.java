@@ -106,7 +106,6 @@ public class EmployeService {
 					customer.setSavingAccount(sabis);
 				}
 				retour.setListCustomer(customers);
-				retour.setNumberCustomers(customers.size());
 				EmployeService.LOGGER.info("Connection du conseiller " + retour.getName() + " " + retour.getFirstName() + " à l'application.");
 			}
 			return retour;
@@ -158,7 +157,7 @@ public class EmployeService {
 		// on implemente le nombre de clients que possede chaque employe
 		for (final Employe employe : retour) {
 			final List<Customer> customers = this.daoCustomer.findAllByIdEmploye(employe.getId());
-			employe.setNumberCustomers(customers.size());
+			// employe.setNumberCustomers(customers.size());
 		}
 		EmployeService.LOGGER.info("Récupération de la liste des employes de ProxiBanque.");
 		return retour;
@@ -211,7 +210,7 @@ public class EmployeService {
 		final List<Employe> retour = this.daoEmploye.findAllByTypeFunction(1);
 		for (final Employe employe : retour) {// ajout du nombre de client pour chaque employe
 			final List<Customer> customers = this.daoCustomer.findAllByIdEmploye(employe.getId());
-			employe.setNumberCustomers(customers.size());
+			// employe.setNumberCustomers(customers.size());
 		}
 		EmployeService.LOGGER.info("Récupération de la liste des conseiller de ProxiBanque.");
 		return retour;

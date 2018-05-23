@@ -10,8 +10,8 @@ public class Customer extends People {
 	private Integer idEmploye;
 	private Integer idca;
 	private Integer idsa;
-	private CurrentAccount myCurrentAccount;
-	private SavingAccount mySavingAccount;
+	private CurrentAccount currentAccount;
+	private SavingAccount savingAccount;
 
 	public Customer() {
 		super("", "");
@@ -34,7 +34,7 @@ public class Customer extends People {
 	}
 
 	public Integer getId() {
-		return id;
+		return this.id;
 	}
 
 	public void setId(Integer id) {
@@ -42,7 +42,7 @@ public class Customer extends People {
 	}
 
 	public String getEmail() {
-		return email;
+		return this.email;
 	}
 
 	public void setEmail(String email) {
@@ -50,7 +50,7 @@ public class Customer extends People {
 	}
 
 	public String getAdress() {
-		return adress;
+		return this.adress;
 	}
 
 	public void setAdress(String adress) {
@@ -58,7 +58,7 @@ public class Customer extends People {
 	}
 
 	public String getZipCode() {
-		return zipCode;
+		return this.zipCode;
 	}
 
 	public void setZipCode(String zipCode) {
@@ -66,7 +66,7 @@ public class Customer extends People {
 	}
 
 	public String getCity() {
-		return city;
+		return this.city;
 	}
 
 	public void setCity(String city) {
@@ -74,27 +74,27 @@ public class Customer extends People {
 	}
 
 	public Integer getIdEmploye() {
-		return idEmploye;
+		return this.idEmploye;
 	}
 
 	public void setIdEmploye(Integer idEmploye) {
 		this.idEmploye = idEmploye;
 	}
 
-	public CurrentAccount getMyCurrentAccount() {
-		return myCurrentAccount;
+	public CurrentAccount getCurrentAccount() {
+		return this.currentAccount;
 	}
 
-	public void setMyCurrentAccount(CurrentAccount myCurrentAccount) {
-		this.myCurrentAccount = myCurrentAccount;
+	public void setCurrentAccount(CurrentAccount currentAccount) {
+		this.currentAccount = currentAccount;
 	}
 
-	public SavingAccount getMySavingAccount() {
-		return mySavingAccount;
+	public SavingAccount getSavingAccount() {
+		return this.savingAccount;
 	}
 
-	public void setMySavingAccount(SavingAccount mySavingAccount) {
-		this.mySavingAccount = mySavingAccount;
+	public void setSavingAccount(SavingAccount savingAccount) {
+		this.savingAccount = savingAccount;
 	}
 
 	public Integer getIdsa() {
@@ -104,9 +104,9 @@ public class Customer extends People {
 	public void setIdsa(Integer idsa) {
 		this.idsa = idsa;
 	}
-	
+
 	public Integer getIdca() {
-		return idca;
+		return this.idca;
 	}
 
 	public void setIdca(Integer idca) {
@@ -115,9 +115,8 @@ public class Customer extends People {
 
 	@Override
 	public String toString() {
-		return "Customer [id=" + id + ", email=" + email + ", adress=" + adress + ", zipCode=" + zipCode + ", city="
-				+ city + ", idEmploye=" + idEmploye + ", idca=" + idca + ", idsa=" + idsa + ", myCurrentAccount="
-				+ myCurrentAccount + ", mySavingAccount=" + mySavingAccount + ", getName()=" + getName()
-				+ ", getFirstName()=" + getFirstName() + "]";
+		return "Customer [id=" + this.id + ", email=" + this.email + ", adress=" + this.adress + ", zipCode=" + this.zipCode + ", city=" + this.city + ", idEmploye=" + this.idEmploye + ", idca="
+				+ this.idca + ", idsa=" + this.idsa + ", myCurrentAccount=" + this.currentAccount + ", mySavingAccount=" + this.savingAccount + ", getName()=" + this.getName() + ", getFirstName()="
+				+ this.getFirstName() + "]";
 	}
 }
