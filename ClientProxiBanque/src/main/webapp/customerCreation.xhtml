@@ -114,23 +114,7 @@
 							<f:facet name="footer">
 								<p:row>
 									<p:column colspan="4" style="text-align: center">
-										<p:commandButton value="Confirmer">
-											<p:confirm header="Confirmation"
-												message="Valider la création du nouveau client ?"
-												icon="ui-icon-alert" />
-										</p:commandButton>
-
-										<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
-										<p:confirmDialog global="true" showEffect="fade"
-											hideEffect="fade">
-											<p:commandButton value="Oui"
-												styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-												action="#{customerbean.createCustomer(employebean.employe.id)}" />
-											<p:commandButton value="Non" type="button"
-												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-										</p:confirmDialog>
-
-										<p:commandButton value="Oui" styleClass="ui-confirmdialog-yes"
+										<p:commandButton value="Valider" styleClass="ui-confirmdialog-yes"
 											icon="ui-icon-check"
 											action="#{customerbean.createCustomer(employebean.employe.id)}" />
 										<p:button outcome="customerList" value="Annuler" />
