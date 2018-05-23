@@ -148,10 +148,10 @@ public class AccountService {
 		}
 	}
 	
-	@PutMapping("updatecurrentaccount/{accountId}")
+	@PutMapping("/updatecurrentaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody CurrentAccount ca) {
 		if (this.daoAccount.existsById(accountId)) {
-			final Account retour = this.daoAccount.save(ca);
+			final CurrentAccount retour = this.daoAccount.save(ca);
 			AccountService.LOGGER.info("Modification de " + ca + " en " + retour + " dans la BDD.");
 			return retour;
 		} else {
@@ -162,10 +162,10 @@ public class AccountService {
 		}
 	}
 	
-	@PutMapping("updatesavingaccount/{accountId}")
+	@PutMapping("/updatesavingaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody SavingAccount sa) {
 		if (this.daoAccount.existsById(accountId)) {
-			final Account retour = this.daoAccount.save(sa);
+			final SavingAccount retour = this.daoAccount.save(sa);
 			AccountService.LOGGER.info("Modification de " + sa + " en " + retour + " dans la BDD.");
 			return retour;
 		} else {

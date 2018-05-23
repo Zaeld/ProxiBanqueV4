@@ -7,7 +7,9 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 import fr.gtm.pbsi.domain.Account;
+import fr.gtm.pbsi.domain.CurrentAccount;
 import fr.gtm.pbsi.domain.Customer;
+import fr.gtm.pbsi.domain.SavingAccount;
 import fr.gtm.pbsi.domain.Transaction;
 
 public class AccountService {
@@ -82,6 +84,46 @@ public class AccountService {
 			}
 			return newAccount;
 		}
+	/**
+	 * @param account
+	 * @return
+	 */
+	public CurrentAccount updateCurrentAccount(CurrentAccount account) {
+		String input=null;
+		String output=null;
+		CurrentAccount newAccount=null;
+			try {
+				input = mapper.writeValueAsString(account);
+				WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/updatecurrentaccount/"+account.getId());
+				ClientResponse response = webResource.type("application/json").put(ClientResponse.class, input);
+				output = response.getEntity(String.class);
+				newAccount = mapper.readValue(output, CurrentAccount.class);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return newAccount;
+		}
+	/**
+	 * @param account
+	 * @return
+	 */
+	public SavingAccount updateSavingAccount(SavingAccount account) {
+		String input=null;
+		String output=null;
+		SavingAccount newAccount=null;
+			try {
+				input = mapper.writeValueAsString(account);
+				WebResource webResource = client.resource("http://localhost:8080/webServiceProxiBanque/account/updatesavingaccount/"+account.getId());
+				ClientResponse response = webResource.type("application/json").put(ClientResponse.class, input);
+				output = response.getEntity(String.class);
+				newAccount = mapper.readValue(output, SavingAccount.class);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return newAccount;
+		}
 	
 	/**
 	 * @param account
@@ -145,7 +187,7 @@ System.out.println("début webService avec"+input);
 	public Customer currentAccountActivation(Customer customer, Float solde) {
 		customer.getCurrentAccount().setIsActive(true);
 		customer.getCurrentAccount().setBalance(solde);
-		this.updateAccount(customer.getCurrentAccount());
+		this.updateCurrentAccount(customer.getCurrentAccount());
 		return customer;
 	}
 
@@ -161,7 +203,7 @@ System.out.println("début webService avec"+input);
 	public Customer savingAccountActivation(Customer customer, Float solde) {
 		customer.getSavingAccount().setIsActive(true);
 		customer.getSavingAccount().setBalance(solde);
-		this.updateAccount(customer.getSavingAccount());
+		this.updateSavingAccount(customer.getSavingAccount());
 		return customer;
 	}
 }
