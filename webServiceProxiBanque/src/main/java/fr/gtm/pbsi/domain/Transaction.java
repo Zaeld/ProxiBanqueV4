@@ -20,7 +20,7 @@ public class Transaction {
 	private Integer id;
 
 	private Date date;
-	private Integer typeTransaction;
+	private Integer typeTransaction; // 1 => debit, 2 => credit, 3 => virement CaC
 	private Float value;
 	private Integer iddebitAccount;
 	private Integer idcreditAccount;

@@ -19,11 +19,11 @@ public class Transaction {
 		super();
 	}
 
-	public Transaction(Float value, Account debitAccount, Account creditAccount) {
+	public Transaction(Float value, Integer iddebitAccount, Integer idcreditAccount) {
 		super();
 		this.value = value;
-		this.debitAccount = debitAccount;
-		this.creditAccount = creditAccount;
+		this.iddebitAccount = iddebitAccount;
+		this.idcreditAccount = idcreditAccount;
 	}
 
 	public Transaction(Date date, Integer typeTransaction, Float value, Account debitAccount, Account creditAccount) {
