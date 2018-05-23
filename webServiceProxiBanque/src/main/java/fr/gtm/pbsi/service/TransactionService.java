@@ -59,8 +59,8 @@ public class TransactionService {
 	Integer delete(@PathVariable Integer transactionId) {
 		if (this.daoTransaction.existsById(transactionId)) {
 			final Optional<Transaction> retour = this.daoTransaction.findById(transactionId);
-			TransactionService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
 			this.daoTransaction.deleteById(transactionId);
+			TransactionService.LOGGER.info("Suppression de " + retour.get() + " de la BDD.");
 			return 1;
 		} else {
 			TransactionService.LOGGER.error("Tentative de suppression d'une transaction échouée car l'ID donné n'est pas trouvable dans la BDD.");
@@ -95,9 +95,9 @@ public class TransactionService {
 			TransactionService.LOGGER.info("Récupération de " + retour + ".");
 			return retour.get();
 		} else {
-			TransactionService.LOGGER.error("Tentative de récupération d'une transaction échouée car l'ID donné n'a aucune correspondance en BDD.");
 			final Transaction response = new Transaction();
 			response.setId(0);
+			TransactionService.LOGGER.error("Tentative de récupération d'une transaction échouée car l'ID donné n'a aucune correspondance en BDD.");
 			return response;
 		}
 	}
@@ -121,9 +121,9 @@ public class TransactionService {
 			TransactionService.LOGGER.info("Modification de " + transaction + " en " + retour + " dans la BDD.");
 			return retour;
 		} else {
-			TransactionService.LOGGER.error("Tentative de modification de " + transaction + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			final Transaction response = new Transaction();
 			response.setId(0);
+			TransactionService.LOGGER.error("Tentative de modification de " + transaction + " échouée car cet employe n'existe pas en BDD ou l'ID de la requête n'a pas de correspondance en BDD.");
 			return response;
 		}
 	}
