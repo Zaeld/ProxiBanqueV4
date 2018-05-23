@@ -36,7 +36,7 @@ public class IndexController {
 			this.createBoss();
 			this.createConseiller();
 			this.createCustomersToEmployes();
-			// this.updateAccountToActive();
+			this.updateAccountToActive();
 			this.createTransaction();
 		}
 		return mav;
