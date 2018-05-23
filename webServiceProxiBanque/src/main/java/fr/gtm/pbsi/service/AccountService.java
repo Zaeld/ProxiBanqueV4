@@ -98,7 +98,7 @@ public class AccountService {
 	@GetMapping("/isActive")
 	List<Account> readAllActive() {
 		AccountService.LOGGER.info("Récupération de la liste de tous les accounts actifs de ProxiBanque.");
-		return this.daoAccount.findAllByIsActive(1);
+		return this.daoAccount.findAllByIsActive(true);
 	}
 
 	/**
