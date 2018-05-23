@@ -16,12 +16,15 @@
 			<ui:define name="content">
 				<div class="container">
 
-					<h:form >
-						<p:panelGrid class="placementListeCLient" style="font-size: 30px" >
+					<h:form>
+						<p:panelGrid class="placementListeCLient" style="font-size: 30px">
 
 							<p:row>
-								<p:column colspan="4"><p style="font-size: 40px" >Veuillez entrer les nouvelles
-							informations du client -- #{customerbean.customer.firstName}, #{customerbean.customer.name} -- </p></p:column>
+								<p:column colspan="4">
+									<p style="font-size: 40px">Veuillez entrer les nouvelles
+										informations du client -- #{customerbean.customer.firstName},
+										#{customerbean.customer.name} --</p>
+								</p:column>
 							</p:row>
 
 							<p:row>
@@ -33,15 +36,14 @@
 							<p:row>
 								<p:column> Nom : </p:column>
 								<p:column>
-									<p:inputText id="nom"
-										value="#{customerbean.customer.name}" required="true" />
+									<p:inputText id="nom" value="#{customerbean.customer.name}"
+										required="true" />
 								</p:column>
 
 								<p:column> Prenom : </p:column>
 								<p:column>
 									<p:inputText id="prenom"
-										value="#{customerbean.customer.firstName}"
-										required="true" />
+										value="#{customerbean.customer.firstName}" required="true" />
 								</p:column>
 							</p:row>
 
@@ -68,13 +70,14 @@
 							<p:row>
 								<p:column>Ville : </p:column>
 								<p:column>
-									<p:inputText value="#{customerbean.customer.city}"
-										id="ville" required="true" />
+									<p:inputText value="#{customerbean.customer.city}" id="ville"
+										required="true" />
 								</p:column>
 
 								<p:column>Email : </p:column>
 								<p:column>
-									<p:inputText value="#{customerbean.customer.email}" id="email" required="true" />
+									<p:inputText value="#{customerbean.customer.email}" id="email"
+										required="true" />
 								</p:column>
 							</p:row>
 
@@ -82,23 +85,9 @@
 								<p:row>
 									<p:column colspan="4" style="text-align: center">
 
-
-										<p:commandButton value="Confirmer">
-											<p:confirm header="Confirmation"
-												message="Valider la modification du client ?"
-												icon="ui-icon-alert" />
-										</p:commandButton>
-
-										<!-- rajouter/vérifier l'id du conseiller en paramètre de la methode createCustomer() -->
-										<p:confirmDialog global="true" showEffect="fade"
-											hideEffect="fade">
-											<p:commandButton value="Oui" 
-												styleClass="ui-confirmdialog-yes" icon="ui-icon-check"
-												action="#{customerbean.updateCustomer(customer)}" />
-											<p:commandButton value="Non"
-												styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
-										</p:confirmDialog>
-
+										<p:commandButton value="Valider" styleClass="ui-confirmdialog-yes"
+											icon="ui-icon-check"
+											action="#{customerbean.updateCustomer(customerbean.customer)}" />
 										<p:button outcome="customerList" value="Annuler" />
 
 									</p:column>
@@ -106,7 +95,7 @@
 							</f:facet>
 						</p:panelGrid>
 					</h:form>
-					
+
 				</div>
 			</ui:define>
 		</ui:composition>
