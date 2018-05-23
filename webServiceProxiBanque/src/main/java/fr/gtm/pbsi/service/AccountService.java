@@ -148,7 +148,7 @@ public class AccountService {
 		}
 	}
 	
-	@PutMapping("updatecurrentaccount/{accountId}")
+	@PutMapping("/updatecurrentaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody CurrentAccount ca) {
 		if (this.daoAccount.existsById(accountId)) {
 			final Account retour = this.daoAccount.save(ca);
@@ -162,7 +162,7 @@ public class AccountService {
 		}
 	}
 	
-	@PutMapping("updatesavingaccount/{accountId}")
+	@PutMapping("/updatesavingaccount/{accountId}")
 	Account update(@PathVariable Integer accountId, @RequestBody SavingAccount sa) {
 		if (this.daoAccount.existsById(accountId)) {
 			final Account retour = this.daoAccount.save(sa);

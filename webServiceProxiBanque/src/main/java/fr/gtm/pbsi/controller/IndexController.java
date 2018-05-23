@@ -18,8 +18,7 @@ public class IndexController {
 
 	private final String urlCreateEmploye = "http://localhost:8080/webServiceProxiBanque/employe/";
 	private final String urlCreateCustomer = "http://localhost:8080/webServiceProxiBanque/customer/";
-	 private final String urlUpdateAccount =
-	 "http://localhost:8080/webServiceProxiBanque/account/";
+	private final String urlUpdateAccount = "http://localhost:8080/webServiceProxiBanque/account/";
 	// private final String urlCreateSA =
 	// "http://localhost:8080/webServiceProxiBanque/account/savingAccount";
 
@@ -40,21 +39,21 @@ public class IndexController {
 	}
 
 	private void createBoss() {
-		final Employe boss = new Employe("Cousin", "Olivier", "admin", "admin", 0, 0, null);
+		final Employe boss = new Employe("Cousin", "Olivier", "admin", "admin", 0, null);
 		this.rt.postForObject(this.urlCreateEmploye, boss, Employe.class);
 	}
 
 	private void createConseiller() {
-		final Employe conseiller1 = new Employe("Fournier", "Pascal", "c1", "c1", 1, 0, null);
+		final Employe conseiller1 = new Employe("Fournier", "Pascal", "c1", "c1", 1, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller1, Employe.class);
 
-		final Employe conseiller2 = new Employe("Martin", "Laurine", "c2", "c2", 1, 0, null);
+		final Employe conseiller2 = new Employe("Martin", "Laurine", "c2", "c2", 1, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller2, Employe.class);
-		final Employe conseiller3 = new Employe("Delcroix", "Sarah", "c3", "c3", 1, 0, null);
+		final Employe conseiller3 = new Employe("Delcroix", "Sarah", "c3", "c3", 1, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller3, Employe.class);
-		final Employe conseiller4 = new Employe("Durand", "Guillaume", "c4", "c4", 1, 0, null);
+		final Employe conseiller4 = new Employe("Durand", "Guillaume", "c4", "c4", 1, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller4, Employe.class);
-		final Employe conseiller5 = new Employe("Arnaud", "Claire", "c5", "c5", 1, 0, null);
+		final Employe conseiller5 = new Employe("Arnaud", "Claire", "c5", "c5", 1, null);
 		this.rt.postForObject(this.urlCreateEmploye, conseiller5, Employe.class);
 	}
 
@@ -122,17 +121,162 @@ public class IndexController {
 	}
 
 	private void updateAccountToActive() {
-		Customer cus = this.rt.getForObject(this.urlCreateCustomer+"1",	Customer.class);
-		CurrentAccount ca = cus.getCurrentAccount();
+		Customer cus = new Customer();
+		CurrentAccount ca = new CurrentAccount();
+		SavingAccount sa = new SavingAccount();
+		// customer 1
+		cus = this.rt.getForObject(this.urlCreateCustomer + "1", Customer.class);
+		ca = cus.getCurrentAccount();
 		ca.setIsActive(true);
-//		System.out.println(this.urlUpdateAccount+ca.getId());
-//		System.out.println(ca);
-//		System.out.println(ca.getDateCreation());
-//		System.out.println(ca.getNumberAccount());
-//		System.out.println(ca.getBalance());
-//		System.out.println(ca.getId());
-//		System.out.println(ca.getIsActive());
-		this.rt.put(this.urlUpdateAccount+"currentaccount/"+ca.getId(), ca);
+		ca.setBalance(577f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(11000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 2
+		cus = this.rt.getForObject(this.urlCreateCustomer + "2", Customer.class);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(50000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 3
+		cus = this.rt.getForObject(this.urlCreateCustomer + "3", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(-58f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(3000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 4
+		cus = this.rt.getForObject(this.urlCreateCustomer + "4", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(-500f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		// customer 5
+		cus = this.rt.getForObject(this.urlCreateCustomer + "5", Customer.class);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(48000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 6
+		cus = this.rt.getForObject(this.urlCreateCustomer + "6", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(321f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		// customer 7
+		cus = this.rt.getForObject(this.urlCreateCustomer + "7", Customer.class);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(7000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 8
+		cus = this.rt.getForObject(this.urlCreateCustomer + "8", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(100f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(5000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 9
+		cus = this.rt.getForObject(this.urlCreateCustomer + "9", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(984f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(152000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 10
+		cus = this.rt.getForObject(this.urlCreateCustomer + "10", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(-502f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		// customer 11
+		cus = this.rt.getForObject(this.urlCreateCustomer + "11", Customer.class);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(1000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 12
+		cus = this.rt.getForObject(this.urlCreateCustomer + "12", Customer.class);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(9000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 13
+		cus = this.rt.getForObject(this.urlCreateCustomer + "13", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(3000f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(2000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 14
+		cus = this.rt.getForObject(this.urlCreateCustomer + "14", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(-600f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		// customer 15
+		cus = this.rt.getForObject(this.urlCreateCustomer + "15", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(2f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(5000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 16
+		cus = this.rt.getForObject(this.urlCreateCustomer + "16", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(31f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		// customer 17
+		cus = this.rt.getForObject(this.urlCreateCustomer + "17", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(541f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(6200f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 18
+		cus = this.rt.getForObject(this.urlCreateCustomer + "18", Customer.class);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		sa.setBalance(42000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 19
+		cus = this.rt.getForObject(this.urlCreateCustomer + "19", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(800f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+		sa = cus.getSavingAccount();
+		sa.setIsActive(true);
+		ca.setBalance(2000f);
+		this.rt.put(this.urlUpdateAccount + "updatesavingaccount/" + sa.getId(), sa);
+		// customer 20
+		cus = this.rt.getForObject(this.urlCreateCustomer + "20", Customer.class);
+		ca = cus.getCurrentAccount();
+		ca.setIsActive(true);
+		ca.setBalance(951f);
+		this.rt.put(this.urlUpdateAccount + "updatecurrentaccount/" + ca.getId(), ca);
+
 	}
 
 }
